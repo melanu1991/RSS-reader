@@ -2,4 +2,7 @@
 
 @interface VAKNetManager : NSObject
 
++ (instancetype)sharedManager;
+- (void)loadDataWithPath:(NSString *)path;
+
 @end

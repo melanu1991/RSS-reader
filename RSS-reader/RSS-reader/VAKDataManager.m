@@ -6,6 +6,8 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+#pragma mark - Singleton
+
 + (VAKDataManager *)sharedManager {
     static VAKDataManager *manager = nil;
     static dispatch_once_t onceToken;

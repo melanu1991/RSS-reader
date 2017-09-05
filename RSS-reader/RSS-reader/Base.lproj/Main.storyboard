@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Screen View Controller-->
+        <!--RSS reader-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="VAKMainScreenViewController" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                             <constraint firstItem="UuZ-hv-KyG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="roc-CK-EmQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TyF-SR-ZMy">
+                    <navigationItem key="navigationItem" title="RSS reader" id="TyF-SR-ZMy">
                         <barButtonItem key="leftBarButtonItem" title="SlideMenu" id="ntS-Y4-QBh">
                             <connections>
                                 <action selector="slideMenuButtonPressed:" destination="BYZ-38-t0r" id="xFn-ZM-ml4"/>

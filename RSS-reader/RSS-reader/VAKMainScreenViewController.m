@@ -1,5 +1,6 @@
 #import "VAKMainScreenViewController.h"
 #import "VAKSlideMenuViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
 
