@@ -13,7 +13,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="VAKMainScreenViewController" id="BYZ-38-t0r" customClass="VAKMainScreenViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="VAKMainScreenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,7 +23,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TyF-SR-ZMy"/>
+                    <navigationItem key="navigationItem" id="TyF-SR-ZMy">
+                        <barButtonItem key="leftBarButtonItem" title="SlideMenu" id="ntS-Y4-QBh">
+                            <connections>
+                                <action selector="slideMenuButtonPressed:" destination="BYZ-38-t0r" id="xFn-ZM-ml4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
