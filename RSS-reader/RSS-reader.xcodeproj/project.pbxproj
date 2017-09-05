@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		581ECCBF1F5D91B80056B644 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 581ECCBE1F5D91B80056B644 /* main.m */; };
 		581ECCC21F5D91B80056B644 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 581ECCC11F5D91B80056B644 /* AppDelegate.m */; };
-		581ECCC51F5D91B80056B644 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581ECCC41F5D91B80056B644 /* ViewController.m */; };
+		581ECCC51F5D91B80056B644 /* VAKMainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581ECCC41F5D91B80056B644 /* VAKMainScreenViewController.m */; };
 		581ECCC81F5D91B80056B644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 581ECCC61F5D91B80056B644 /* Main.storyboard */; };
 		581ECCCB1F5D91B90056B644 /* RSS_reader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 581ECCC91F5D91B90056B644 /* RSS_reader.xcdatamodeld */; };
 		581ECCCD1F5D91B90056B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 581ECCCC1F5D91B90056B644 /* Assets.xcassets */; };
 		581ECCD01F5D91B90056B644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 581ECCCE1F5D91B90056B644 /* LaunchScreen.storyboard */; };
+		58C3C4391F5ECBEA00707267 /* VAKSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */; };
 		E94314D25A35A4CA912690A8 /* libPods-RSS-reader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */; };
 /* End PBXBuildFile section */
 
@@ -22,13 +23,15 @@
 		581ECCBE1F5D91B80056B644 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		581ECCC01F5D91B80056B644 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		581ECCC11F5D91B80056B644 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		581ECCC31F5D91B80056B644 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		581ECCC41F5D91B80056B644 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		581ECCC31F5D91B80056B644 /* VAKMainScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VAKMainScreenViewController.h; sourceTree = "<group>"; };
+		581ECCC41F5D91B80056B644 /* VAKMainScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VAKMainScreenViewController.m; sourceTree = "<group>"; };
 		581ECCC71F5D91B80056B644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		581ECCCA1F5D91B90056B644 /* RSS_reader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSS_reader.xcdatamodel; sourceTree = "<group>"; };
 		581ECCCC1F5D91B90056B644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		581ECCCF1F5D91B90056B644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		581ECCD11F5D91B90056B644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58C3C4371F5ECBEA00707267 /* VAKSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSlideMenuViewController.h; sourceTree = "<group>"; };
+		58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKSlideMenuViewController.m; sourceTree = "<group>"; };
 		5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSS-reader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		932EE37FDE299558F8E5584E /* Pods-RSS-reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSS-reader/Pods-RSS-reader.debug.xcconfig"; sourceTree = "<group>"; };
 		CCDD939DD19C508825177B8D /* Pods-RSS-reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-reader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSS-reader/Pods-RSS-reader.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,8 +89,10 @@
 			children = (
 				581ECCC01F5D91B80056B644 /* AppDelegate.h */,
 				581ECCC11F5D91B80056B644 /* AppDelegate.m */,
-				581ECCC31F5D91B80056B644 /* ViewController.h */,
-				581ECCC41F5D91B80056B644 /* ViewController.m */,
+				581ECCC31F5D91B80056B644 /* VAKMainScreenViewController.h */,
+				581ECCC41F5D91B80056B644 /* VAKMainScreenViewController.m */,
+				58C3C4371F5ECBEA00707267 /* VAKSlideMenuViewController.h */,
+				58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */,
 				581ECCC61F5D91B80056B644 /* Main.storyboard */,
 				581ECCCC1F5D91B90056B644 /* Assets.xcassets */,
 				581ECCCE1F5D91B90056B644 /* LaunchScreen.storyboard */,
@@ -229,10 +234,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				581ECCC51F5D91B80056B644 /* ViewController.m in Sources */,
+				581ECCC51F5D91B80056B644 /* VAKMainScreenViewController.m in Sources */,
 				581ECCCB1F5D91B90056B644 /* RSS_reader.xcdatamodeld in Sources */,
 				581ECCC21F5D91B80056B644 /* AppDelegate.m in Sources */,
 				581ECCBF1F5D91B80056B644 /* main.m in Sources */,
+				58C3C4391F5ECBEA00707267 /* VAKSlideMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +397,7 @@
 				581ECCD61F5D91B90056B644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xE7-Mb-ALd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VAKMainScreenViewController" id="BYZ-38-t0r" customClass="VAKMainScreenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,107 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="TyF-SR-ZMy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+        </scene>
+        <!--Slide Menu View Controller-->
+        <scene sceneID="nGw-fW-iA8">
+            <objects>
+                <viewController storyboardIdentifier="VAKSlideMenuViewController" id="x9i-0F-HDP" customClass="VAKSlideMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZS9-K2-O1g"/>
+                        <viewControllerLayoutGuide type="bottom" id="yAS-5s-bnK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UgS-ae-DYR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBT-kK-2vG">
+                                <rect key="frame" x="0.0" y="0.0" width="262.5" height="667"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tIn-qH-dJr">
+                                        <rect key="frame" x="26.5" y="166.5" width="210" height="333.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-xe-vDi">
+                                                <rect key="frame" x="0.0" y="0.0" width="210" height="104.5"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="TUT.by">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="N28-9l-DON"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-nL-Geg">
+                                                <rect key="frame" x="0.0" y="114.5" width="210" height="104.5"/>
+                                                <color key="backgroundColor" red="0.54001610239999998" green="1" blue="0.55410317949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Onliner.by">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="zoe-VA-1cn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUz-Bq-Lnj">
+                                                <rect key="frame" x="0.0" y="229" width="210" height="104.5"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="lenta.ru">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="Prd-Mb-iap"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.22352941179999999" green="0.59215686270000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="tIn-qH-dJr" firstAttribute="height" secondItem="yBT-kK-2vG" secondAttribute="height" multiplier="0.5" id="XBY-lw-WGh"/>
+                                    <constraint firstItem="tIn-qH-dJr" firstAttribute="width" secondItem="yBT-kK-2vG" secondAttribute="width" multiplier="0.8" id="gs9-Y7-jCx"/>
+                                    <constraint firstItem="tIn-qH-dJr" firstAttribute="centerX" secondItem="yBT-kK-2vG" secondAttribute="centerX" id="lA5-1Z-yfh"/>
+                                    <constraint firstItem="tIn-qH-dJr" firstAttribute="centerY" secondItem="yBT-kK-2vG" secondAttribute="centerY" id="scv-da-Cz8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yBT-kK-2vG" firstAttribute="leading" secondItem="UgS-ae-DYR" secondAttribute="leading" id="0AL-vE-eJ7"/>
+                            <constraint firstItem="yBT-kK-2vG" firstAttribute="width" secondItem="UgS-ae-DYR" secondAttribute="width" multiplier="0.7" id="B8d-yn-Uas"/>
+                            <constraint firstItem="yAS-5s-bnK" firstAttribute="top" secondItem="yBT-kK-2vG" secondAttribute="bottom" id="qpe-Yv-Gj1"/>
+                            <constraint firstItem="yBT-kK-2vG" firstAttribute="top" secondItem="UgS-ae-DYR" secondAttribute="top" id="uUP-b9-uYd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="slideMenuView" destination="yBT-kK-2vG" id="AYF-l2-wBa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DSC-bl-nmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2004" y="138.98050974512745"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ccs-9f-9oL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xE7-Mb-ALd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xib-aG-2ok">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="u8V-zn-7xO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fo2-Er-zkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="345" y="139"/>
         </scene>
     </scenes>
 </document>
