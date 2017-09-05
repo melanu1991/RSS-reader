@@ -37,7 +37,8 @@
     NSURL *url = [NSURL URLWithString:path];
     [self.feedParse parseFeedURL:url withETag:nil untilPubDate:nil success:^(NSHTTPURLResponse *response, BNRSSFeed *feed) {
         
-        
+        NSLog(@"%lu", (unsigned long)feed.items.count);
+        NSLog(@"%@", feed.items);
         
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         

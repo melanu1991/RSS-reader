@@ -1,8 +1,19 @@
 #import "VAKSlideMenuViewController.h"
+#import "VAKNetManager.h"
 
-static NSString * const VAKTutByURL = @"https://news.tut.by/rss";
-static NSString * const VAKOnlinerByURL = @"https:www.onliner.by/feed";
-static NSString * const VAKLentaRuURL = @"https://lenta.ru/rss";
+static NSUInteger const amount = 3;
+
+typedef NS_ENUM(NSUInteger, URLNews) {
+    URLNewsTutBy,
+    URLNewsOnlinerBy,
+    URLNewsLentaRu
+};
+
+static NSString * const VAKArrayNews[amount] = {
+    [URLNewsTutBy] = @"https://news.tut.by/rss",
+    [URLNewsOnlinerBy] = @"https:www.onliner.by/feed",
+    [URLNewsLentaRu] = @"https://lenta.ru/rss"
+};
 
 @interface VAKSlideMenuViewController ()
 
@@ -21,15 +32,16 @@ static NSString * const VAKLentaRuURL = @"https://lenta.ru/rss";
 #pragma mark - actions
 
 - (IBAction)menuButtonPressed:(UIButton *)sender {
+    NSString *path = VAKArrayNews[sender.tag];
     switch (sender.tag) {
         case 0:
-            
+            [[VAKNetManager sharedManager] loadDataWithPath:path];
             break;
         case 1:
-            
+            [[VAKNetManager sharedManager] loadDataWithPath:path];
             break;
         case 2:
-            
+            [[VAKNetManager sharedManager] loadDataWithPath:path];
             break;
         default:
             break;
