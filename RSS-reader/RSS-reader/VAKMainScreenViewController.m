@@ -11,10 +11,14 @@ static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuVie
 
 @implementation VAKMainScreenViewController
 
+#pragma mark - life cycle view controller
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.slideMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKSlideMenuViewControllerIdentifier];
 }
+
+#pragma mark - actions
 
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
     
