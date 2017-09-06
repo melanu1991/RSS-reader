@@ -3,6 +3,6 @@
 @interface VAKNetManager : NSObject
 
 + (instancetype)sharedManager;
-- (void)loadDataWithPath:(NSString *)path;
+- (void)loadDataWithPath:(NSString *)path completionHandler:(void(^)(NSArray *data, NSError *error))completionHandler;
 
 @end

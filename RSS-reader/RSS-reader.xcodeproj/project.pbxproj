@@ -21,6 +21,7 @@
 		58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */; };
 		58B8FB7A1F5FF07100C51BC1 /* Category+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB771F5FF07100C51BC1 /* Category+CoreDataClass.m */; };
 		58B8FB7B1F5FF07100C51BC1 /* News+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB791F5FF07100C51BC1 /* News+CoreDataClass.m */; };
+		58B8FB821F5FFE6300C51BC1 /* VAKNewsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */; };
 		58C3C4391F5ECBEA00707267 /* VAKSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */; };
 		E94314D25A35A4CA912690A8 /* libPods-RSS-reader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,8 @@
 		58B8FB771F5FF07100C51BC1 /* Category+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Category+CoreDataClass.m"; sourceTree = "<group>"; };
 		58B8FB781F5FF07100C51BC1 /* News+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "News+CoreDataClass.h"; sourceTree = "<group>"; };
 		58B8FB791F5FF07100C51BC1 /* News+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "News+CoreDataClass.m"; sourceTree = "<group>"; };
+		58B8FB801F5FFE6300C51BC1 /* VAKNewsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNewsParser.h; sourceTree = "<group>"; };
+		58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKNewsParser.m; sourceTree = "<group>"; };
 		58C3C4371F5ECBEA00707267 /* VAKSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSlideMenuViewController.h; sourceTree = "<group>"; };
 		58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKSlideMenuViewController.m; sourceTree = "<group>"; };
 		5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSS-reader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,9 +110,8 @@
 		581ECCBC1F5D91B80056B644 /* RSS-reader */ = {
 			isa = PBXGroup;
 			children = (
+				58B8FB7C1F5FF72300C51BC1 /* Parsers */,
 				58B8FB701F5FEFEE00C51BC1 /* CoreData */,
-				581ECCC01F5D91B80056B644 /* AppDelegate.h */,
-				581ECCC11F5D91B80056B644 /* AppDelegate.m */,
 				581ECCC31F5D91B80056B644 /* VAKMainScreenViewController.h */,
 				581ECCC41F5D91B80056B644 /* VAKMainScreenViewController.m */,
 				5830B03A1F5EE06600B1E90C /* VAKNetManager.h */,
@@ -134,6 +136,8 @@
 		581ECCBD1F5D91B80056B644 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				581ECCC01F5D91B80056B644 /* AppDelegate.h */,
+				581ECCC11F5D91B80056B644 /* AppDelegate.m */,
 				581ECCBE1F5D91B80056B644 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -166,6 +170,15 @@
 				58B8FB791F5FF07100C51BC1 /* News+CoreDataClass.m */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		58B8FB7C1F5FF72300C51BC1 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				58B8FB801F5FFE6300C51BC1 /* VAKNewsParser.h */,
+				58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */,
+			);
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +315,7 @@
 				58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */,
 				58B8FB7A1F5FF07100C51BC1 /* Category+CoreDataClass.m in Sources */,
 				5830B03C1F5EE06600B1E90C /* VAKNetManager.m in Sources */,
+				58B8FB821F5FFE6300C51BC1 /* VAKNewsParser.m in Sources */,
 				58C3C4391F5ECBEA00707267 /* VAKSlideMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

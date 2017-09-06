@@ -32,18 +32,13 @@
 
 #pragma mark - load data
 
-- (void)loadDataWithPath:(NSString *)path {
+- (void)loadDataWithPath:(NSString *)path completionHandler:(void(^)(NSArray *data, NSError *error))completionHandler {
     
     NSURL *url = [NSURL URLWithString:path];
     [self.feedParse parseFeedURL:url withETag:nil untilPubDate:nil success:^(NSHTTPURLResponse *response, BNRSSFeed *feed) {
-        
-        NSLog(@"%lu", (unsigned long)feed.items.count);
-        NSLog(@"%@", feed.items);
-        
+        completionHandler(feed.items, nil);
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        
-        
-        
+        completionHandler(nil, error);
     }];
     
 }

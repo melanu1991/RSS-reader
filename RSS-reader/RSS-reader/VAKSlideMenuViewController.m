@@ -1,7 +1,6 @@
 #import "VAKSlideMenuViewController.h"
 #import "VAKNetManager.h"
-
-static NSUInteger const amount = 3;
+#import "VAKNewsParser.h"
 
 typedef NS_ENUM(NSUInteger, URLNews) {
     URLNewsTutBy,
@@ -9,7 +8,7 @@ typedef NS_ENUM(NSUInteger, URLNews) {
     URLNewsLentaRu
 };
 
-static NSString * const VAKArrayNews[amount] = {
+static NSString * const VAKArrayNews[] = {
     [URLNewsTutBy] = @"https://news.tut.by/rss",
     [URLNewsOnlinerBy] = @"https:www.onliner.by/feed",
     [URLNewsLentaRu] = @"https://lenta.ru/rss"
@@ -33,26 +32,20 @@ static NSString * const VAKArrayNews[amount] = {
 
 - (IBAction)menuButtonPressed:(UIButton *)sender {
     NSString *path = VAKArrayNews[sender.tag];
-    switch (sender.tag) {
-        case 0:
-            [[VAKNetManager sharedManager] loadDataWithPath:path];
-            break;
-        case 1:
-            [[VAKNetManager sharedManager] loadDataWithPath:path];
-            break;
-        case 2:
-            [[VAKNetManager sharedManager] loadDataWithPath:path];
-            break;
-        default:
-            break;
-    }
+    [[VAKNetManager sharedManager] loadDataWithPath:path completionHandler:^(NSArray *data, NSError *error) {
+        if (!error) {
+            [VAKNewsParser newsWithData:data urlIdentifier:sender.tag];
+        }
+    }];
 }
 
-#pragma mark - ???
+#pragma mark - prepareForSegue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [self hideMenu];
 }
+
+#pragma mark - custom touch handling
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self hideMenu];
