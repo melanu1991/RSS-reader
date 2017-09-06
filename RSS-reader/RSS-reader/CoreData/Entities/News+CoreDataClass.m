@@ -1,4 +1,5 @@
 #import "News+CoreDataClass.h"
+#import "Category+CoreDataClass.h"
 
 @implementation News
 
@@ -6,11 +7,11 @@
     return [[NSFetchRequest alloc] initWithEntityName:@"News"];
 }
 
-@dynamic title;
 @dynamic imageURL;
 @dynamic pubDate;
-@dynamic specification;
 @dynamic source;
+@dynamic specification;
+@dynamic title;
 @dynamic category;
 
 @end
