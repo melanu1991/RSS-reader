@@ -47,12 +47,6 @@ static NSString * const VAKArrayNews[] = {
     }];
 }
 
-#pragma mark - prepareForSegue
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [self hideMenu];
-}
-
 #pragma mark - custom touch handling
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

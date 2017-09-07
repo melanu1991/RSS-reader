@@ -1,7 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface VAKMainScreenViewController : UIViewController
-
+@interface VAKMainScreenViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end
 

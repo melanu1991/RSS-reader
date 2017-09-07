@@ -80,13 +80,13 @@
 @implementation VAKDataManager (WorkWithData)
 
 + (void)categoryWithName:(NSString *)name news:(News *)news {
-    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntityIdentifier predicate:[NSPredicate predicateWithFormat:@"name == %@", name]];
+    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntity predicate:[NSPredicate predicateWithFormat:@"name == %@", name]];
     Category *entityCategory;
     if (categories.count > 0) {
         entityCategory = categories[0];
     }
     else {
-        entityCategory = (Category *)[VAKDataManager entityWithName:VAKCategoryEntityIdentifier];
+        entityCategory = (Category *)[VAKDataManager entityWithName:VAKCategoryEntity];
         entityCategory.name = name;
     }
     news.category = entityCategory;
@@ -95,26 +95,26 @@
 
 + (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:name];
-    [request setPredicate:predicate];
+    [request setPredicate:predicate];   
     NSArray *entities = [[VAKDataManager sharedManager].managedObjectContext executeFetchRequest:request error:nil];
     return entities;
 }
 
 + (NSManagedObject *)entityWithName:(NSString *)name {
-    if ([name isEqualToString:VAKNewsEntityIdentifier]) {
-        News *news = [NSEntityDescription insertNewObjectForEntityForName:VAKNewsEntityIdentifier inManagedObjectContext:[VAKDataManager sharedManager].managedObjectContext];
+    if ([name isEqualToString:VAKNewsEntity]) {
+        News *news = [NSEntityDescription insertNewObjectForEntityForName:VAKNewsEntity inManagedObjectContext:[VAKDataManager sharedManager].managedObjectContext];
         return news;
     }
-    else if ([name isEqualToString:VAKCategoryEntityIdentifier]) {
-        Category *category = [NSEntityDescription insertNewObjectForEntityForName:VAKCategoryEntityIdentifier inManagedObjectContext:[VAKDataManager sharedManager].managedObjectContext];
+    else if ([name isEqualToString:VAKCategoryEntity]) {
+        Category *category = [NSEntityDescription insertNewObjectForEntityForName:VAKCategoryEntity inManagedObjectContext:[VAKDataManager sharedManager].managedObjectContext];
         return category;
     }
     return nil;
 }
 
 + (void)deleteAllEntities {
-    NSArray *news = [VAKDataManager allEntitiesWithName:VAKNewsEntityIdentifier predicate:nil];
-    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntityIdentifier predicate:nil];
+    NSArray *news = [VAKDataManager allEntitiesWithName:VAKNewsEntity predicate:nil];
+    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntity predicate:nil];
     for (Category *item in categories) {
         [[VAKDataManager sharedManager].managedObjectContext deleteObject:item];
     }

@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-static NSString * const VAKNewsEntityIdentifier = @"News";
-static NSString * const VAKCategoryEntityIdentifier = @"Category";
+static NSString * const VAKNewsEntity = @"News";
+static NSString * const VAKCategoryEntity = @"Category";
 
 @class News;
 

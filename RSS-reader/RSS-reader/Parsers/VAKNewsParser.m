@@ -65,9 +65,9 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 + (void)parserNewsWithTutByData:(NSArray *)data {
     
     [VAKDataManager deleteAllEntities];
-    News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityIdentifier];
 
     for (NSDictionary *item in data) {
+        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntity];
         news.title = item[VAKTitleIdentifier];
         news.link = item[VAKLinkIdentifier];
         news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
@@ -99,9 +99,9 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 + (void)parserNewsWithOnlinerByData:(NSArray *)data {
 
     [VAKDataManager deleteAllEntities];
-    News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityIdentifier];
     
     for (NSDictionary *item in data) {
+        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntity];
         news.title = item[VAKTitleIdentifier];
         news.link = item[VAKLinkIdentifier];
         news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
@@ -127,9 +127,9 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 + (void)parserNewsWithLentaRuData:(NSArray *)data {
 
     [VAKDataManager deleteAllEntities];
-    News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityIdentifier];
     
     for (NSDictionary *item in data) {
+        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntity];
         news.title = item[VAKTitleIdentifier];
         news.link = item[VAKLinkIdentifier];
         news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
