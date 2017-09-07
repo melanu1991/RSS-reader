@@ -4,9 +4,11 @@
 #import "News+CoreDataClass.h"
 #import "Category+CoreDataClass.h"
 #import "VAKNewsTableViewCell.h"
+#import "VAKWebViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
+static NSString * const VAKWebViewControllerIdentifier = @"VAKWebViewController";
 static NSString * const VAKNibNameIdentifier = @"VAKNewsTableViewCell";
 static NSString * const VAKCellReuseIdentifier = @"newsCell";
 static NSString * const VAKSortDescriptorKey = @"pubDate";
@@ -62,6 +64,14 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
 }
 
 #pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    VAKWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKWebViewControllerIdentifier];
+    News *news = self.news[indexPath.row];
+    webVC.link = news.link;
+    [self.navigationController pushViewController:webVC animated:YES];
+}
 
 #pragma mark - actions
 

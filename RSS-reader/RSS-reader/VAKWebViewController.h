@@ -2,4 +2,6 @@
 
 @interface VAKWebViewController : UIViewController
 
+@property (strong, nonatomic) NSString *link;
+
 @end

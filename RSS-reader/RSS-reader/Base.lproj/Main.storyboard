@@ -142,15 +142,25 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uNk-sP-T2C">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.36092069004700822" green="0.25711519766893687" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QjU-4q-5yX" firstAttribute="leading" secondItem="cQp-VJ-eGp" secondAttribute="leading" id="2DA-ve-gST"/>
+                            <constraint firstItem="uNk-sP-T2C" firstAttribute="centerX" secondItem="cQp-VJ-eGp" secondAttribute="centerX" id="Yhw-fu-WJF"/>
                             <constraint firstItem="7do-XY-OZg" firstAttribute="top" secondItem="QjU-4q-5yX" secondAttribute="bottom" id="oFD-gD-2Hv"/>
                             <constraint firstAttribute="trailing" secondItem="QjU-4q-5yX" secondAttribute="trailing" id="taa-EL-2kd"/>
+                            <constraint firstItem="uNk-sP-T2C" firstAttribute="centerY" secondItem="cQp-VJ-eGp" secondAttribute="centerY" id="yNl-iU-8xF"/>
                             <constraint firstItem="QjU-4q-5yX" firstAttribute="top" secondItem="Ogi-oG-RbZ" secondAttribute="bottom" id="zV6-kH-zrb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="uNk-sP-T2C" id="PXP-S7-n4J"/>
+                        <outlet property="webView" destination="QjU-4q-5yX" id="t0R-DS-hHV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E1R-8q-tK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
