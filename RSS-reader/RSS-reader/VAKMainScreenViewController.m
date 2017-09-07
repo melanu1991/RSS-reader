@@ -38,6 +38,8 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 140.f;
     [self.tableView registerNib:[UINib nibWithNibName:VAKNibNameIdentifier bundle:nil] forCellReuseIdentifier:VAKCellReuseIdentifier];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData:) name:VAKUpdateDataNotification object:nil];
 }
@@ -59,7 +61,9 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
     VAKNewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VAKCellReuseIdentifier forIndexPath:indexPath];
     News *news = self.news[indexPath.row];
     cell.title.text = news.title;
-    cell.specification.text = news.specification;
+//    cell.specification.text = news.specification;
+//    NSURL *url = [NSURL URLWithString:news.imageURL];
+//    [cell.image sd_setImageWithURL:url placeholderImage:nil];
     return cell;
 }
 

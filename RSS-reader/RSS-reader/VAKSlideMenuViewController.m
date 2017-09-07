@@ -31,6 +31,7 @@ static NSString * const VAKArrayNews[] = {
 #pragma mark - actions
 
 - (IBAction)menuButtonPressed:(UIButton *)sender {
+    [self hideMenu];
     NSString *path = VAKArrayNews[sender.tag];
     [[VAKNetManager sharedManager] loadDataWithPath:path completionHandler:^(NSArray *data, NSError *error) {
         if (!error) {
@@ -40,10 +41,10 @@ static NSString * const VAKArrayNews[] = {
         else {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error load data" message:@"Server connection failed" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
+                [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil];
             }];
             [alert addAction:action];
-            [self presentViewController:alert animated:YES completion:nil];
+            [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
         }
     }];
 }
@@ -58,7 +59,7 @@ static NSString * const VAKArrayNews[] = {
 
 - (void)showMenu {
     self.view.frame = CGRectMake(-[UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    [UIView animateWithDuration:1.f animations:^{
+    [UIView animateWithDuration:0.5f animations:^{
         self.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
         [window addSubview:self.view];
@@ -67,7 +68,7 @@ static NSString * const VAKArrayNews[] = {
 }
 
 - (void)hideMenu {
-    [UIView animateWithDuration:1.f animations:^{
+    [UIView animateWithDuration:0.5f animations:^{
         self.view.frame = CGRectMake(-[UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];

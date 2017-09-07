@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UuZ-hv-KyG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UuZ-hv-KyG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -30,9 +30,9 @@
                         <color key="backgroundColor" white="0.88557942710000004" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UuZ-hv-KyG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9EC-Wl-zLN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UuZ-hv-KyG" secondAttribute="bottom" id="9pF-qX-j63"/>
                             <constraint firstAttribute="trailing" secondItem="UuZ-hv-KyG" secondAttribute="trailing" id="Mfh-Wb-jKJ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UuZ-hv-KyG" secondAttribute="bottom" id="mKJ-G7-J8m"/>
-                            <constraint firstItem="UuZ-hv-KyG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="roc-CK-EmQ"/>
+                            <constraint firstItem="UuZ-hv-KyG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oux-hD-r7c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="RSS reader" id="TyF-SR-ZMy">
