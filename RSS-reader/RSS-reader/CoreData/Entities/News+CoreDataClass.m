@@ -13,5 +13,6 @@
 @dynamic specification;
 @dynamic title;
 @dynamic category;
+@dynamic link;
 
 @end

@@ -36,6 +36,14 @@ static NSString * const VAKArrayNews[] = {
         if (!error) {
             [VAKNewsParser newsWithData:data urlIdentifier:sender.tag];
         }
+        else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error load data" message:@"Server connection failed" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
     }];
 }
 

@@ -1,4 +1,7 @@
 #import "VAKNewsParser.h"
+#import "VAKDataManager.h"
+#import "News+CoreDataClass.h"
+#import "Category+CoreDataClass.h"
 
 static NSString * const VAKTitleIdentifier = @"title";
 static NSString * const VAKLinkIdentifier = @"link";
@@ -31,6 +34,12 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 @end
 
+@interface NSDate (DateWithFormat)
+
++ (NSDate *)dateWithString:(NSString *)string;
+
+@end
+
 @implementation VAKNewsParser
 
 + (void)newsWithData:(NSArray *)data urlIdentifier:(NSUInteger)urlIdentifier {
@@ -55,33 +64,31 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 + (void)parserNewsWithTutByData:(NSArray *)data {
     
-    NSString *title;
-    NSString *link;
-    NSString *pubDate;
-    NSString *category;
-    NSString *source;
-    NSString *urlImage;
-    NSString *description;
-    
-    for (NSDictionary *news in data) {
-        title = news[VAKTitleIdentifier];
-        link = news[VAKLinkIdentifier];
-        pubDate = news[VAKPubDateIdentifier];
-        category = news[VAKCategoryIdentifier][VAKTextIdentifier];
-        id authors = news[VAKAuthorIdentifier];
+    [VAKDataManager deleteAllEntities];
+    News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityIdentifier];
+
+    for (NSDictionary *item in data) {
+        news.title = item[VAKTitleIdentifier];
+        news.link = item[VAKLinkIdentifier];
+        news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
+        id authors = item[VAKAuthorIdentifier];
         if ([authors isKindOfClass:[NSDictionary class]]) {
-            source = authors[VAKNameIdentifier];
+            news.source = authors[VAKNameIdentifier];
         }
         else if ([authors isKindOfClass:[NSArray class]]) {
-            source = authors[0][VAKNameIdentifier];
+            news.source = authors[0][VAKNameIdentifier];
         }
-        urlImage = news[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
-        NSArray *componentsDescription = [news[VAKDescriptionIdentifier] componentsSeparatedByString:@"/>"];
+        news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
+        NSArray *componentsDescription = [item[VAKDescriptionIdentifier] componentsSeparatedByString:@"/>"];
         if (componentsDescription.count > 0) {
             componentsDescription = [componentsDescription[1] componentsSeparatedByString:@"<br clear=\"all\""];
-            description = componentsDescription[0];
+            news.specification = componentsDescription[0];
         }
+        NSString *category = item[VAKCategoryIdentifier][VAKTextIdentifier];
+        [VAKDataManager categoryWithName:category news:news];
     }
+    
+    [[VAKDataManager sharedManager].managedObjectContext save:nil];
     
 }
 
@@ -91,27 +98,25 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 + (void)parserNewsWithOnlinerByData:(NSArray *)data {
 
-    NSString *title;
-    NSString *link;
-    NSString *pubDate;
-    NSString *category;
-    NSString *source;
-    NSString *urlImage;
-    NSString *description;
+    [VAKDataManager deleteAllEntities];
+    News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityIdentifier];
     
-    for (NSDictionary *news in data) {
-        title = news[VAKTitleIdentifier];
-        link = news[VAKLinkIdentifier];
-        pubDate = news[VAKPubDateIdentifier];
-        category = news[VAKCategoryIdentifier];
-        source = news[VAKCreatorIdentifier];
-        urlImage = news[VAKMediaIdentifier][VAKUrlImageIdentifier];
-        NSArray *componentsDescription = [news[VAKDescriptionIdentifier] componentsSeparatedByString:@"<p>"];
+    for (NSDictionary *item in data) {
+        news.title = item[VAKTitleIdentifier];
+        news.link = item[VAKLinkIdentifier];
+        news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
+        news.source = item[VAKCreatorIdentifier];
+        news.imageURL = item[VAKMediaIdentifier][VAKUrlImageIdentifier];
+        NSArray *componentsDescription = [item[VAKDescriptionIdentifier] componentsSeparatedByString:@"<p>"];
         if (componentsDescription.count > 0) {
             componentsDescription = [componentsDescription[2] componentsSeparatedByString:@"</p>"];
-            description = componentsDescription[0];
+            news.specification = componentsDescription[0];
         }
+        NSString *category = item[VAKCategoryIdentifier];
+        [VAKDataManager categoryWithName:category news:news];
     }
+    
+    [[VAKDataManager sharedManager].managedObjectContext save:nil];
     
 }
 
@@ -121,32 +126,34 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 + (void)parserNewsWithLentaRuData:(NSArray *)data {
 
-    NSString *title;
-    NSString *link;
-    NSString *pubDate;
-    NSString *category;
-    NSString *source;
-    NSString *urlImage;
-    NSString *description;
+    [VAKDataManager deleteAllEntities];
+    News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityIdentifier];
     
-    for (NSDictionary *news in data) {
-        title = news[VAKTitleIdentifier];
-        link = news[VAKLinkIdentifier];
-        pubDate = news[VAKPubDateIdentifier];
-        category = news[VAKCategoryIdentifier];
-        source = @"lenta.ru";
-        urlImage = news[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
-        description = news[VAKDescriptionIdentifier];
+    for (NSDictionary *item in data) {
+        news.title = item[VAKTitleIdentifier];
+        news.link = item[VAKLinkIdentifier];
+        news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
+        news.source = @"lenta.ru";
+        news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
+        news.specification = item[VAKDescriptionIdentifier];
+        NSString *category = item[VAKCategoryIdentifier];
+        [VAKDataManager categoryWithName:category news:news];
     }
+    
+    [[VAKDataManager sharedManager].managedObjectContext save:nil];
     
 }
 
 @end
 
+@implementation NSDate (DateWithFormat)
 
++ (NSDate *)dateWithString:(NSString *)string {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E, d MMM yyyy HH:mm:ss Z";
+    formatter.timeZone = [NSTimeZone systemTimeZone];
+    NSDate *date = [formatter dateFromString:string];
+    return date;
+}
 
-
-
-
-
-
+@end

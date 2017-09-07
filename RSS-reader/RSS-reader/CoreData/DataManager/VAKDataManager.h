@@ -1,6 +1,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+static NSString * const VAKNewsEntityIdentifier = @"News";
+static NSString * const VAKCategoryEntityIdentifier = @"Category";
+
+@class News;
+
 @interface VAKDataManager : NSObject
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -11,5 +16,14 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+@end
+
+@interface VAKDataManager (WorkWithData)
+
++ (NSManagedObject *)entityWithName:(NSString *)name;
++ (void)categoryWithName:(NSString *)name news:(News *)news;
++ (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate;
++ (void)deleteAllEntities;
 
 @end

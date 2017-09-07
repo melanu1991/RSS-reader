@@ -19,10 +19,10 @@
 		5830B0391F5EE00A00B1E90C /* VAKNewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5830B0371F5EE00A00B1E90C /* VAKNewsTableViewCell.xib */; };
 		5830B03C1F5EE06600B1E90C /* VAKNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5830B03B1F5EE06600B1E90C /* VAKNetManager.m */; };
 		58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */; };
-		58B8FB7A1F5FF07100C51BC1 /* Category+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB771F5FF07100C51BC1 /* Category+CoreDataClass.m */; };
-		58B8FB7B1F5FF07100C51BC1 /* News+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB791F5FF07100C51BC1 /* News+CoreDataClass.m */; };
 		58B8FB821F5FFE6300C51BC1 /* VAKNewsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */; };
 		58C3C4391F5ECBEA00707267 /* VAKSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */; };
+		58C6A2741F61304700D9F9EC /* Category+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C6A26D1F61304700D9F9EC /* Category+CoreDataClass.m */; };
+		58C6A2761F61304700D9F9EC /* News+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C6A2711F61304700D9F9EC /* News+CoreDataClass.m */; };
 		E94314D25A35A4CA912690A8 /* libPods-RSS-reader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */; };
 /* End PBXBuildFile section */
 
@@ -47,14 +47,14 @@
 		5830B03B1F5EE06600B1E90C /* VAKNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKNetManager.m; sourceTree = "<group>"; };
 		58B8FB731F5FF06100C51BC1 /* VAKDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKDataManager.h; sourceTree = "<group>"; };
 		58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKDataManager.m; sourceTree = "<group>"; };
-		58B8FB761F5FF07100C51BC1 /* Category+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+CoreDataClass.h"; sourceTree = "<group>"; };
-		58B8FB771F5FF07100C51BC1 /* Category+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Category+CoreDataClass.m"; sourceTree = "<group>"; };
-		58B8FB781F5FF07100C51BC1 /* News+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "News+CoreDataClass.h"; sourceTree = "<group>"; };
-		58B8FB791F5FF07100C51BC1 /* News+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "News+CoreDataClass.m"; sourceTree = "<group>"; };
 		58B8FB801F5FFE6300C51BC1 /* VAKNewsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNewsParser.h; sourceTree = "<group>"; };
 		58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKNewsParser.m; sourceTree = "<group>"; };
 		58C3C4371F5ECBEA00707267 /* VAKSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSlideMenuViewController.h; sourceTree = "<group>"; };
 		58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKSlideMenuViewController.m; sourceTree = "<group>"; };
+		58C6A26C1F61304700D9F9EC /* Category+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+CoreDataClass.h"; sourceTree = "<group>"; };
+		58C6A26D1F61304700D9F9EC /* Category+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Category+CoreDataClass.m"; sourceTree = "<group>"; };
+		58C6A2701F61304700D9F9EC /* News+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "News+CoreDataClass.h"; sourceTree = "<group>"; };
+		58C6A2711F61304700D9F9EC /* News+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "News+CoreDataClass.m"; sourceTree = "<group>"; };
 		5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSS-reader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		932EE37FDE299558F8E5584E /* Pods-RSS-reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSS-reader/Pods-RSS-reader.debug.xcconfig"; sourceTree = "<group>"; };
 		CCDD939DD19C508825177B8D /* Pods-RSS-reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-reader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSS-reader/Pods-RSS-reader.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,10 +164,10 @@
 		58B8FB721F5FEFEE00C51BC1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				58B8FB761F5FF07100C51BC1 /* Category+CoreDataClass.h */,
-				58B8FB771F5FF07100C51BC1 /* Category+CoreDataClass.m */,
-				58B8FB781F5FF07100C51BC1 /* News+CoreDataClass.h */,
-				58B8FB791F5FF07100C51BC1 /* News+CoreDataClass.m */,
+				58C6A26C1F61304700D9F9EC /* Category+CoreDataClass.h */,
+				58C6A26D1F61304700D9F9EC /* Category+CoreDataClass.m */,
+				58C6A2701F61304700D9F9EC /* News+CoreDataClass.h */,
+				58C6A2711F61304700D9F9EC /* News+CoreDataClass.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -306,17 +306,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				581ECCC51F5D91B80056B644 /* VAKMainScreenViewController.m in Sources */,
-				58B8FB7B1F5FF07100C51BC1 /* News+CoreDataClass.m in Sources */,
 				581ECCCB1F5D91B90056B644 /* RSS_reader.xcdatamodeld in Sources */,
 				5830B0381F5EE00A00B1E90C /* VAKNewsTableViewCell.m in Sources */,
 				581ECCC21F5D91B80056B644 /* AppDelegate.m in Sources */,
 				581ECCBF1F5D91B80056B644 /* main.m in Sources */,
 				5830B0341F5EDF7F00B1E90C /* VAKWebViewController.m in Sources */,
 				58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */,
-				58B8FB7A1F5FF07100C51BC1 /* Category+CoreDataClass.m in Sources */,
 				5830B03C1F5EE06600B1E90C /* VAKNetManager.m in Sources */,
 				58B8FB821F5FFE6300C51BC1 /* VAKNewsParser.m in Sources */,
 				58C3C4391F5ECBEA00707267 /* VAKSlideMenuViewController.m in Sources */,
+				58C6A2761F61304700D9F9EC /* News+CoreDataClass.m in Sources */,
+				58C6A2741F61304700D9F9EC /* Category+CoreDataClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

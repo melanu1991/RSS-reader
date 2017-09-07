@@ -1,4 +1,6 @@
 #import "VAKDataManager.h"
+#import "Category+CoreDataClass.h"
+#import "News+CoreDataClass.h"
 
 @implementation VAKDataManager
 
@@ -74,3 +76,67 @@
 }
 
 @end
+
+@implementation VAKDataManager (WorkWithData)
+
++ (void)categoryWithName:(NSString *)name news:(News *)news {
+    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntityIdentifier predicate:[NSPredicate predicateWithFormat:@"name == %@", name]];
+    Category *entityCategory;
+    if (categories.count > 0) {
+        entityCategory = categories[0];
+    }
+    else {
+        entityCategory = (Category *)[VAKDataManager entityWithName:VAKCategoryEntityIdentifier];
+        entityCategory.name = name;
+    }
+    news.category = entityCategory;
+    [entityCategory addNewsObject:news];
+}
+
++ (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate {
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:name];
+    [request setPredicate:predicate];
+    NSArray *entities = [[VAKDataManager sharedManager].managedObjectContext executeFetchRequest:request error:nil];
+    return entities;
+}
+
++ (NSManagedObject *)entityWithName:(NSString *)name {
+    if ([name isEqualToString:VAKNewsEntityIdentifier]) {
+        News *news = [NSEntityDescription insertNewObjectForEntityForName:VAKNewsEntityIdentifier inManagedObjectContext:[VAKDataManager sharedManager].managedObjectContext];
+        return news;
+    }
+    else if ([name isEqualToString:VAKCategoryEntityIdentifier]) {
+        Category *category = [NSEntityDescription insertNewObjectForEntityForName:VAKCategoryEntityIdentifier inManagedObjectContext:[VAKDataManager sharedManager].managedObjectContext];
+        return category;
+    }
+    return nil;
+}
+
++ (void)deleteAllEntities {
+    NSArray *news = [VAKDataManager allEntitiesWithName:VAKNewsEntityIdentifier predicate:nil];
+    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntityIdentifier predicate:nil];
+    for (Category *item in categories) {
+        [[VAKDataManager sharedManager].managedObjectContext deleteObject:item];
+    }
+    for (News *item in news) {
+        [[VAKDataManager sharedManager].managedObjectContext deleteObject:item];
+    }
+    [[VAKDataManager sharedManager].managedObjectContext save:nil];
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
