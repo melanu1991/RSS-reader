@@ -9,6 +9,7 @@
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
 static NSString * const VAKNibNameIdentifier = @"VAKNewsTableViewCell";
 static NSString * const VAKCellReuseIdentifier = @"newsCell";
+static NSString * const VAKSortDescriptorKey = @"pubDate";
 
 @interface VAKMainScreenViewController ()
 
@@ -22,13 +23,6 @@ static NSString * const VAKCellReuseIdentifier = @"newsCell";
 
 #pragma mark - lazy getters
 
-- (NSArray *)news {
-    if (!_news) {
-        _news = [VAKDataManager allEntitiesWithName:VAKNewsEntity predicate:nil];
-    }
-    return _news;
-}
-
 - (VAKSlideMenuViewController *)slideMenuVC {
     if (!_slideMenuVC) {
         _slideMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKSlideMenuViewControllerIdentifier];
@@ -41,9 +35,16 @@ static NSString * const VAKCellReuseIdentifier = @"newsCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
-//    self.tableView.dataSource = self;
-    self.tableView.hidden = YES;
+    self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:VAKNibNameIdentifier bundle:nil] forCellReuseIdentifier:VAKCellReuseIdentifier];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData:) name:VAKUpdateDataNotification object:nil];
+}
+
+#pragma mark - notification method
+
+- (void)updateData:(NSNotification *)notification {
+    self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntity predicate:nil sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES]];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -54,9 +55,6 @@ static NSString * const VAKCellReuseIdentifier = @"newsCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VAKNewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VAKCellReuseIdentifier forIndexPath:indexPath];
-//    if (!cell) {
-//        cell = [[VAKNewsTableViewCell alloc] init];
-//    }
     News *news = self.news[indexPath.row];
     cell.title.text = news.title;
     cell.specification.text = news.specification;
@@ -76,6 +74,12 @@ static NSString * const VAKCellReuseIdentifier = @"newsCell";
         [self.slideMenuVC hideMenu];
     }
     
+}
+
+#pragma mark - deallocate
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

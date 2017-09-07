@@ -80,7 +80,7 @@
 @implementation VAKDataManager (WorkWithData)
 
 + (void)categoryWithName:(NSString *)name news:(News *)news {
-    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntity predicate:[NSPredicate predicateWithFormat:@"name == %@", name]];
+    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntity predicate:[NSPredicate predicateWithFormat:@"name == %@", name] sortDescriptor:nil];
     Category *entityCategory;
     if (categories.count > 0) {
         entityCategory = categories[0];
@@ -93,9 +93,12 @@
     [entityCategory addNewsObject:news];
 }
 
-+ (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate {
++ (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate sortDescriptor:(NSSortDescriptor *)sortDescriptor {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:name];
-    [request setPredicate:predicate];   
+    [request setPredicate:predicate];
+    if (sortDescriptor) {
+        [request setSortDescriptors:@[sortDescriptor]];
+    }
     NSArray *entities = [[VAKDataManager sharedManager].managedObjectContext executeFetchRequest:request error:nil];
     return entities;
 }
@@ -113,8 +116,8 @@
 }
 
 + (void)deleteAllEntities {
-    NSArray *news = [VAKDataManager allEntitiesWithName:VAKNewsEntity predicate:nil];
-    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntity predicate:nil];
+    NSArray *news = [VAKDataManager allEntitiesWithName:VAKNewsEntity predicate:nil sortDescriptor:nil];
+    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntity predicate:nil sortDescriptor:nil];
     for (Category *item in categories) {
         [[VAKDataManager sharedManager].managedObjectContext deleteObject:item];
     }

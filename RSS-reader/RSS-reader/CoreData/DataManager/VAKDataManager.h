@@ -23,7 +23,7 @@ static NSString * const VAKCategoryEntity = @"Category";
 
 + (NSManagedObject *)entityWithName:(NSString *)name;
 + (void)categoryWithName:(NSString *)name news:(News *)news;
-+ (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate;
++ (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate sortDescriptor:(NSSortDescriptor *)sortDescriptor;
 + (void)deleteAllEntities;
 
 @end

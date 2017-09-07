@@ -35,6 +35,7 @@ static NSString * const VAKArrayNews[] = {
     [[VAKNetManager sharedManager] loadDataWithPath:path completionHandler:^(NSArray *data, NSError *error) {
         if (!error) {
             [VAKNewsParser newsWithData:data urlIdentifier:sender.tag];
+            [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil];
         }
         else {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error load data" message:@"Server connection failed" preferredStyle:UIAlertControllerStyleAlert];

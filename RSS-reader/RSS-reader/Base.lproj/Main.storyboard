@@ -27,7 +27,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.88557942710000004" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UuZ-hv-KyG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9EC-Wl-zLN"/>
                             <constraint firstAttribute="trailing" secondItem="UuZ-hv-KyG" secondAttribute="trailing" id="Mfh-Wb-jKJ"/>
