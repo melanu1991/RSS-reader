@@ -1,10 +1,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-static NSString * const VAKNewsEntity = @"News";
-static NSString * const VAKCategoryEntity = @"Category";
+static NSString * const VAKNewsEntityName = @"News";
+static NSString * const VAKCategoryEntityName = @"Category";
+static NSString * const VAKChannelEntityName = @"Channel";
 
-@class News;
+@class News, Category;
 
 @interface VAKDataManager : NSObject
 
@@ -22,8 +23,9 @@ static NSString * const VAKCategoryEntity = @"Category";
 @interface VAKDataManager (WorkWithData)
 
 + (NSManagedObject *)entityWithName:(NSString *)name;
-+ (void)categoryWithName:(NSString *)name news:(News *)news;
++ (void)channelWithURL:(NSString *)url category:(Category *)category;
++ (Category *)categoryWithName:(NSString *)name news:(News *)news;
 + (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate sortDescriptor:(NSSortDescriptor *)sortDescriptor;
-+ (void)deleteAllEntities;
++ (void)deleteEntitiesWithChannelURL:(NSString *)url;
 
 @end

@@ -1,6 +1,7 @@
 #import "VAKDataManager.h"
 #import "Category+CoreDataClass.h"
 #import "News+CoreDataClass.h"
+#import "Channel+CoreDataClass.h"
 
 @implementation VAKDataManager
 
@@ -79,18 +80,33 @@
 
 @implementation VAKDataManager (WorkWithData)
 
-+ (void)categoryWithName:(NSString *)name news:(News *)news {
-    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntity predicate:[NSPredicate predicateWithFormat:@"name == %@", name] sortDescriptor:nil];
++ (void)channelWithURL:(NSString *)url category:(Category *)category {
+    NSArray *channels = [VAKDataManager allEntitiesWithName:VAKChannelEntityName predicate:[NSPredicate predicateWithFormat:@"url == %@", url] sortDescriptor:nil];
+    Channel *channel;
+    if (channels.count > 0) {
+        channel = channels[0];
+    }
+    else {
+        channel = (Channel *)[VAKDataManager entityWithName:VAKChannelEntityName];
+        channel.url = url;
+    }
+    [channel addCategoriesObject:category];
+    category.channel = channel;
+}
+
++ (Category *)categoryWithName:(NSString *)name news:(News *)news {
+    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntityName predicate:[NSPredicate predicateWithFormat:@"name == %@", name] sortDescriptor:nil];
     Category *entityCategory;
     if (categories.count > 0) {
         entityCategory = categories[0];
     }
     else {
-        entityCategory = (Category *)[VAKDataManager entityWithName:VAKCategoryEntity];
+        entityCategory = (Category *)[VAKDataManager entityWithName:VAKCategoryEntityName];
         entityCategory.name = name;
     }
     news.category = entityCategory;
     [entityCategory addNewsObject:news];
+    return entityCategory;
 }
 
 + (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate sortDescriptor:(NSSortDescriptor *)sortDescriptor {
@@ -104,42 +120,16 @@
 }
 
 + (NSManagedObject *)entityWithName:(NSString *)name {
-    if ([name isEqualToString:VAKNewsEntity]) {
-        News *news = [NSEntityDescription insertNewObjectForEntityForName:VAKNewsEntity inManagedObjectContext:[VAKDataManager sharedManager].managedObjectContext];
-        return news;
-    }
-    else if ([name isEqualToString:VAKCategoryEntity]) {
-        Category *category = [NSEntityDescription insertNewObjectForEntityForName:VAKCategoryEntity inManagedObjectContext:[VAKDataManager sharedManager].managedObjectContext];
-        return category;
-    }
-    return nil;
+    NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:[VAKDataManager sharedManager].managedObjectContext];
+    return object;
 }
 
-+ (void)deleteAllEntities {
-    NSArray *news = [VAKDataManager allEntitiesWithName:VAKNewsEntity predicate:nil sortDescriptor:nil];
-    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntity predicate:nil sortDescriptor:nil];
-    for (Category *item in categories) {
-        [[VAKDataManager sharedManager].managedObjectContext deleteObject:item];
-    }
-    for (News *item in news) {
++ (void)deleteEntitiesWithChannelURL:(NSString *)url {
+    NSArray *channels = [VAKDataManager allEntitiesWithName:VAKChannelEntityName predicate:[NSPredicate predicateWithFormat:@"url == %@", url] sortDescriptor:nil];
+    for (Channel *item in channels) {
         [[VAKDataManager sharedManager].managedObjectContext deleteObject:item];
     }
     [[VAKDataManager sharedManager].managedObjectContext save:nil];
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

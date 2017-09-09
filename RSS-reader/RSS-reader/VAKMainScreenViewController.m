@@ -47,7 +47,7 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
 #pragma mark - notification method
 
 - (void)updateData:(NSNotification *)notification {
-    self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntity predicate:nil sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES]];
+    self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", notification.userInfo[@"url"]] sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES]];
     [self.tableView reloadData];
 }
 

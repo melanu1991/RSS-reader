@@ -64,10 +64,17 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 + (void)parserNewsWithTutByData:(NSArray *)data {
     
-    [VAKDataManager deleteAllEntities];
+//    NSLog(@"%@", @"before");
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", @"https://news.tut.by/rss"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKCategoryEntityName predicate:[NSPredicate predicateWithFormat:@"channel.url == %@", @"https://news.tut.by/rss"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKChannelEntityName predicate:[NSPredicate predicateWithFormat:@"url == %@", @"https://news.tut.by/rss"] sortDescriptor:nil].count);
+    [VAKDataManager deleteEntitiesWithChannelURL:@"https://news.tut.by/rss"];
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", @"https://news.tut.by/rss"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKCategoryEntityName predicate:[NSPredicate predicateWithFormat:@"channel.url == %@", @"https://news.tut.by/rss"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKChannelEntityName predicate:[NSPredicate predicateWithFormat:@"url == %@", @"https://news.tut.by/rss"] sortDescriptor:nil].count);
 
     for (NSDictionary *item in data) {
-        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntity];
+        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
         news.title = item[VAKTitleIdentifier];
         news.link = item[VAKLinkIdentifier];
         news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
@@ -85,7 +92,8 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
             news.specification = componentsDescription[0];
         }
         NSString *category = item[VAKCategoryIdentifier][VAKTextIdentifier];
-        [VAKDataManager categoryWithName:category news:news];
+        Category *entityCategory = [VAKDataManager categoryWithName:category news:news];
+        [VAKDataManager channelWithURL:@"https://news.tut.by/rss" category:entityCategory];
     }
     
     [[VAKDataManager sharedManager].managedObjectContext save:nil];
@@ -97,11 +105,19 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 @implementation VAKNewsParser (ParserNewsWithOnlinerBy)
 
 + (void)parserNewsWithOnlinerByData:(NSArray *)data {
-
-    [VAKDataManager deleteAllEntities];
+    
+//    NSLog(@"%@", @"before");
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", @"https:www.onliner.by/feed"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKCategoryEntityName predicate:[NSPredicate predicateWithFormat:@"channel.url == %@", @"https:www.onliner.by/feed"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKChannelEntityName predicate:[NSPredicate predicateWithFormat:@"url == %@", @"https:www.onliner.by/feed"] sortDescriptor:nil].count);
+    [VAKDataManager deleteEntitiesWithChannelURL:@"https:www.onliner.by/feed"];
+//    NSLog(@"%@", @"after");
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", @"https:www.onliner.by/feed"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKCategoryEntityName predicate:[NSPredicate predicateWithFormat:@"channel.url == %@", @"https:www.onliner.by/feed"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKChannelEntityName predicate:[NSPredicate predicateWithFormat:@"url == %@", @"https:www.onliner.by/feed"] sortDescriptor:nil].count);
     
     for (NSDictionary *item in data) {
-        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntity];
+        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
         news.title = item[VAKTitleIdentifier];
         news.link = item[VAKLinkIdentifier];
         news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
@@ -113,7 +129,8 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
             news.specification = componentsDescription[0];
         }
         NSString *category = item[VAKCategoryIdentifier];
-        [VAKDataManager categoryWithName:category news:news];
+        Category *entityCategory = [VAKDataManager categoryWithName:category news:news];
+        [VAKDataManager channelWithURL:@"https:www.onliner.by/feed" category:entityCategory];
     }
     
     [[VAKDataManager sharedManager].managedObjectContext save:nil];
@@ -125,11 +142,19 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 @implementation VAKNewsParser (ParserNewsWithLentaRu)
 
 + (void)parserNewsWithLentaRuData:(NSArray *)data {
-
-    [VAKDataManager deleteAllEntities];
+    
+//    NSLog(@"%@", @"before");
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", @"https://lenta.ru/rss"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKCategoryEntityName predicate:[NSPredicate predicateWithFormat:@"channel.url == %@", @"https://lenta.ru/rss"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKChannelEntityName predicate:[NSPredicate predicateWithFormat:@"url == %@", @"https://lenta.ru/rss"] sortDescriptor:nil].count);
+    [VAKDataManager deleteEntitiesWithChannelURL:@"https://lenta.ru/rss"];
+//    NSLog(@"%@", @"after");
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", @"https://lenta.ru/rss"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKCategoryEntityName predicate:[NSPredicate predicateWithFormat:@"channel.url == %@", @"https://lenta.ru/rss"] sortDescriptor:nil].count);
+//    NSLog(@"%lu", [VAKDataManager allEntitiesWithName:VAKChannelEntityName predicate:[NSPredicate predicateWithFormat:@"url == %@", @"https://lenta.ru/rss"] sortDescriptor:nil].count);
     
     for (NSDictionary *item in data) {
-        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntity];
+        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
         news.title = item[VAKTitleIdentifier];
         news.link = item[VAKLinkIdentifier];
         news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
@@ -137,7 +162,8 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
         news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
         news.specification = item[VAKDescriptionIdentifier];
         NSString *category = item[VAKCategoryIdentifier];
-        [VAKDataManager categoryWithName:category news:news];
+        Category *entityCategory = [VAKDataManager categoryWithName:category news:news];
+        [VAKDataManager channelWithURL:@"https://lenta.ru/rss" category:entityCategory];
     }
     
     [[VAKDataManager sharedManager].managedObjectContext save:nil];

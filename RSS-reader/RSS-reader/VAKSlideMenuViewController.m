@@ -33,15 +33,16 @@ static NSString * const VAKArrayNews[] = {
 - (IBAction)menuButtonPressed:(UIButton *)sender {
     [self hideMenu];
     NSString *path = VAKArrayNews[sender.tag];
+    NSDictionary *info = @{ @"url" : path };
     [[VAKNetManager sharedManager] loadDataWithPath:path completionHandler:^(NSArray *data, NSError *error) {
         if (!error) {
             [VAKNewsParser newsWithData:data urlIdentifier:sender.tag];
-            [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];
         }
         else {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error load data" message:@"Server connection failed" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];
             }];
             [alert addAction:action];
             [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
