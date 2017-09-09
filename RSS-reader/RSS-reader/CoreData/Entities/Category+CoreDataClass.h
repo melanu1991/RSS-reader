@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class News;
+@class Channel, News;
 
 @interface Category : NSManagedObject
 
@@ -9,6 +9,7 @@
 
 @property (nullable, nonatomic, copy) NSString *name;
 @property (nullable, nonatomic, retain) NSSet<News *> *news;
+@property (nullable, nonatomic, retain) Channel *channel;
 
 @end
 

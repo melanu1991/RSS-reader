@@ -1,4 +1,6 @@
 #import "Category+CoreDataClass.h"
+#import "Channel+CoreDataClass.h"
+
 #import "News+CoreDataClass.h"
 
 @implementation Category
@@ -9,5 +11,6 @@
 
 @dynamic name;
 @dynamic news;
+@dynamic channel;
 
 @end

@@ -8,11 +8,11 @@
 }
 
 @dynamic imageURL;
+@dynamic link;
 @dynamic pubDate;
 @dynamic source;
 @dynamic specification;
 @dynamic title;
 @dynamic category;
-@dynamic link;
 
 @end
