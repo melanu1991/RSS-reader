@@ -56,6 +56,7 @@
 		58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKDataManager.m; sourceTree = "<group>"; };
 		58B8FB801F5FFE6300C51BC1 /* VAKNewsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNewsParser.h; sourceTree = "<group>"; };
 		58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKNewsParser.m; sourceTree = "<group>"; };
+		58BB25641F6838EF00D434D2 /* VAKNewsURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNewsURL.h; sourceTree = "<group>"; };
 		58C3C4371F5ECBEA00707267 /* VAKSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSlideMenuViewController.h; sourceTree = "<group>"; };
 		58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKSlideMenuViewController.m; sourceTree = "<group>"; };
 		5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSS-reader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +122,7 @@
 				5830B03B1F5EE06600B1E90C /* VAKNetManager.m */,
 				58C3C4371F5ECBEA00707267 /* VAKSlideMenuViewController.h */,
 				58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */,
+				58BB25641F6838EF00D434D2 /* VAKNewsURL.h */,
 				581ECCC61F5D91B80056B644 /* Main.storyboard */,
 				5830B0351F5EE00A00B1E90C /* VAKNewsTableViewCell.h */,
 				5830B0361F5EE00A00B1E90C /* VAKNewsTableViewCell.m */,

@@ -6,6 +6,7 @@
 #import "VAKNewsTableViewCell.h"
 #import "VAKWebViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIView+WebCache.h>
 
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
 static NSString * const VAKWebViewControllerIdentifier = @"VAKWebViewController";
@@ -58,12 +59,16 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     VAKNewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VAKCellReuseIdentifier forIndexPath:indexPath];
+    
     News *news = self.news[indexPath.row];
-    cell.title.text = news.title;
-//    cell.specification.text = news.specification;
-//    NSURL *url = [NSURL URLWithString:news.imageURL];
-//    [cell.image sd_setImageWithURL:url placeholderImage:nil];
+    
+    cell.title.text = [self formattedStringWithNews:news];
+    [cell.image sd_setShowActivityIndicatorView:YES];
+    [cell.image sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [cell.image sd_setImageWithURL:[NSURL URLWithString:news.imageURL] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
+    
     return cell;
 }
 
@@ -75,6 +80,23 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
     News *news = self.news[indexPath.row];
     webVC.link = news.link;
     [self.navigationController pushViewController:webVC animated:YES];
+}
+
+#pragma mark - helpers
+
+- (NSString *)formattedStringWithNews:(News *)news {
+    
+    NSMutableString *string = [NSMutableString string];
+    
+    [string appendString:news.title];
+    [string appendString:@"\n"];
+    [string appendString:news.specification];
+    [string appendString:@"\n"];
+    [string appendString:news.source];
+    [string appendString:@"\n"];
+    [string appendString:news.pubDate.description];
+    
+    return [string copy];
 }
 
 #pragma mark - actions

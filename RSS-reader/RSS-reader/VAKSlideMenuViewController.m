@@ -1,18 +1,7 @@
 #import "VAKSlideMenuViewController.h"
 #import "VAKNetManager.h"
 #import "VAKNewsParser.h"
-
-typedef NS_ENUM(NSUInteger, URLNews) {
-    URLNewsTutBy,
-    URLNewsOnlinerBy,
-    URLNewsLentaRu
-};
-
-static NSString * const VAKArrayNews[] = {
-    [URLNewsTutBy] = @"https://news.tut.by/rss",
-    [URLNewsOnlinerBy] = @"https:www.onliner.by/feed",
-    [URLNewsLentaRu] = @"https://lenta.ru/rss"
-};
+#import "VAKNewsURL.h"
 
 @interface VAKSlideMenuViewController ()
 
@@ -32,7 +21,7 @@ static NSString * const VAKArrayNews[] = {
 
 - (IBAction)menuButtonPressed:(UIButton *)sender {
     [self hideMenu];
-    NSString *path = VAKArrayNews[sender.tag];
+    NSString *path = VAKNewsURL[sender.tag];
     NSDictionary *info = @{ @"url" : path };
     [[VAKNetManager sharedManager] loadDataWithPath:path completionHandler:^(NSArray *data, NSError *error) {
         if (!error) {

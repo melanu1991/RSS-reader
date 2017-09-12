@@ -15,34 +15,34 @@
             <rect key="frame" x="0.0" y="0.0" width="362" height="140"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="329" height="139.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="328" height="139.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="32r-LM-cre">
-                        <rect key="frame" x="20" y="20" width="66" height="99.5"/>
+                        <rect key="frame" x="20" y="20" width="80" height="100"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="66" id="MJ3-oq-l1H"/>
+                            <constraint firstAttribute="height" constant="100" id="fT0-PF-kea"/>
+                            <constraint firstAttribute="width" constant="80" id="nHW-Gc-qKj"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMm-4O-cJn">
-                        <rect key="frame" x="94" y="20" width="215" height="99.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="108" y="20" width="201" height="99.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bMm-4O-cJn" firstAttribute="leading" secondItem="32r-LM-cre" secondAttribute="trailing" constant="8" symbolic="YES" id="3Py-Rl-tH2"/>
-                    <constraint firstItem="32r-LM-cre" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="95B-cX-ZwP"/>
-                    <constraint firstAttribute="bottom" secondItem="32r-LM-cre" secondAttribute="bottom" constant="20" symbolic="YES" id="HHX-7m-DRB"/>
+                    <constraint firstItem="bMm-4O-cJn" firstAttribute="leading" secondItem="32r-LM-cre" secondAttribute="trailing" constant="8" symbolic="YES" id="KY4-uf-NUg"/>
+                    <constraint firstAttribute="bottom" secondItem="bMm-4O-cJn" secondAttribute="bottom" constant="20" symbolic="YES" id="Mnr-Dy-MLk"/>
+                    <constraint firstItem="32r-LM-cre" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="UDh-Z8-6Zk"/>
                     <constraint firstItem="bMm-4O-cJn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="fdW-sS-PXX"/>
                     <constraint firstAttribute="trailing" secondItem="bMm-4O-cJn" secondAttribute="trailing" constant="20" symbolic="YES" id="gqV-d1-B6h"/>
-                    <constraint firstItem="32r-LM-cre" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="tdv-Pp-fjj"/>
-                    <constraint firstAttribute="bottom" secondItem="bMm-4O-cJn" secondAttribute="bottom" constant="20" symbolic="YES" id="wE5-rs-dWL"/>
+                    <constraint firstItem="32r-LM-cre" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xsB-x9-uzV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="image" destination="32r-LM-cre" id="C1j-Va-ZnG"/>
+                <outlet property="image" destination="32r-LM-cre" id="CZr-UU-ngm"/>
                 <outlet property="title" destination="bMm-4O-cJn" id="rDy-vm-axG"/>
             </connections>
             <point key="canvasLocation" x="19" y="-13"/>
