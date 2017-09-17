@@ -39,6 +39,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.columnCount = 2;
     self.miniInteriorSpacing = 10;
     
@@ -63,6 +64,10 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 #pragma mark - UICollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.news.count;
 }
@@ -80,6 +85,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     VAKWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKWebViewControllerIdentifier];
     News *news = self.news[indexPath.row];
@@ -87,32 +93,29 @@ static NSString * const VAKPlaceholder = @"placeholder";
     [self.navigationController pushViewController:webVC animated:YES];
 }
 
-#pragma mark - helpers
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    News *news = [self.news objectAtIndex:indexPath.row];
+    CGFloat labelSize = [self calculateHeightForLabel:news.title width:self.view.frame.size.width / 2 - 20];
+    return CGSizeMake(self.view.frame.size.width / 2 - 20, labelSize + 30 + 120);
+    
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 10.f;
-}
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 10.f;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    News *news = [self.news objectAtIndex:indexPath.row];
-    CGFloat labelSize = [self calculateHeightForLbl:news.title width:self.view.frame.size.width / 2 - 20];
-    return CGSizeMake(self.view.frame.size.width / 2 - 20, labelSize + 30 + 120);
-    
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 10.f;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 10, 0, 10);
 }
 
+#pragma mark - helpers
 
--(float)calculateHeightForLbl:(NSString*)text width:(float)width {
+-(float)calculateHeightForLabel:(NSString*)text width:(float)width {
     CGSize constraint = CGSizeMake(width, 20000.f);
     CGSize size;
     
@@ -127,22 +130,20 @@ static NSString * const VAKPlaceholder = @"placeholder";
     return size.height + 10;
 }
 
-#pragma mark - actions
+#pragma mark - actions with slide menu
 
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
     
-    if (!self.slideMenuVC.isSlideMenu) {
-        [self.slideMenuVC showMenu];
-        [UIView animateWithDuration:0.5f animations:^{
-            self.collectionView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
-        }];
-    }
-    else {
-        [self.slideMenuVC hideMenu];
-        [UIView animateWithDuration:0.5f animations:^{
-            self.collectionView.frame = CGRectMake(0.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
-        }];
-    }
+    [self.slideMenuVC showMenu];
+    [UIView animateWithDuration:0.5f animations:^{
+        self.collectionView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+        self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
+        __weak VAKMainScreenViewController *weakMainScreenVC = self;
+        self.slideMenuVC.completionBlock = ^{
+            weakMainScreenVC.collectionView.frame = CGRectMake(0.f, weakMainScreenVC.collectionView.frame.origin.y, weakMainScreenVC.collectionView.bounds.size.width, weakMainScreenVC.collectionView.bounds.size.height);
+            weakMainScreenVC.navigationController.navigationBar.frame = CGRectMake(0.f, weakMainScreenVC.navigationController.navigationBar.frame.origin.y, weakMainScreenVC.navigationController.navigationBar.bounds.size.width, weakMainScreenVC.navigationController.navigationBar.bounds.size.height);
+        };
+    }];
     
 }
 

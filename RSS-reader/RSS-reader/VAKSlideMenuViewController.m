@@ -60,6 +60,7 @@
 - (void)hideMenu {
     [UIView animateWithDuration:0.5f animations:^{
         self.view.frame = CGRectMake(-[UIScreen mainScreen].bounds.size.width, 0.f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+        self.completionBlock();
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
         self.isSlideMenu = NO;
