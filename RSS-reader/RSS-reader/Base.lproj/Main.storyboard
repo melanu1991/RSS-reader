@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FRi-qC-H9E">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H8V-M1-ud0">
                                     <size key="itemSize" width="50" height="50"/>
@@ -78,9 +78,9 @@
                         <color key="backgroundColor" white="0.88557942710000004" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FRi-qC-H9E" secondAttribute="trailing" id="3mH-fj-nG3"/>
+                            <constraint firstItem="FRi-qC-H9E" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" symbolic="YES" id="MzC-ao-ZGd"/>
                             <constraint firstItem="FRi-qC-H9E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gTQ-NO-cVG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FRi-qC-H9E" secondAttribute="bottom" id="kW2-3z-Nx4"/>
-                            <constraint firstItem="FRi-qC-H9E" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lPA-9x-HDe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="RSS reader" id="TyF-SR-ZMy">

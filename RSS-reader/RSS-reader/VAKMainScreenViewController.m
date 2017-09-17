@@ -3,7 +3,6 @@
 #import "VAKDataManager.h"
 #import "News+CoreDataClass.h"
 #import "Category+CoreDataClass.h"
-#import "VAKNewsTableViewCell.h"
 #import "VAKWebViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIView+WebCache.h>
@@ -11,9 +10,9 @@
 
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
 static NSString * const VAKWebViewControllerIdentifier = @"VAKWebViewController";
-static NSString * const VAKNibNameIdentifier = @"VAKNewsTableViewCell";
 static NSString * const VAKCellReuseIdentifier = @"newsCell";
 static NSString * const VAKSortDescriptorKey = @"pubDate";
+static NSString * const VAKPlaceholder = @"placeholder";
 
 @interface VAKMainScreenViewController ()
 
@@ -22,7 +21,6 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (assign, nonatomic) NSInteger columnCount;
 @property (assign, nonatomic) NSInteger miniInteriorSpacing;
-//@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -41,11 +39,6 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.tableView.delegate = self;
-//    self.tableView.dataSource = self;
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
-//    self.tableView.estimatedRowHeight = 140.f;
-//    [self.tableView registerNib:[UINib nibWithNibName:VAKNibNameIdentifier bundle:nil] forCellReuseIdentifier:VAKCellReuseIdentifier];
     self.columnCount = 2;
     self.miniInteriorSpacing = 10;
     
@@ -66,7 +59,6 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
 - (void)updateData:(NSNotification *)notification {
     self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", notification.userInfo[@"url"]] sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES]];
     [self.collectionView reloadData];
-//    [self.tableView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -76,45 +68,24 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    VAKNewsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"newsCell" forIndexPath:indexPath];
+    VAKNewsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:VAKCellReuseIdentifier forIndexPath:indexPath];
     News *news = self.news[indexPath.row];
     cell.newsTitle.text = news.title;
+    [cell.newsImageView sd_setShowActivityIndicatorView:YES];
+    [cell.newsImageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [cell.newsImageView sd_setImageWithURL:[NSURL URLWithString:news.imageURL] placeholderImage:[UIImage imageNamed:VAKPlaceholder]];
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 
-
-
-//#pragma mark - UITableViewDataSource
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.news.count;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    VAKNewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VAKCellReuseIdentifier forIndexPath:indexPath];
-//    
-//    News *news = self.news[indexPath.row];
-//    
-//    cell.title.text = [self formattedStringWithNews:news];
-//    [cell.image sd_setShowActivityIndicatorView:YES];
-//    [cell.image sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    [cell.image sd_setImageWithURL:[NSURL URLWithString:news.imageURL] placeholderImage:[UIImage imageNamed:@"Placeholder"]];
-//    
-//    return cell;
-//}
-
-//#pragma mark - UITableViewDelegate
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    VAKWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKWebViewControllerIdentifier];
-//    News *news = self.news[indexPath.row];
-//    webVC.link = news.link;
-//    [self.navigationController pushViewController:webVC animated:YES];
-//}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    VAKWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKWebViewControllerIdentifier];
+    News *news = self.news[indexPath.row];
+    webVC.link = news.link;
+    [self.navigationController pushViewController:webVC animated:YES];
+}
 
 #pragma mark - helpers
 
@@ -123,16 +94,15 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 10.0f;
+    return 10.f;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 10.0f;
+    return 10.f;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     News *news = [self.news objectAtIndex:indexPath.row];
     CGFloat labelSize = [self calculateHeightForLbl:news.title width:self.view.frame.size.width / 2 - 20];
-//    UIImage *image = news;
     return CGSizeMake(self.view.frame.size.width / 2 - 20, labelSize + 30 + 120);
     
 }
@@ -143,7 +113,7 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
 
 
 -(float)calculateHeightForLbl:(NSString*)text width:(float)width {
-    CGSize constraint = CGSizeMake(width,20000.0f);
+    CGSize constraint = CGSizeMake(width, 20000.f);
     CGSize size;
     
     NSStringDrawingContext *context = [[NSStringDrawingContext alloc] init];
@@ -154,22 +124,7 @@ static NSString * const VAKSortDescriptorKey = @"pubDate";
     
     size = CGSizeMake(ceil(boundingBox.width), ceil(boundingBox.height));
     
-    return size.height+10;
-}
-
-- (NSString *)formattedStringWithNews:(News *)news {
-    
-    NSMutableString *string = [NSMutableString string];
-    
-    [string appendString:news.title];
-    [string appendString:@"\n"];
-    [string appendString:news.specification];
-    [string appendString:@"\n"];
-    [string appendString:news.source];
-    [string appendString:@"\n"];
-    [string appendString:news.pubDate.description];
-    
-    return [string copy];
+    return size.height + 10;
 }
 
 #pragma mark - actions
