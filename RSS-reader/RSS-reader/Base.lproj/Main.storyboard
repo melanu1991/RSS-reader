@@ -111,13 +111,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBT-kK-2vG">
-                                <rect key="frame" x="0.0" y="0.0" width="262.5" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tIn-qH-dJr">
-                                        <rect key="frame" x="26.5" y="166.5" width="210" height="333.5"/>
+                                        <rect key="frame" x="19" y="166.5" width="150" height="333.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-xe-vDi">
-                                                <rect key="frame" x="0.0" y="0.0" width="210" height="104.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="104.5"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="TUT.by">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,7 +127,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-nL-Geg">
-                                                <rect key="frame" x="0.0" y="114.5" width="210" height="104.5"/>
+                                                <rect key="frame" x="0.0" y="114.5" width="150" height="104.5"/>
                                                 <color key="backgroundColor" red="0.54001610239999998" green="1" blue="0.55410317949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Onliner.by">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,7 +137,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUz-Bq-Lnj">
-                                                <rect key="frame" x="0.0" y="229" width="210" height="104.5"/>
+                                                <rect key="frame" x="0.0" y="229" width="150" height="104.5"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="lenta.ru">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,7 +161,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yBT-kK-2vG" firstAttribute="leading" secondItem="UgS-ae-DYR" secondAttribute="leading" id="0AL-vE-eJ7"/>
-                            <constraint firstItem="yBT-kK-2vG" firstAttribute="width" secondItem="UgS-ae-DYR" secondAttribute="width" multiplier="0.7" id="B8d-yn-Uas"/>
+                            <constraint firstItem="yBT-kK-2vG" firstAttribute="width" secondItem="UgS-ae-DYR" secondAttribute="width" multiplier="0.5" id="B8d-yn-Uas"/>
                             <constraint firstItem="yAS-5s-bnK" firstAttribute="top" secondItem="yBT-kK-2vG" secondAttribute="bottom" id="qpe-Yv-Gj1"/>
                             <constraint firstItem="yBT-kK-2vG" firstAttribute="top" secondItem="UgS-ae-DYR" secondAttribute="top" id="uUP-b9-uYd"/>
                         </constraints>
