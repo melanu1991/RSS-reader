@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--RSS reader-->
+        <!--В мире-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="VAKMainScreenViewController" sceneMemberID="viewController">
@@ -74,17 +74,38 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Wat-hE-9qr"/>
                                 </connections>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C14-eq-myy">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem image="world" id="zHF-7z-cP4"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wG6-ku-1Xi"/>
+                                    <barButtonItem image="society" id="ad8-Db-h3x"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="95T-Ge-aS8"/>
+                                    <barButtonItem image="realty" id="UTA-Fg-pGu"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aUd-SN-FtH"/>
+                                    <barButtonItem image="auto" id="yOj-dF-RAf"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qhl-yT-acx"/>
+                                    <barButtonItem image="technologies" id="8Xb-wm-CTF"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UQT-I6-1rP"/>
+                                    <barButtonItem image="finance" id="1Vd-Aw-hvD"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lL4-Yx-14g"/>
+                                    <barButtonItem image="bicycle" id="ZIu-Cs-lEf"/>
+                                </items>
+                            </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="0.88557942710000004" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FRi-qC-H9E" secondAttribute="trailing" id="3mH-fj-nG3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C14-eq-myy" secondAttribute="bottom" id="8Ce-j0-DFB"/>
+                            <constraint firstAttribute="trailing" secondItem="C14-eq-myy" secondAttribute="trailing" id="9sH-pQ-Kgd"/>
                             <constraint firstItem="FRi-qC-H9E" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" symbolic="YES" id="MzC-ao-ZGd"/>
                             <constraint firstItem="FRi-qC-H9E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gTQ-NO-cVG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FRi-qC-H9E" secondAttribute="bottom" id="kW2-3z-Nx4"/>
+                            <constraint firstItem="C14-eq-myy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="snM-BE-0eg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="RSS reader" id="TyF-SR-ZMy">
-                        <barButtonItem key="leftBarButtonItem" title="SlideMenu" id="ntS-Y4-QBh">
+                    <navigationItem key="navigationItem" title="В мире" id="TyF-SR-ZMy">
+                        <barButtonItem key="leftBarButtonItem" image="menu_icon" id="ntS-Y4-QBh">
                             <connections>
                                 <action selector="slideMenuButtonPressed:" destination="BYZ-38-t0r" id="xFn-ZM-ml4"/>
                             </connections>
@@ -116,41 +137,87 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tIn-qH-dJr">
                                         <rect key="frame" x="19" y="166.5" width="150" height="333.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-xe-vDi">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="104.5"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-xe-vDi">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="47.5"/>
+                                                <color key="backgroundColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <state key="normal" title="TUT.by">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="N28-9l-DON"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-nL-Geg">
-                                                <rect key="frame" x="0.0" y="114.5" width="150" height="104.5"/>
-                                                <color key="backgroundColor" red="0.54001610239999998" green="1" blue="0.55410317949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-nL-Geg">
+                                                <rect key="frame" x="0.0" y="57.5" width="150" height="47"/>
+                                                <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <state key="normal" title="Onliner.by">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="zoe-VA-1cn"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUz-Bq-Lnj">
-                                                <rect key="frame" x="0.0" y="229" width="150" height="104.5"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="lenta.ru">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUz-Bq-Lnj">
+                                                <rect key="frame" x="0.0" y="114.5" width="150" height="47.5"/>
+                                                <color key="backgroundColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
+                                                <state key="normal" title="Lenta.ru">
+                                                    <color key="titleColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="Prd-Mb-iap"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7QR-24-3HD">
+                                                <rect key="frame" x="0.0" y="172" width="150" height="47"/>
+                                                <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
+                                                <state key="normal" title="Предложить новость">
+                                                    <color key="titleColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="NE9-qE-hwX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kq4-70-3mW">
+                                                <rect key="frame" x="0.0" y="229" width="150" height="47.5"/>
+                                                <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
+                                                <state key="normal" title="Настройки">
+                                                    <color key="titleColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="kaP-ns-WgL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eut-Wx-nay">
+                                                <rect key="frame" x="0.0" y="286.5" width="150" height="47"/>
+                                                <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
+                                                <state key="normal" title="О нас">
+                                                    <color key="titleColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="Sad-xc-D4m"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSS Reader" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueO-33-BsV">
+                                        <rect key="frame" x="20" y="20" width="147.5" height="138.5"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="30"/>
+                                        <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.22352941179999999" green="0.59215686270000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="ueO-33-BsV" firstAttribute="leading" secondItem="yBT-kK-2vG" secondAttribute="leading" constant="20" symbolic="YES" id="0fh-mb-thz"/>
+                                    <constraint firstItem="tIn-qH-dJr" firstAttribute="top" secondItem="ueO-33-BsV" secondAttribute="bottom" constant="8" symbolic="YES" id="1mA-e1-0XS"/>
+                                    <constraint firstAttribute="trailing" secondItem="ueO-33-BsV" secondAttribute="trailing" constant="20" symbolic="YES" id="B2W-3u-709"/>
+                                    <constraint firstItem="ueO-33-BsV" firstAttribute="top" secondItem="yBT-kK-2vG" secondAttribute="top" constant="20" symbolic="YES" id="OBH-DU-rKu"/>
                                     <constraint firstItem="tIn-qH-dJr" firstAttribute="height" secondItem="yBT-kK-2vG" secondAttribute="height" multiplier="0.5" id="XBY-lw-WGh"/>
                                     <constraint firstItem="tIn-qH-dJr" firstAttribute="width" secondItem="yBT-kK-2vG" secondAttribute="width" multiplier="0.8" id="gs9-Y7-jCx"/>
                                     <constraint firstItem="tIn-qH-dJr" firstAttribute="centerX" secondItem="yBT-kK-2vG" secondAttribute="centerX" id="lA5-1Z-yfh"/>
@@ -233,4 +300,14 @@
             <point key="canvasLocation" x="345" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="auto" width="16" height="16"/>
+        <image name="bicycle" width="29" height="25"/>
+        <image name="finance" width="27" height="25"/>
+        <image name="menu_icon" width="27" height="18"/>
+        <image name="realty" width="27" height="25"/>
+        <image name="society" width="36" height="23"/>
+        <image name="technologies" width="35" height="25"/>
+        <image name="world" width="16" height="16"/>
+    </resources>
 </document>

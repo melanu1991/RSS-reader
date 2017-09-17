@@ -133,9 +133,15 @@ static NSString * const VAKPlaceholder = @"placeholder";
     
     if (!self.slideMenuVC.isSlideMenu) {
         [self.slideMenuVC showMenu];
+        [UIView animateWithDuration:0.5f animations:^{
+            self.collectionView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+        }];
     }
     else {
         [self.slideMenuVC hideMenu];
+        [UIView animateWithDuration:0.5f animations:^{
+            self.collectionView.frame = CGRectMake(0.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+        }];
     }
     
 }
