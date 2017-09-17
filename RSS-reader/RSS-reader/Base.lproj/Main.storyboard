@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xE7-Mb-ALd">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FRi-qC-H9E">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H8V-M1-ud0">
                                     <size key="itemSize" width="50" height="50"/>
@@ -33,7 +33,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newsCell" id="lWd-mX-s6i" customClass="VAKNewsCollectionViewCell">
-                                        <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -75,7 +75,7 @@
                                 </connections>
                             </collectionView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C14-eq-myy">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
                                     <barButtonItem image="world" id="zHF-7z-cP4"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="wG6-ku-1Xi"/>
@@ -128,17 +128,17 @@
                         <viewControllerLayoutGuide type="bottom" id="yAS-5s-bnK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UgS-ae-DYR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBT-kK-2vG">
-                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="207" height="736"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tIn-qH-dJr">
-                                        <rect key="frame" x="19" y="166.5" width="150" height="333.5"/>
+                                        <rect key="frame" x="21" y="184.33333333333337" width="165.66666666666666" height="368"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDi-xe-vDi">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="47.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="165.66666666666666" height="53"/>
                                                 <color key="backgroundColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <state key="normal" title="TUT.by">
@@ -149,7 +149,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-nL-Geg">
-                                                <rect key="frame" x="0.0" y="57.5" width="150" height="47"/>
+                                                <rect key="frame" x="0.0" y="63" width="165.66666666666666" height="52.999999999999972"/>
                                                 <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <state key="normal" title="Onliner.by">
@@ -160,7 +160,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUz-Bq-Lnj">
-                                                <rect key="frame" x="0.0" y="114.5" width="150" height="47.5"/>
+                                                <rect key="frame" x="0.0" y="125.99999999999997" width="165.66666666666666" height="53"/>
                                                 <color key="backgroundColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <state key="normal" title="Lenta.ru">
@@ -171,7 +171,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7QR-24-3HD">
-                                                <rect key="frame" x="0.0" y="172" width="150" height="47"/>
+                                                <rect key="frame" x="0.0" y="188.99999999999997" width="165.66666666666666" height="53"/>
                                                 <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <state key="normal" title="Предложить новость">
@@ -182,7 +182,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kq4-70-3mW">
-                                                <rect key="frame" x="0.0" y="229" width="150" height="47.5"/>
+                                                <rect key="frame" x="0.0" y="252" width="165.66666666666666" height="53"/>
                                                 <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <state key="normal" title="Настройки">
@@ -193,7 +193,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eut-Wx-nay">
-                                                <rect key="frame" x="0.0" y="286.5" width="150" height="47"/>
+                                                <rect key="frame" x="0.0" y="315" width="165.66666666666666" height="53.000000000000057"/>
                                                 <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
                                                 <state key="normal" title="О нас">
@@ -206,7 +206,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSS Reader" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueO-33-BsV">
-                                        <rect key="frame" x="20" y="20" width="147.5" height="138.5"/>
+                                        <rect key="frame" x="20" y="20" width="167" height="156.33333333333334"/>
                                         <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="30"/>
                                         <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -241,6 +241,78 @@
             </objects>
             <point key="canvasLocation" x="2004" y="138.98050974512745"/>
         </scene>
+        <!--About Us View Controller-->
+        <scene sceneID="NOz-WR-Rop">
+            <objects>
+                <viewController storyboardIdentifier="VAKAboutUsViewController" id="HUq-ib-5gS" customClass="VAKAboutUsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DjE-fi-GXL"/>
+                        <viewControllerLayoutGuide type="bottom" id="K2T-pb-Wh5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gre-aP-tbI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="2s0-8Y-7bG">
+                                <rect key="frame" x="41.333333333333343" y="128" width="331.33333333333337" height="184"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDa-5A-mZD">
+                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333337" height="41.333333333333343"/>
+                                        <color key="backgroundColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Обратная связь">
+                                            <color key="titleColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDH-4a-SQr">
+                                        <rect key="frame" x="0.0" y="71.333333333333343" width="331.33333333333337" height="41.333333333333314"/>
+                                        <color key="backgroundColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Оценить приложение">
+                                            <color key="titleColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38B-Hw-rRB">
+                                        <rect key="frame" x="0.0" y="142.66666666666669" width="331.33333333333337" height="41.333333333333314"/>
+                                        <color key="backgroundColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Рассказать друзьям">
+                                            <color key="titleColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSS Reader" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVM-xb-xJh">
+                                <rect key="frame" x="103.66666666666669" y="392" width="207" height="96"/>
+                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Версия 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3u-vm-I06">
+                                <rect key="frame" x="162.66666666666666" y="513" width="89" height="36"/>
+                                <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="18"/>
+                                <color key="textColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2s0-8Y-7bG" firstAttribute="top" secondItem="DjE-fi-GXL" secondAttribute="bottom" constant="108" id="1Bp-5O-2tK"/>
+                            <constraint firstItem="bVM-xb-xJh" firstAttribute="width" secondItem="gre-aP-tbI" secondAttribute="width" multiplier="0.5" id="9MH-9u-3rt"/>
+                            <constraint firstItem="2s0-8Y-7bG" firstAttribute="centerX" secondItem="gre-aP-tbI" secondAttribute="centerX" id="MeQ-be-mvg"/>
+                            <constraint firstItem="e3u-vm-I06" firstAttribute="top" secondItem="bVM-xb-xJh" secondAttribute="bottom" constant="25" id="Sma-0Q-v4i"/>
+                            <constraint firstItem="e3u-vm-I06" firstAttribute="centerX" secondItem="gre-aP-tbI" secondAttribute="centerX" id="Twf-5e-Q6x"/>
+                            <constraint firstItem="bVM-xb-xJh" firstAttribute="top" secondItem="2s0-8Y-7bG" secondAttribute="bottom" constant="80" id="ZW1-LA-qvM"/>
+                            <constraint firstItem="bVM-xb-xJh" firstAttribute="centerX" secondItem="gre-aP-tbI" secondAttribute="centerX" id="gqZ-p1-9ow"/>
+                            <constraint firstItem="2s0-8Y-7bG" firstAttribute="width" secondItem="gre-aP-tbI" secondAttribute="width" multiplier="0.8" id="qK9-ea-BVH"/>
+                            <constraint firstItem="2s0-8Y-7bG" firstAttribute="height" secondItem="gre-aP-tbI" secondAttribute="height" multiplier="0.25" id="rhH-hx-3ob"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ziY-X0-n9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1075.3623188405797" y="833.96739130434787"/>
+        </scene>
         <!--Web View Controller-->
         <scene sceneID="1hz-Qm-gdi">
             <objects>
@@ -250,15 +322,15 @@
                         <viewControllerLayoutGuide type="bottom" id="7do-XY-OZg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cQp-VJ-eGp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QjU-4q-5yX">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uNk-sP-T2C">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
                                 <color key="color" red="0.36092069004700822" green="0.25711519766893687" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -301,13 +373,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="auto" width="16" height="16"/>
+        <image name="auto" width="28" height="25"/>
         <image name="bicycle" width="29" height="25"/>
         <image name="finance" width="27" height="25"/>
         <image name="menu_icon" width="27" height="18"/>
         <image name="realty" width="27" height="25"/>
         <image name="society" width="36" height="23"/>
         <image name="technologies" width="35" height="25"/>
-        <image name="world" width="16" height="16"/>
+        <image name="world" width="25" height="25"/>
     </resources>
 </document>
