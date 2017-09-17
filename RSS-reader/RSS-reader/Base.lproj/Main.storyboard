@@ -22,17 +22,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UuZ-hv-KyG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FRi-qC-H9E">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H8V-M1-ud0">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newsCell" id="lWd-mX-s6i" customClass="VAKNewsCollectionViewCell">
+                                        <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zp7-cE-Mo1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="ZXr-Dp-UWr"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4X-uy-J07">
+                                                    <rect key="frame" x="0.0" y="128" width="200" height="72"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="M4X-uy-J07" firstAttribute="leading" secondItem="lWd-mX-s6i" secondAttribute="leading" id="21L-VH-U6f"/>
+                                            <constraint firstAttribute="trailing" secondItem="M4X-uy-J07" secondAttribute="trailing" id="2RL-So-DNP"/>
+                                            <constraint firstAttribute="bottom" secondItem="M4X-uy-J07" secondAttribute="bottom" id="O5w-in-TMd"/>
+                                            <constraint firstItem="Zp7-cE-Mo1" firstAttribute="leading" secondItem="lWd-mX-s6i" secondAttribute="leading" id="a0d-ZL-R9J"/>
+                                            <constraint firstItem="M4X-uy-J07" firstAttribute="top" secondItem="Zp7-cE-Mo1" secondAttribute="bottom" constant="8" symbolic="YES" id="aQu-iL-aTJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zp7-cE-Mo1" secondAttribute="trailing" id="jI3-4C-MRp"/>
+                                            <constraint firstItem="Zp7-cE-Mo1" firstAttribute="top" secondItem="lWd-mX-s6i" secondAttribute="top" id="m5u-DG-K3i"/>
+                                        </constraints>
+                                        <size key="customSize" width="200" height="200"/>
+                                        <connections>
+                                            <outlet property="newsImageView" destination="Zp7-cE-Mo1" id="2pS-NM-ipA"/>
+                                            <outlet property="newsTitle" destination="M4X-uy-J07" id="oQP-9K-WGc"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="SV5-oK-fyy"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Wat-hE-9qr"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.88557942710000004" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UuZ-hv-KyG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9EC-Wl-zLN"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UuZ-hv-KyG" secondAttribute="bottom" id="9pF-qX-j63"/>
-                            <constraint firstAttribute="trailing" secondItem="UuZ-hv-KyG" secondAttribute="trailing" id="Mfh-Wb-jKJ"/>
-                            <constraint firstItem="UuZ-hv-KyG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oux-hD-r7c"/>
+                            <constraint firstAttribute="trailing" secondItem="FRi-qC-H9E" secondAttribute="trailing" id="3mH-fj-nG3"/>
+                            <constraint firstItem="FRi-qC-H9E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gTQ-NO-cVG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FRi-qC-H9E" secondAttribute="bottom" id="kW2-3z-Nx4"/>
+                            <constraint firstItem="FRi-qC-H9E" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lPA-9x-HDe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="RSS reader" id="TyF-SR-ZMy">
@@ -43,7 +91,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="UuZ-hv-KyG" id="b0V-Vr-LCK"/>
+                        <outlet property="collectionView" destination="FRi-qC-H9E" id="HUD-AS-zSp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
