@@ -23,6 +23,7 @@
 		582E19211F6EEE1000BD4D8E /* VAKAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582E19201F6EEE1000BD4D8E /* VAKAboutUsViewController.m */; };
 		5830B0341F5EDF7F00B1E90C /* VAKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5830B0331F5EDF7F00B1E90C /* VAKWebViewController.m */; };
 		5830B03C1F5EE06600B1E90C /* VAKNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5830B03B1F5EE06600B1E90C /* VAKNetManager.m */; };
+		58A8E1F71F703E8C00A537AA /* VAKOfferNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8E1F61F703E8C00A537AA /* VAKOfferNewsViewController.m */; };
 		58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */; };
 		58B8FB821F5FFE6300C51BC1 /* VAKNewsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */; };
 		58C3C4391F5ECBEA00707267 /* VAKSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */; };
@@ -58,6 +59,8 @@
 		5830B0331F5EDF7F00B1E90C /* VAKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKWebViewController.m; sourceTree = "<group>"; };
 		5830B03A1F5EE06600B1E90C /* VAKNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNetManager.h; sourceTree = "<group>"; };
 		5830B03B1F5EE06600B1E90C /* VAKNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKNetManager.m; sourceTree = "<group>"; };
+		58A8E1F51F703E8C00A537AA /* VAKOfferNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKOfferNewsViewController.h; sourceTree = "<group>"; };
+		58A8E1F61F703E8C00A537AA /* VAKOfferNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKOfferNewsViewController.m; sourceTree = "<group>"; };
 		58B8FB731F5FF06100C51BC1 /* VAKDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKDataManager.h; sourceTree = "<group>"; };
 		58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKDataManager.m; sourceTree = "<group>"; };
 		58B8FB801F5FFE6300C51BC1 /* VAKNewsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNewsParser.h; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 		582E191E1F6EEDD400BD4D8E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				58A8E1F51F703E8C00A537AA /* VAKOfferNewsViewController.h */,
+				58A8E1F61F703E8C00A537AA /* VAKOfferNewsViewController.m */,
 				582E191F1F6EEE1000BD4D8E /* VAKAboutUsViewController.h */,
 				582E19201F6EEE1000BD4D8E /* VAKAboutUsViewController.m */,
 			);
@@ -337,6 +342,7 @@
 				581ECCC21F5D91B80056B644 /* AppDelegate.m in Sources */,
 				581832431F6E8D6200CD5D6F /* VAKCustomFlowLayout.m in Sources */,
 				581ECCBF1F5D91B80056B644 /* main.m in Sources */,
+				58A8E1F71F703E8C00A537AA /* VAKOfferNewsViewController.m in Sources */,
 				5830B0341F5EDF7F00B1E90C /* VAKWebViewController.m in Sources */,
 				58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */,
 				5830B03C1F5EE06600B1E90C /* VAKNetManager.m in Sources */,
