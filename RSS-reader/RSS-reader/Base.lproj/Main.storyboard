@@ -77,56 +77,87 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C14-eq-myy">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
-                                    <barButtonItem image="world" id="kfU-Y4-Wnh">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <barButtonItem style="plain" id="hPK-WJ-Jms">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nHL-Rh-tOm">
+                                            <rect key="frame" x="20" y="9.6666666666666643" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="world"/>
+                                            <connections>
+                                                <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CVR-zg-J6Y"/>
+                                            </connections>
+                                        </button>
                                         <connections>
-                                            <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" id="odT-sj-9We"/>
+                                            <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" id="11Y-AB-dMw"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wG6-ku-1Xi"/>
-                                    <barButtonItem tag="1" image="society" id="ad8-Db-h3x">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" id="lme-n6-GbM"/>
-                                        </connections>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6v1-FP-huR"/>
+                                    <barButtonItem style="plain" id="QKI-fn-sV5">
+                                        <button key="customView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="doP-8Q-L7i">
+                                            <rect key="frame" x="78" y="9.6666666666666643" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="society"/>
+                                            <connections>
+                                                <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rDS-y4-v0w"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="95T-Ge-aS8"/>
-                                    <barButtonItem tag="2" image="realty" id="UTA-Fg-pGu">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" id="FWo-cZ-kij"/>
-                                        </connections>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6Y4-KL-62R"/>
+                                    <barButtonItem style="plain" id="0rI-OJ-boE">
+                                        <button key="customView" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DGT-BT-35z">
+                                            <rect key="frame" x="136" y="9.6666666666666643" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="realty"/>
+                                            <connections>
+                                                <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KcS-GM-fWa"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aUd-SN-FtH"/>
-                                    <barButtonItem tag="3" image="auto" id="yOj-dF-RAf">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" id="kJP-jk-5Pg"/>
-                                        </connections>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UQc-SE-Thl"/>
+                                    <barButtonItem style="plain" id="0J3-8a-Euj">
+                                        <button key="customView" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3vr-8j-h23">
+                                            <rect key="frame" x="195" y="9.6666666666666643" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="auto"/>
+                                            <connections>
+                                                <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pju-nU-oYq"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qhl-yT-acx"/>
-                                    <barButtonItem tag="4" image="technologies" id="8Xb-wm-CTF">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" id="4c1-Jj-3bn"/>
-                                        </connections>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xoX-jg-R8j"/>
+                                    <barButtonItem style="plain" id="I8U-4N-5f2">
+                                        <button key="customView" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rJ7-za-Nw0">
+                                            <rect key="frame" x="253" y="9.6666666666666643" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="technologies"/>
+                                            <connections>
+                                                <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="72Q-AX-rL1"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UQT-I6-1rP"/>
-                                    <barButtonItem tag="5" image="finance" id="1Vd-Aw-hvD">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" id="y8W-vG-uZZ"/>
-                                        </connections>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="nvH-3u-Jj7"/>
+                                    <barButtonItem style="plain" id="KxH-mp-cAQ">
+                                        <button key="customView" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gTF-wB-i5g">
+                                            <rect key="frame" x="311" y="9.6666666666666643" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="finance"/>
+                                            <connections>
+                                                <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aba-44-d9W"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lL4-Yx-14g"/>
-                                    <barButtonItem tag="6" image="bicycle" id="ZIu-Cs-lEf">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" id="2ue-Wu-Gxh"/>
-                                        </connections>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="EFq-yU-xpo"/>
+                                    <barButtonItem style="plain" id="zd8-0J-SH8">
+                                        <button key="customView" opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mrd-17-BB9">
+                                            <rect key="frame" x="369" y="9.6666666666666643" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="bicycle"/>
+                                            <connections>
+                                                <action selector="selectCategoryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Ic-OQ-m7l"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
                                 </items>
-                                <color key="barTintColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
@@ -150,6 +181,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="FRi-qC-H9E" id="HUD-AS-zSp"/>
+                        <outletCollection property="categoriesButtonCollection" destination="nHL-Rh-tOm" id="eOq-x6-ERY"/>
+                        <outletCollection property="categoriesButtonCollection" destination="doP-8Q-L7i" id="crV-gN-j6A"/>
+                        <outletCollection property="categoriesButtonCollection" destination="DGT-BT-35z" id="tuB-QH-2i3"/>
+                        <outletCollection property="categoriesButtonCollection" destination="3vr-8j-h23" id="k9d-6k-XGs"/>
+                        <outletCollection property="categoriesButtonCollection" destination="rJ7-za-Nw0" id="VgT-Qw-ZSb"/>
+                        <outletCollection property="categoriesButtonCollection" destination="gTF-wB-i5g" id="HUe-qw-mjo"/>
+                        <outletCollection property="categoriesButtonCollection" destination="mrd-17-BB9" id="W2q-To-mKw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -8,6 +8,36 @@
 #import <SDWebImage/UIView+WebCache.h>
 #import "VAKNewsCollectionViewCell.h"
 
+static NSString * const VAKBigImageName[] = {
+    [0] = @"world_big",
+    [1] = @"society_big",
+    [2] = @"realty_big",
+    [3] = @"auto_big",
+    [4] = @"technologies_big",
+    [5] = @"finance_big",
+    [6] = @"bicycle_big"
+};
+
+static NSString * const VAKLittleImageName[] = {
+    [0] = @"world",
+    [1] = @"society",
+    [2] = @"realty",
+    [3] = @"auto",
+    [4] = @"technologies",
+    [5] = @"finance",
+    [6] = @"bicycle"
+};
+
+static NSString * const VAKTitleCategories[] = {
+    [0] = @"В мире",
+    [1] = @"Общество",
+    [2] = @"Недвижимость",
+    [3] = @"Авто",
+    [4] = @"Технологии",
+    [5] = @"Финансы",
+    [6] = @"Спорт"
+};
+
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
 static NSString * const VAKWebViewControllerIdentifier = @"VAKWebViewController";
 static NSString * const VAKCellReuseIdentifier = @"newsCell";
@@ -21,6 +51,8 @@ static NSString * const VAKPlaceholder = @"placeholder";
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (assign, nonatomic) NSInteger columnCount;
 @property (assign, nonatomic) NSInteger miniInteriorSpacing;
+@property (assign, nonatomic) NSInteger selectedCategoryTag;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *categoriesButtonCollection;
 
 @end
 
@@ -52,6 +84,9 @@ static NSString * const VAKPlaceholder = @"placeholder";
         
         [self.collectionView reloadData];
     }
+    
+    [self animatingButton:self.categoriesButtonCollection[0]];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData:) name:VAKUpdateDataNotification object:nil];
 }
 
@@ -149,36 +184,39 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 #pragma mark - UIToolbar actions
 
-- (IBAction)selectCategoryButtonPressed:(UIBarButtonItem *)sender {
-    switch (sender.tag) {
-        case 0:
-            [UIView animateWithDuration:0.25 animations:^{
-                
-            }];
-            break;
-        case 1:
-            
-            break;
-        case 2:
-            
-            break;
-        case 3:
-            
-            break;
-        case 4:
-            
-            break;
-        case 5:
-            
-            break;
-        case 6:
-            
-            break;
-        default:
-            break;
+- (IBAction)selectCategoryButtonPressed:(UIButton *)sender {
+    
+    if (sender.tag != self.selectedCategoryTag) {
+        if (self.selectedCategoryTag >= 0) {
+            [self clearAnimatingButton:self.categoriesButtonCollection[self.selectedCategoryTag]];
+        }
+        [self animatingButton:sender];
+        self.selectedCategoryTag = sender.tag;
+        self.title = VAKTitleCategories[sender.tag];
     }
+    
+    //тут реализовываем выбор категорий!
+    
+    
 }
 
+#pragma mark - UIToolbar animation
+
+- (void)clearAnimatingButton:(UIButton *)button {
+    [button setImage:[UIImage imageNamed:VAKLittleImageName[button.tag]] forState:UIControlStateNormal];
+    button.imageEdgeInsets = UIEdgeInsetsZero;
+    button.layer.cornerRadius = 0;
+    button.layer.bounds = button.layer.bounds = CGRectMake(0.f, 0.f, button.bounds.size.width / 2.f, button.bounds.size.height / 4.f);;
+    button.layer.backgroundColor = [UIColor clearColor].CGColor;
+}
+
+- (void)animatingButton:(UIButton *)button {
+    [button setImage:[UIImage imageNamed:VAKBigImageName[button.tag]] forState:UIControlStateNormal];
+    button.imageEdgeInsets = UIEdgeInsetsMake(0.f, 0.f, 25.f, 0.f);
+    button.layer.bounds = CGRectMake(0.f, 0.f, button.bounds.size.width * 2.f, button.bounds.size.height * 4.f);
+    button.layer.backgroundColor = [UIColor colorWithRed:55.f / 255.f green:55.f / 255.f blue:55.f / 255.f alpha:1.f].CGColor;
+    button.layer.cornerRadius = button.layer.bounds.size.height / 4.f;
+}
 
 #pragma mark - deallocate
 
