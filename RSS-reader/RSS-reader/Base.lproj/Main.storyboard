@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xE7-Mb-ALd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jXQ-Yu-vLU">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -543,7 +543,7 @@
                                             <color key="titleColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDH-4a-SQr">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDH-4a-SQr">
                                         <rect key="frame" x="0.0" y="71.333333333333343" width="331.33333333333337" height="41.333333333333343"/>
                                         <color key="backgroundColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -551,13 +551,16 @@
                                             <color key="titleColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38B-Hw-rRB">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38B-Hw-rRB">
                                         <rect key="frame" x="0.0" y="142.66666666666669" width="331.33333333333337" height="41.333333333333314"/>
                                         <color key="backgroundColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Рассказать друзьям">
                                             <color key="titleColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="menuAboutUsButtonPressed:" destination="HUq-ib-5gS" eventType="touchUpInside" id="0wG-4F-X2D"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -588,7 +591,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="О нас" id="atp-Xu-Xpe">
-                        <barButtonItem key="leftBarButtonItem" image="menu_icon" id="vI6-EO-5kT"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu_icon" id="vI6-EO-5kT">
+                            <color key="tintColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="slideMenuButtonPressed:" destination="HUq-ib-5gS" id="ayG-km-X3n"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziY-X0-n9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -635,10 +643,10 @@
             </objects>
             <point key="canvasLocation" x="3646.376811594203" y="833.96739130434787"/>
         </scene>
-        <!--View Controller-->
+        <!--Tell Your FriendsV Iew Controller-->
         <scene sceneID="tMa-ia-EfE">
             <objects>
-                <viewController storyboardIdentifier="VAKTellYourFriendsVIewController" id="d6H-Yl-bnz" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VAKTellYourFriendsVIewController" id="d6H-Yl-bnz" customClass="VAKTellYourFriendsVIewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EGs-jb-Rvi"/>
                         <viewControllerLayoutGuide type="bottom" id="8Nn-TX-vny"/>
