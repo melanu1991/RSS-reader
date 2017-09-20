@@ -90,7 +90,6 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
             news.specification = componentsDescription[0];
         }
         NSString *category = item[VAKCategoryIdentifier][VAKTextIdentifier];
-        NSLog(@"%@", category);
         Category *entityCategory = [VAKDataManager categoryWithName:category news:news];
         [VAKDataManager channelWithURL:VAKNewsURL[VAKURLNewsTutBy] category:entityCategory];
     }

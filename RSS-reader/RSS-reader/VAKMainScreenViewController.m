@@ -10,32 +10,45 @@
 
 static NSString * const VAKBigImageName[] = {
     [0] = @"world_big",
-    [1] = @"society_big",
+    [1] = @"finance_big",
     [2] = @"realty_big",
-    [3] = @"auto_big",
-    [4] = @"technologies_big",
-    [5] = @"finance_big",
-    [6] = @"bicycle_big"
+    [3] = @"society_big"
 };
 
 static NSString * const VAKLittleImageName[] = {
     [0] = @"world",
-    [1] = @"society",
+    [1] = @"finance",
     [2] = @"realty",
-    [3] = @"auto",
-    [4] = @"technologies",
-    [5] = @"finance",
-    [6] = @"bicycle"
+    [3] = @"society"
 };
 
 static NSString * const VAKTitleCategories[] = {
     [0] = @"В мире",
-    [1] = @"Общество",
+    [1] = @"Финансы",
     [2] = @"Недвижимость",
-    [3] = @"Авто",
-    [4] = @"Технологии",
-    [5] = @"Финансы",
-    [6] = @"Спорт"
+    [3] = @"Люди"
+};
+
+//Пересмотреть используемые категории
+static NSString * const VAKNameCategoriesTutBy[] = {
+    [0] = @"В мире",
+    [1] = @"Публичный счет",
+    [2] = @"Деньги",
+    [3] = @"Общество"
+};
+
+static NSString * const VAKNameCategoriesOnlinerBy[] = {
+    [0] = @"В мире",
+    [1] = @"Финансы",
+    [2] = @"Недвижимость",
+    [3] = @"Люди"
+};
+
+static NSString * const VAKNameCategoriesLentaRu[] = {
+    [0] = @"В мире",
+    [1] = @"Финансы",
+    [2] = @"Бизнес",
+    [3] = @"Культура"
 };
 
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
@@ -52,7 +65,9 @@ static NSString * const VAKPlaceholder = @"placeholder";
 @property (assign, nonatomic) NSInteger columnCount;
 @property (assign, nonatomic) NSInteger miniInteriorSpacing;
 @property (assign, nonatomic) NSInteger selectedCategoryTag;
+@property (strong, nonatomic) NSString *selectedNewsChannel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *categoriesButtonCollection;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end
 
@@ -93,15 +108,12 @@ static NSString * const VAKPlaceholder = @"placeholder";
 #pragma mark - notification method
 
 - (void)updateData:(NSNotification *)notification {
-    self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", notification.userInfo[@"url"]] sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES]];
+    self.selectedNewsChannel = notification.userInfo[@"url"];
+    self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES]];
     [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.news.count;
@@ -165,6 +177,28 @@ static NSString * const VAKPlaceholder = @"placeholder";
     return size.height + 10;
 }
 
+- (NSString *)nameSelectedCategory {
+    if ([self.selectedNewsChannel isEqualToString:@"https://news.tut.by/rss"]) {
+        return VAKNameCategoriesTutBy[self.selectedCategoryTag];
+    }
+    else if ([self.selectedNewsChannel isEqualToString:@"https:www.onliner.by/feed"]) {
+        return VAKNameCategoriesOnlinerBy[self.selectedCategoryTag];
+    }
+    return VAKNameCategoriesLentaRu[self.selectedCategoryTag];
+}
+
+- (NSPredicate *)predicate {
+    NSPredicate *predicate;
+    if (self.selectedCategoryTag > 0) {
+        predicate = [NSPredicate predicateWithFormat:@"category.channel.url == %@ AND category.name == %@", self.selectedNewsChannel, [self nameSelectedCategory]];
+    }
+    else {
+        predicate = [NSPredicate predicateWithFormat:@"category.channel.url == %@", self.selectedNewsChannel];
+    }
+    return predicate;
+}
+
+//Подумать как сделать универсальный метод для всех контроллеров!
 #pragma mark - actions with slide menu
 
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
@@ -173,10 +207,12 @@ static NSString * const VAKPlaceholder = @"placeholder";
     [UIView animateWithDuration:0.5f animations:^{
         self.collectionView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
         self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
+        self.toolbar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
         __weak VAKMainScreenViewController *weakMainScreenVC = self;
         self.slideMenuVC.completionBlock = ^{
             weakMainScreenVC.collectionView.frame = CGRectMake(0.f, weakMainScreenVC.collectionView.frame.origin.y, weakMainScreenVC.collectionView.bounds.size.width, weakMainScreenVC.collectionView.bounds.size.height);
             weakMainScreenVC.navigationController.navigationBar.frame = CGRectMake(0.f, weakMainScreenVC.navigationController.navigationBar.frame.origin.y, weakMainScreenVC.navigationController.navigationBar.bounds.size.width, weakMainScreenVC.navigationController.navigationBar.bounds.size.height);
+            weakMainScreenVC.toolbar.frame = CGRectMake(0.f, weakMainScreenVC.toolbar.frame.origin.y, weakMainScreenVC.toolbar.bounds.size.width, weakMainScreenVC.toolbar.bounds.size.height);
         };
     }];
     
@@ -193,13 +229,13 @@ static NSString * const VAKPlaceholder = @"placeholder";
         [self animatingButton:sender];
         self.selectedCategoryTag = sender.tag;
         self.title = VAKTitleCategories[sender.tag];
+        self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES]];
+        [self.collectionView reloadData];
     }
-    
-    //тут реализовываем выбор категорий!
-    
-    
+
 }
 
+//Подумать как создать категорию UIView!
 #pragma mark - UIToolbar animation
 
 - (void)clearAnimatingButton:(UIButton *)button {

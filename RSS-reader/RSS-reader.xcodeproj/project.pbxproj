@@ -123,11 +123,13 @@
 		581ECCBC1F5D91B80056B644 /* RSS-reader */ = {
 			isa = PBXGroup;
 			children = (
+				587287801F72EEFF0080A5A5 /* Constants */,
 				582E191E1F6EEDD400BD4D8E /* Controllers */,
 				58B8FB7C1F5FF72300C51BC1 /* Parsers */,
 				58B8FB701F5FEFEE00C51BC1 /* CoreData */,
 				581ECCC31F5D91B80056B644 /* VAKMainScreenViewController.h */,
 				581ECCC41F5D91B80056B644 /* VAKMainScreenViewController.m */,
+				58BB25641F6838EF00D434D2 /* VAKNewsURL.h */,
 				581832411F6E8D6200CD5D6F /* VAKCustomFlowLayout.h */,
 				581832421F6E8D6200CD5D6F /* VAKCustomFlowLayout.m */,
 				5818323E1F6E8C7200CD5D6F /* VAKNewsCollectionViewCell.h */,
@@ -136,7 +138,6 @@
 				5830B03B1F5EE06600B1E90C /* VAKNetManager.m */,
 				58C3C4371F5ECBEA00707267 /* VAKSlideMenuViewController.h */,
 				58C3C4381F5ECBEA00707267 /* VAKSlideMenuViewController.m */,
-				58BB25641F6838EF00D434D2 /* VAKNewsURL.h */,
 				581ECCC61F5D91B80056B644 /* Main.storyboard */,
 				5830B0321F5EDF7F00B1E90C /* VAKWebViewController.h */,
 				5830B0331F5EDF7F00B1E90C /* VAKWebViewController.m */,
@@ -169,6 +170,13 @@
 				582E19201F6EEE1000BD4D8E /* VAKAboutUsViewController.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		587287801F72EEFF0080A5A5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		58B8FB701F5FEFEE00C51BC1 /* CoreData */ = {
