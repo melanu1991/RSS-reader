@@ -7,49 +7,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIView+WebCache.h>
 #import "VAKNewsCollectionViewCell.h"
-
-static NSString * const VAKBigImageName[] = {
-    [0] = @"world_big",
-    [1] = @"finance_big",
-    [2] = @"realty_big",
-    [3] = @"society_big"
-};
-
-static NSString * const VAKLittleImageName[] = {
-    [0] = @"world",
-    [1] = @"finance",
-    [2] = @"realty",
-    [3] = @"society"
-};
-
-static NSString * const VAKTitleCategories[] = {
-    [0] = @"В мире",
-    [1] = @"Финансы",
-    [2] = @"Недвижимость",
-    [3] = @"Люди"
-};
-
-//Пересмотреть используемые категории
-static NSString * const VAKNameCategoriesTutBy[] = {
-    [0] = @"В мире",
-    [1] = @"Публичный счет",
-    [2] = @"Деньги",
-    [3] = @"Общество"
-};
-
-static NSString * const VAKNameCategoriesOnlinerBy[] = {
-    [0] = @"В мире",
-    [1] = @"Финансы",
-    [2] = @"Недвижимость",
-    [3] = @"Люди"
-};
-
-static NSString * const VAKNameCategoriesLentaRu[] = {
-    [0] = @"В мире",
-    [1] = @"Финансы",
-    [2] = @"Бизнес",
-    [3] = @"Культура"
-};
+#import "VAKConstantsImages.h"
+#import "VAKConstantsCategories.h"
 
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
 static NSString * const VAKWebViewControllerIdentifier = @"VAKWebViewController";
@@ -73,11 +32,18 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 @implementation VAKMainScreenViewController
 
+//#pragma mark - Implementation protocol delegate
+//
+//- (void)pushViewController:(UIViewController *)viewController {
+//    [self.navigationController pushViewController:viewController animated:YES];
+//}
+
 #pragma mark - lazy getters
 
 - (VAKSlideMenuViewController *)slideMenuVC {
     if (!_slideMenuVC) {
         _slideMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKSlideMenuViewControllerIdentifier];
+//        _slideMenuVC.delegate = self;
     }
     return _slideMenuVC;
 }
@@ -109,7 +75,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 - (void)updateData:(NSNotification *)notification {
     self.selectedNewsChannel = notification.userInfo[@"url"];
-    self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES]];
+    self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[self sortDescriptor]];
     [self.collectionView reloadData];
 }
 
@@ -198,6 +164,10 @@ static NSString * const VAKPlaceholder = @"placeholder";
     return predicate;
 }
 
+- (NSSortDescriptor *)sortDescriptor {
+    return [NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES];
+}
+
 //Подумать как сделать универсальный метод для всех контроллеров!
 #pragma mark - actions with slide menu
 
@@ -229,7 +199,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
         [self animatingButton:sender];
         self.selectedCategoryTag = sender.tag;
         self.title = VAKTitleCategories[sender.tag];
-        self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES]];
+        self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[self sortDescriptor]];
         [self.collectionView reloadData];
     }
 
@@ -258,6 +228,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"%@", @"deallocate mainVC");
 }
 
 @end

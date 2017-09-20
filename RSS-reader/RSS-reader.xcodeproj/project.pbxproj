@@ -23,6 +23,8 @@
 		582E19211F6EEE1000BD4D8E /* VAKAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582E19201F6EEE1000BD4D8E /* VAKAboutUsViewController.m */; };
 		5830B0341F5EDF7F00B1E90C /* VAKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5830B0331F5EDF7F00B1E90C /* VAKWebViewController.m */; };
 		5830B03C1F5EE06600B1E90C /* VAKNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5830B03B1F5EE06600B1E90C /* VAKNetManager.m */; };
+		587287831F72F1DB0080A5A5 /* VAKFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587287821F72F1DB0080A5A5 /* VAKFeedbackViewController.m */; };
+		587287881F72FD970080A5A5 /* VAKTellYourFriendsVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587287871F72FD970080A5A5 /* VAKTellYourFriendsVIewController.m */; };
 		58A8E1F71F703E8C00A537AA /* VAKOfferNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8E1F61F703E8C00A537AA /* VAKOfferNewsViewController.m */; };
 		58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */; };
 		58B8FB821F5FFE6300C51BC1 /* VAKNewsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */; };
@@ -59,6 +61,12 @@
 		5830B0331F5EDF7F00B1E90C /* VAKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKWebViewController.m; sourceTree = "<group>"; };
 		5830B03A1F5EE06600B1E90C /* VAKNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNetManager.h; sourceTree = "<group>"; };
 		5830B03B1F5EE06600B1E90C /* VAKNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKNetManager.m; sourceTree = "<group>"; };
+		587287811F72F1DB0080A5A5 /* VAKFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKFeedbackViewController.h; sourceTree = "<group>"; };
+		587287821F72F1DB0080A5A5 /* VAKFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKFeedbackViewController.m; sourceTree = "<group>"; };
+		587287841F72FB720080A5A5 /* VAKConstantsImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKConstantsImages.h; sourceTree = "<group>"; };
+		587287851F72FBDF0080A5A5 /* VAKConstantsCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKConstantsCategories.h; sourceTree = "<group>"; };
+		587287861F72FD970080A5A5 /* VAKTellYourFriendsVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKTellYourFriendsVIewController.h; sourceTree = "<group>"; };
+		587287871F72FD970080A5A5 /* VAKTellYourFriendsVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKTellYourFriendsVIewController.m; sourceTree = "<group>"; };
 		58A8E1F51F703E8C00A537AA /* VAKOfferNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKOfferNewsViewController.h; sourceTree = "<group>"; };
 		58A8E1F61F703E8C00A537AA /* VAKOfferNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKOfferNewsViewController.m; sourceTree = "<group>"; };
 		58B8FB731F5FF06100C51BC1 /* VAKDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKDataManager.h; sourceTree = "<group>"; };
@@ -164,10 +172,14 @@
 		582E191E1F6EEDD400BD4D8E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				587287861F72FD970080A5A5 /* VAKTellYourFriendsVIewController.h */,
+				587287871F72FD970080A5A5 /* VAKTellYourFriendsVIewController.m */,
 				58A8E1F51F703E8C00A537AA /* VAKOfferNewsViewController.h */,
 				58A8E1F61F703E8C00A537AA /* VAKOfferNewsViewController.m */,
 				582E191F1F6EEE1000BD4D8E /* VAKAboutUsViewController.h */,
 				582E19201F6EEE1000BD4D8E /* VAKAboutUsViewController.m */,
+				587287811F72F1DB0080A5A5 /* VAKFeedbackViewController.h */,
+				587287821F72F1DB0080A5A5 /* VAKFeedbackViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -175,6 +187,8 @@
 		587287801F72EEFF0080A5A5 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				587287841F72FB720080A5A5 /* VAKConstantsImages.h */,
+				587287851F72FBDF0080A5A5 /* VAKConstantsCategories.h */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -350,8 +364,10 @@
 				581ECCC21F5D91B80056B644 /* AppDelegate.m in Sources */,
 				581832431F6E8D6200CD5D6F /* VAKCustomFlowLayout.m in Sources */,
 				581ECCBF1F5D91B80056B644 /* main.m in Sources */,
+				587287881F72FD970080A5A5 /* VAKTellYourFriendsVIewController.m in Sources */,
 				58A8E1F71F703E8C00A537AA /* VAKOfferNewsViewController.m in Sources */,
 				5830B0341F5EDF7F00B1E90C /* VAKWebViewController.m in Sources */,
+				587287831F72F1DB0080A5A5 /* VAKFeedbackViewController.m in Sources */,
 				58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */,
 				5830B03C1F5EE06600B1E90C /* VAKNetManager.m in Sources */,
 				581832401F6E8C7200CD5D6F /* VAKNewsCollectionViewCell.m in Sources */,

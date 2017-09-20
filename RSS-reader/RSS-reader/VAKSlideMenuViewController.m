@@ -1,7 +1,10 @@
 #import "VAKSlideMenuViewController.h"
+#import "VAKAboutUsViewController.h"
 #import "VAKNetManager.h"
 #import "VAKNewsParser.h"
 #import "VAKNewsURL.h"
+
+static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewController";
 
 @interface VAKSlideMenuViewController ()
 
@@ -21,11 +24,41 @@
 
 - (IBAction)menuButtonPressed:(UIButton *)sender {
     [self hideMenu];
-    NSString *path = VAKNewsURL[sender.tag];
+    
+    switch (sender.tag) {
+        case 0:
+        case 1:
+        case 2:
+            [self loadDataWithTag:sender.tag];
+            break;
+        case 3:
+            
+            break;
+        case 4:
+            
+            break;
+        case 5:
+        {
+//            VAKAboutUsViewController *aboutUsVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKAboutViewControllerIdentifier];
+//            [self presentViewController:aboutUsVC animated:YES completion:nil];
+//            [self.delegate pushViewController:aboutUsVC];
+        }
+            break;
+        default:
+            break;
+    }
+    
+
+}
+
+#pragma mark - helpers
+
+- (void)loadDataWithTag:(NSInteger)tag {
+    NSString *path = VAKNewsURL[tag];
     NSDictionary *info = @{ @"url" : path };
     [[VAKNetManager sharedManager] loadDataWithPath:path completionHandler:^(NSArray *data, NSError *error) {
         if (!error) {
-            [VAKNewsParser newsWithData:data urlIdentifier:sender.tag];
+            [VAKNewsParser newsWithData:data urlIdentifier:tag];
             [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];
         }
         else {
