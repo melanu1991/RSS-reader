@@ -1,4 +1,5 @@
 #import "VAKFeedbackViewController.h"
+#import "VAKNSString+ValidateEmail.h"
 
 @interface VAKFeedbackViewController ()
 
@@ -17,7 +18,7 @@
 }
 
 - (IBAction)sendEmail:(UIButton *)sender {
-    
+    NSLog(@"%d", self.senderEmailTextField.text.isValidEmail);
 }
 
 @end
