@@ -292,12 +292,85 @@
                     <view key="view" contentMode="scaleToFill" id="aeu-wK-kUr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="From e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sh6-h3-YzI">
+                                <rect key="frame" x="20" y="28" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cWq-7T-7Tp">
+                                <rect key="frame" x="20" y="95" width="374" height="368"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbY-Tg-7IZ">
+                                <rect key="frame" x="20" y="471" width="374" height="40"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gs2-Gv-ntG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                                <state key="normal" title="Отправить">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendEmail:" destination="ah2-eB-WZn" eventType="touchUpInside" id="KsP-Vf-9CS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текст сообщения" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDq-u0-fYO">
+                                <rect key="frame" x="20" y="66" width="148" height="21"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VDq-u0-fYO" firstAttribute="top" secondItem="sh6-h3-YzI" secondAttribute="bottom" constant="8" symbolic="YES" id="BzY-Nk-VI2"/>
+                            <constraint firstAttribute="trailing" secondItem="cWq-7T-7Tp" secondAttribute="trailing" constant="20" symbolic="YES" id="KkK-X0-KeP"/>
+                            <constraint firstItem="cWq-7T-7Tp" firstAttribute="height" secondItem="aeu-wK-kUr" secondAttribute="height" multiplier="0.5" id="S2Y-kO-Ly8"/>
+                            <constraint firstItem="sh6-h3-YzI" firstAttribute="top" secondItem="PLE-u2-Bzh" secondAttribute="bottom" constant="8" symbolic="YES" id="XJ2-cc-p22"/>
+                            <constraint firstItem="VDq-u0-fYO" firstAttribute="leading" secondItem="aeu-wK-kUr" secondAttribute="leading" constant="20" symbolic="YES" id="ZXI-i6-D5i"/>
+                            <constraint firstAttribute="trailing" secondItem="sh6-h3-YzI" secondAttribute="trailing" constant="20" symbolic="YES" id="dSN-VB-daJ"/>
+                            <constraint firstItem="GbY-Tg-7IZ" firstAttribute="top" secondItem="cWq-7T-7Tp" secondAttribute="bottom" constant="8" symbolic="YES" id="fzW-lk-N8g"/>
+                            <constraint firstItem="GbY-Tg-7IZ" firstAttribute="leading" secondItem="aeu-wK-kUr" secondAttribute="leading" constant="20" symbolic="YES" id="hyy-Yk-fQA"/>
+                            <constraint firstItem="cWq-7T-7Tp" firstAttribute="leading" secondItem="aeu-wK-kUr" secondAttribute="leading" constant="20" symbolic="YES" id="ko1-dX-kA7"/>
+                            <constraint firstAttribute="trailing" secondItem="GbY-Tg-7IZ" secondAttribute="trailing" constant="20" symbolic="YES" id="p83-Bt-2v6"/>
+                            <constraint firstItem="cWq-7T-7Tp" firstAttribute="top" secondItem="VDq-u0-fYO" secondAttribute="bottom" constant="8" symbolic="YES" id="tCG-9t-8mX"/>
+                            <constraint firstItem="sh6-h3-YzI" firstAttribute="leading" secondItem="aeu-wK-kUr" secondAttribute="leading" constant="20" symbolic="YES" id="vWn-8K-7AV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bodyMessageTextView" destination="cWq-7T-7Tp" id="Dwk-cA-5I4"/>
+                        <outlet property="senderEmailTextField" destination="sh6-h3-YzI" id="OoS-ey-cEW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeM-Ta-2zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2739" y="139"/>
+            <point key="canvasLocation" x="2737.68115942029" y="138.58695652173915"/>
         </scene>
         <!--Предложить новость-->
         <scene sceneID="UfV-VK-AtA">
@@ -542,6 +615,9 @@
                                         <state key="normal" title="Обратная связь">
                                             <color key="titleColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="menuAboutUsButtonPressed:" destination="HUq-ib-5gS" eventType="touchUpInside" id="8xq-RR-GWv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDH-4a-SQr">
                                         <rect key="frame" x="0.0" y="71.333333333333343" width="331.33333333333337" height="41.333333333333343"/>
@@ -550,6 +626,9 @@
                                         <state key="normal" title="Оценить приложение">
                                             <color key="titleColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="menuAboutUsButtonPressed:" destination="HUq-ib-5gS" eventType="touchUpInside" id="4cc-5L-zcd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38B-Hw-rRB">
                                         <rect key="frame" x="0.0" y="142.66666666666669" width="331.33333333333337" height="41.333333333333314"/>

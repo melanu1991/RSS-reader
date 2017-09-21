@@ -10,15 +10,12 @@
 #import "VAKConstantsImages.h"
 #import "VAKConstantsCategories.h"
 
-static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
-static NSString * const VAKWebViewControllerIdentifier = @"VAKWebViewController";
 static NSString * const VAKCellReuseIdentifier = @"newsCell";
 static NSString * const VAKSortDescriptorKey = @"pubDate";
 static NSString * const VAKPlaceholder = @"placeholder";
 
 @interface VAKMainScreenViewController ()
 
-@property (strong, nonatomic) VAKSlideMenuViewController *slideMenuVC;
 @property (strong, nonatomic) NSArray *news;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (assign, nonatomic) NSInteger columnCount;
@@ -40,13 +37,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 #pragma mark - lazy getters
 
-- (VAKSlideMenuViewController *)slideMenuVC {
-    if (!_slideMenuVC) {
-        _slideMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKSlideMenuViewControllerIdentifier];
-//        _slideMenuVC.delegate = self;
-    }
-    return _slideMenuVC;
-}
+
 
 #pragma mark - life cycle view controller
 
@@ -173,13 +164,13 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
     
-    [self.slideMenuVC showMenu];
+    [[VAKSlideMenuViewController sharedSlideMenu] showMenu];
     [UIView animateWithDuration:0.5f animations:^{
         self.collectionView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
         self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
         self.toolbar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
         __weak VAKMainScreenViewController *weakMainScreenVC = self;
-        self.slideMenuVC.completionBlock = ^{
+        [VAKSlideMenuViewController sharedSlideMenu].completionBlock = ^{
             weakMainScreenVC.collectionView.frame = CGRectMake(0.f, weakMainScreenVC.collectionView.frame.origin.y, weakMainScreenVC.collectionView.bounds.size.width, weakMainScreenVC.collectionView.bounds.size.height);
             weakMainScreenVC.navigationController.navigationBar.frame = CGRectMake(0.f, weakMainScreenVC.navigationController.navigationBar.frame.origin.y, weakMainScreenVC.navigationController.navigationBar.bounds.size.width, weakMainScreenVC.navigationController.navigationBar.bounds.size.height);
             weakMainScreenVC.toolbar.frame = CGRectMake(0.f, weakMainScreenVC.toolbar.frame.origin.y, weakMainScreenVC.toolbar.bounds.size.width, weakMainScreenVC.toolbar.bounds.size.height);

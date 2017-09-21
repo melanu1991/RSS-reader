@@ -14,6 +14,17 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
 
 @implementation VAKSlideMenuViewController
 
+#pragma mark - Shared Singleton
+
++ (instancetype)sharedSlideMenu {
+    static VAKSlideMenuViewController *slideMenuVC = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        slideMenuVC = [[self alloc] init];
+    });
+    return slideMenuVC;
+}
+
 #pragma mark - life cycle view controller
 
 - (void)viewDidLoad {

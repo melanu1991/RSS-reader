@@ -2,6 +2,9 @@
 
 @interface VAKFeedbackViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextView *bodyMessageTextView;
+@property (weak, nonatomic) IBOutlet UITextField *senderEmailTextField;
+
 @end
 
 @implementation VAKFeedbackViewController
@@ -10,6 +13,10 @@
     [super viewDidLoad];
     
     
+    
+}
+
+- (IBAction)sendEmail:(UIButton *)sender {
     
 }
 
