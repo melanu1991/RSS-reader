@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jXQ-Yu-vLU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cUJ-e5-a2W">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -305,9 +305,6 @@
                                     <segment title="Lenta.ru"/>
                                 </segments>
                                 <color key="tintColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="segmentedControlOfChannelsPressed:" destination="5RJ-EU-U2i" eventType="valueChanged" id="ZT9-Hy-CeZ"/>
-                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XU1-LO-bie">
                                 <rect key="frame" x="20" y="139" width="374" height="220.66666666666669"/>
@@ -450,7 +447,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="sendMessageOfNewsButtonPressed:" destination="5RJ-EU-U2i" eventType="touchUpInside" id="K2x-7V-PFF"/>
+                                    <action selector="sendMessageButtonPressed:" destination="5RJ-EU-U2i" eventType="touchUpInside" id="epP-Vz-fvT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="799-bP-TE9">
@@ -496,6 +493,7 @@
                         <outlet property="infoLabel" destination="799-bP-TE9" id="wai-cU-O8U"/>
                         <outlet property="messageOfNewsTextField" destination="zGk-rn-dw9" id="9Wd-WW-sTr"/>
                         <outlet property="phoneNumberTextField" destination="LLF-u7-JaW" id="bXR-7R-Dlx"/>
+                        <outlet property="segmentedControl" destination="BN6-Df-Me6" id="VUl-n5-UZx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmJ-ba-O0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
