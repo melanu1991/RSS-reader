@@ -1,8 +1,7 @@
 #import "VAKAboutUsViewController.h"
 #import "VAKSlideMenuViewController.h"
 #import "VAKWebViewController.h"
-#import "VAKFeedbackViewController.h"
-#import "VAKTellYourFriendsVIewController.h"
+#import "VAKSendEmailViewController.h"
 
 @interface VAKAboutUsViewController ()
 
@@ -29,8 +28,8 @@
     switch (sender.tag) {
         case 0:
         {
-            VAKFeedbackViewController *feedbackVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKFeedbackViewControllerIdentifier];
-            [self.navigationController pushViewController:feedbackVC animated:YES];
+            VAKSendEmailViewController *sendEmailVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKSendEmailViewControllerIdentifier];
+            [self.navigationController pushViewController:sendEmailVC animated:YES];
         }
             break;
         case 1:
@@ -42,8 +41,9 @@
             break;
         case 2:
         {
-            VAKTellYourFriendsVIewController *tellYourFriendsVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKTellYourFriendsVIewControllerIdentifier];
-            [self.navigationController pushViewController:tellYourFriendsVC animated:YES];
+            VAKSendEmailViewController *sendEmailVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKSendEmailViewControllerIdentifier];
+            sendEmailVC.recipient = YES;
+            [self.navigationController pushViewController:sendEmailVC animated:YES];
         }
             break;
         default:

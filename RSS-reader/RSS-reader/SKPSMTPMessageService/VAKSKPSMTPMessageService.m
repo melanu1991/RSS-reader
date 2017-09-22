@@ -2,13 +2,28 @@
 #import <skpsmtpmessage/SKPSMTPMessage.h>
 #import <skpsmtpmessage/NSData+Base64Additions.h>
 
-@interface VAKSKPSMTPMessageService ()
+@interface VAKSKPSMTPMessageService () <SKPSMTPMessageDelegate>
 
 @property (strong, nonatomic) SKPSMTPMessage *sKPSMTPMessage;
 
 @end
 
 @implementation VAKSKPSMTPMessageService
+
+#pragma mark - Lazy getters
+
+- (SKPSMTPMessage *)sKPSMTPMessage {
+    if (!_sKPSMTPMessage) {
+        self.sKPSMTPMessage = [[SKPSMTPMessage alloc] init];
+        self.sKPSMTPMessage.relayHost = @"smtp.gmail.com";
+        self.sKPSMTPMessage.requiresAuth = YES;
+        self.sKPSMTPMessage.login = @"myRSSTestAcc@gmail.com";
+        self.sKPSMTPMessage.pass = @"myPassword";
+        self.sKPSMTPMessage.wantsSecure = YES;
+        self.sKPSMTPMessage.delegate = self;
+    }
+    return _sKPSMTPMessage;
+}
 
 #pragma mark - Implementation Singleton
 
@@ -19,21 +34,6 @@
         sharedMessageService = [[self alloc] init];
     });
     return sharedMessageService;
-}
-
-#pragma mark - initialization
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.sKPSMTPMessage = [[SKPSMTPMessage alloc] init];
-        self.sKPSMTPMessage.relayHost = @"smtp.gmail.com";
-        self.sKPSMTPMessage.requiresAuth = YES;
-        self.sKPSMTPMessage.login = @"myRSSTestAcc@gmail.com";
-        self.sKPSMTPMessage.pass = @"myPassword";
-        self.sKPSMTPMessage.wantsSecure = YES;
-    }
-    return self;
 }
 
 #pragma mark - Implementation method send email
@@ -52,6 +52,19 @@
     NSArray *parts = @[plainPart];
     self.sKPSMTPMessage.parts = parts;
     [self.sKPSMTPMessage send];
+    self.sKPSMTPMessage = nil;
+}
+
+#pragma mark - SKPSMTPMessageDelegate
+
+- (void)messageSent:(SKPSMTPMessage *)message {
+    NSLog(@"%@", @"successful");
+    self.sKPSMTPMessage = nil;
+}
+
+- (void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error {
+    NSLog(@"%@", @"fail");
+    self.sKPSMTPMessage = nil;
 }
 
 @end
