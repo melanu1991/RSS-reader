@@ -48,11 +48,11 @@
     if (self.senderTextField.text.isValidEmail) {
         if (self.recipients.count > 0) {
             for (NSString *recipient in self.recipients) {
-                [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text fromEmail:self.senderTextField.text toEmail:recipient subject:self.subjectTextField.text];
+                [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text toEmail:recipient subject:self.subjectTextField.text info:@{ VAKFromEmailInfo : self.senderTextField.text }];
             }
         }
         else {
-            [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text fromEmail:self.senderTextField.text toEmail:@"lich-se@rambler.ru" subject:self.subjectTextField.text];
+            [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text toEmail:@"lich-se@rambler.ru" subject:self.subjectTextField.text info:@{ VAKFromEmailInfo : self.senderTextField.text }];
         }
         [self.navigationController popViewControllerAnimated:YES];
     }

@@ -7,7 +7,7 @@
 #import "VAKSlideMenuViewController.h"
 #import "VAKSlideMenuDelegate.h"
 
-@interface VAKOfferNewsViewController () <VAKSlideMenuDelegate>
+@interface VAKOfferNewsViewController () <VAKSlideMenuDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *messageOfNewsTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
@@ -22,6 +22,22 @@
 
 @implementation VAKOfferNewsViewController
 
+#pragma mark - Lazy getters
+
+- (NSMutableArray *)images {
+    if (!_images) {
+        _images = [NSMutableArray array];
+    }
+    return _images;
+}
+
+- (NSMutableArray *)files {
+    if (!_files) {
+        _files = [NSMutableArray array];
+    }
+    return _files;
+}
+
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
@@ -29,10 +45,11 @@
     self.view.frame = CGRectMake(0.f, self.view.frame.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
 }
 
-#pragma mark - life cycle view controller
+#pragma mark - UIImagePickerControllerDelegate
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    [self.images addObject:info[UIImagePickerControllerOriginalImage]];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - actions
@@ -47,7 +64,9 @@
 }
 
 - (IBAction)selectPhotosButtonPressed:(UIButton *)sender {
-    
+    UIImagePickerController *imagePickerVC = [[UIImagePickerController alloc] init];
+    imagePickerVC.delegate = self;
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
 - (IBAction)selectDocumentsButtonPressed:(UIButton *)sender {
@@ -55,12 +74,14 @@
 }
 
 - (IBAction)sendMessageButtonPressed:(UIButton *)sender {
-    if (self.emailTextField.text.isValidEmail || self.phoneNumberTextField.text.isValidPhoneNumber) {
-        [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.messageOfNewsTextField.text fromEmail:self.emailTextField.text toEmail:VAKEmailsChannels[self.segmentedControl.selectedSegmentIndex] subject:@"Предложить новость"];
-    }
-    else {
-        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Error: invalid email or phone number" message:@"You must input correct email or phone number" handler:nil] animated:YES completion:nil];
-    }
+//    if (self.emailTextField.text.isValidEmail || self.phoneNumberTextField.text.isValidPhoneNumber) {
+//        [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.messageOfNewsTextField.text fromEmail:self.emailTextField.text toEmail:VAKEmailsChannels[self.segmentedControl.selectedSegmentIndex] subject:@"Предложить новость"];
+    NSDictionary *info = @{ VAKImagesInfo : self.images, VAKFilesInfo : self.files, VAKPhoneNumberInfo : @"+375(44)792-85-27", VAKFromEmailInfo : @"myEmail@mail.ru" };
+    [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:@"sdfsdf" toEmail:@"lich-se@rambler.ru" subject:@"fsdfsd" info:info];
+//    }
+//    else {
+//        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Error: invalid email or phone number" message:@"You must input correct email or phone number" handler:nil] animated:YES completion:nil];
+//    }
 }
 
 @end

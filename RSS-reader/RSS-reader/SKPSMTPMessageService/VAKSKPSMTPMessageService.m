@@ -38,21 +38,50 @@
 
 #pragma mark - Implementation method send email
 
-- (void)sendMessage:(NSString *)message fromEmail:(NSString *)fromEmail toEmail:(NSString *)toEmail subject:(NSString *)subject {
+- (void)sendMessage:(NSString *)message toEmail:(NSString *)toEmail subject:(NSString *)subject info:(NSDictionary *)info {
+    
+    NSString *fromEmail = info[@"VAKFromEmail"];
+    NSString *phoneNumber = info[@"VAKPhoneNumber"];
+    NSArray *images = info[@"VAKImages"];
+    __unused NSArray *files = info[@"VAKFiles"];
+    
     self.sKPSMTPMessage.fromEmail = fromEmail;
     self.sKPSMTPMessage.toEmail = toEmail;
     self.sKPSMTPMessage.subject = subject;
+    
+    NSMutableString *fullMessage = [NSMutableString string];
+    if (fromEmail) {
+        [fullMessage appendString:[NSString stringWithFormat:@"\nFrom email: %@", fromEmail]];
+    }
+    if (phoneNumber) {
+        [fullMessage appendString:[NSString stringWithFormat:@"\nPhone number: %@", phoneNumber]];
+    }
+    
     NSDictionary *plainPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/plain",
                                kSKPSMTPPartContentTypeKey,
-                               [message stringByAppendingString:[NSString stringWithFormat:@"\nFrom email: %@", fromEmail]],
+                               fullMessage,
                                kSKPSMTPPartMessageKey,
                                @"8bit",
                                kSKPSMTPPartContentTransferEncodingKey,
                                nil];
-    NSArray *parts = @[plainPart];
+    
+    NSMutableArray *parts = [NSMutableArray array];
+    [parts addObject:plainPart];
+    
+    NSInteger index = 0;
+    for (UIImage *image in images) {
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
+        NSString *strFileName = [NSString stringWithFormat:@"MyPicture-%ld.jpeg", ++index];
+        
+        NSString *strFormat = [NSString stringWithFormat:@"image/jpeg;\r\n\tx-unix-mode=0644;\r\n\tname=\"%@\"",strFileName];
+        NSString *strFormat2 = [NSString stringWithFormat:@"attachment;\r\n\tfilename=\"%@\"",strFileName];
+        NSDictionary *vcfPart = [NSDictionary dictionaryWithObjectsAndKeys:strFormat,kSKPSMTPPartContentTypeKey,
+                                 strFormat2,kSKPSMTPPartContentDispositionKey,[imageData encodeBase64ForData],kSKPSMTPPartMessageKey,@"base64",kSKPSMTPPartContentTransferEncodingKey,nil];
+        [parts addObject:vcfPart];
+    }
+    
     self.sKPSMTPMessage.parts = parts;
     [self.sKPSMTPMessage send];
-    self.sKPSMTPMessage = nil;
 }
 
 #pragma mark - SKPSMTPMessageDelegate
