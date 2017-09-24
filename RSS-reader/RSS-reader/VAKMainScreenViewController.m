@@ -165,7 +165,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
     [[VAKSlideMenuViewController sharedSlideMenu] showMenu];
     [VAKSlideMenuViewController sharedSlideMenu].delegate = self;
-    [UIView animateWithDuration:0.5f animations:^{
+    [UIView animateWithDuration:0.25f animations:^{
         self.collectionView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
         self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
         self.toolbar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);

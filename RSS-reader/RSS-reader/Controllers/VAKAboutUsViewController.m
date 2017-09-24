@@ -2,26 +2,31 @@
 #import "VAKSlideMenuViewController.h"
 #import "VAKWebViewController.h"
 #import "VAKSendEmailViewController.h"
+#import "VAKSlideMenuDelegate.h"
+#import "VAKSlideMenuViewController.h"
 
-@interface VAKAboutUsViewController ()
+@interface VAKAboutUsViewController () <VAKSlideMenuDelegate>
 
 @end
 
 @implementation VAKAboutUsViewController
 
-#pragma mark - lazy getters
+#pragma mark - VAKSlideMenuDelegate
 
-
-#pragma mark - lifecycle view controller
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)animateHideSlideMenu {
+    self.view.frame = CGRectMake(0.f, self.view.frame.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
 }
 
 #pragma mark - Actions
 
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
-    
+    [[VAKSlideMenuViewController sharedSlideMenu] showMenu];
+    [VAKSlideMenuViewController sharedSlideMenu].delegate = self;
+    [UIView animateWithDuration:0.25f animations:^{
+        self.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.view.frame.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
+        self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
+    }];
 }
 
 - (IBAction)menuAboutUsButtonPressed:(UIButton *)sender {
