@@ -1,5 +1,6 @@
 #import "VAKSlideMenuViewController.h"
 #import "VAKAboutUsViewController.h"
+#import "VAKUIAlertController+Message.h"
 #import "VAKNetManager.h"
 #import "VAKNewsParser.h"
 #import "VAKNewsURL.h"
@@ -9,6 +10,7 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
 @interface VAKSlideMenuViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *slideMenuView;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end
 
@@ -20,7 +22,8 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
     static VAKSlideMenuViewController *slideMenuVC = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        slideMenuVC = [[self alloc] init];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        slideMenuVC = [storyboard instantiateViewControllerWithIdentifier:VAKSlideMenuViewControllerIdentifier];
     });
     return slideMenuVC;
 }
@@ -35,31 +38,15 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
 
 - (IBAction)menuButtonPressed:(UIButton *)sender {
     [self hideMenu];
-    
     switch (sender.tag) {
         case 0:
         case 1:
         case 2:
             [self loadDataWithTag:sender.tag];
             break;
-        case 3:
-            
-            break;
-        case 4:
-            
-            break;
-        case 5:
-        {
-//            VAKAboutUsViewController *aboutUsVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKAboutViewControllerIdentifier];
-//            [self presentViewController:aboutUsVC animated:YES completion:nil];
-//            [self.delegate pushViewController:aboutUsVC];
-        }
-            break;
         default:
             break;
     }
-    
-
 }
 
 #pragma mark - helpers
@@ -73,12 +60,7 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
             [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];
         }
         else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error load data" message:@"Server connection failed" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];
-            }];
-            [alert addAction:action];
-            [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            [self.view.window.rootViewController presentViewController:[UIAlertController alertControllerWithTitle:@"Error load data" message:@"No connection to the server" handler:nil] animated:YES completion:nil];
         }
     }];
 }
@@ -104,7 +86,6 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
 - (void)hideMenu {
     [UIView animateWithDuration:0.5f animations:^{
         self.view.frame = CGRectMake(-[UIScreen mainScreen].bounds.size.width, 0.f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-        self.completionBlock();
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
         self.isSlideMenu = NO;

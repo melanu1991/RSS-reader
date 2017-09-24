@@ -4,6 +4,7 @@
 #import "VAKNSString+ValidateEmail.h"
 #import "VAKNSString+ValidatePhoneNumber.h"
 #import "VAKUIAlertController+Message.h"
+#import "VAKSlideMenuViewController.h"
 
 @interface VAKOfferNewsViewController ()
 

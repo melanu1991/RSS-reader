@@ -85,7 +85,7 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
         }
         news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
         NSArray *componentsDescription = [item[VAKDescriptionIdentifier] componentsSeparatedByString:@"/>"];
-        if (componentsDescription.count > 0) {
+        if (componentsDescription.count > 1) {
             componentsDescription = [componentsDescription[1] componentsSeparatedByString:@"<br clear=\"all\""];
             news.specification = componentsDescription[0];
         }
@@ -119,7 +119,6 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
             news.specification = componentsDescription[0];
         }
         NSString *category = item[VAKCategoryIdentifier];
-        NSLog(@"%@", category);
         Category *entityCategory = [VAKDataManager categoryWithName:category news:news];
         [VAKDataManager channelWithURL:VAKNewsURL[VAKURLNewsOnlinerBy] category:entityCategory];
     }
@@ -145,7 +144,6 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
         news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
         news.specification = item[VAKDescriptionIdentifier];
         NSString *category = item[VAKCategoryIdentifier];
-        NSLog(@"%@", category);
         Category *entityCategory = [VAKDataManager categoryWithName:category news:news];
         [VAKDataManager channelWithURL:VAKNewsURL[VAKURLNewsLentaRu] category:entityCategory];
     }

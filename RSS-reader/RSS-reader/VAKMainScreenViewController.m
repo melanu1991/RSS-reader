@@ -9,6 +9,7 @@
 #import "VAKNewsCollectionViewCell.h"
 #import "VAKConstantsImages.h"
 #import "VAKConstantsCategories.h"
+#import "VAKNewsURL.h"
 
 static NSString * const VAKCellReuseIdentifier = @"newsCell";
 static NSString * const VAKSortDescriptorKey = @"pubDate";
@@ -16,28 +17,19 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 @interface VAKMainScreenViewController ()
 
-@property (strong, nonatomic) NSArray *news;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *categoriesButtonCollection;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+
+@property (strong, nonatomic) NSArray *news;
 @property (assign, nonatomic) NSInteger columnCount;
 @property (assign, nonatomic) NSInteger miniInteriorSpacing;
 @property (assign, nonatomic) NSInteger selectedCategoryTag;
 @property (strong, nonatomic) NSString *selectedNewsChannel;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *categoriesButtonCollection;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end
 
 @implementation VAKMainScreenViewController
-
-//#pragma mark - Implementation protocol delegate
-//
-//- (void)pushViewController:(UIViewController *)viewController {
-//    [self.navigationController pushViewController:viewController animated:YES];
-//}
-
-#pragma mark - lazy getters
-
-
 
 #pragma mark - life cycle view controller
 
@@ -57,7 +49,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
         [self.collectionView reloadData];
     }
     
-    [self animatingButton:self.categoriesButtonCollection[0]];
+    [self animateCategorySelection:self.categoriesButtonCollection[0]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData:) name:VAKUpdateDataNotification object:nil];
 }
@@ -135,10 +127,10 @@ static NSString * const VAKPlaceholder = @"placeholder";
 }
 
 - (NSString *)nameSelectedCategory {
-    if ([self.selectedNewsChannel isEqualToString:@"https://news.tut.by/rss"]) {
+    if ([self.selectedNewsChannel isEqualToString:VAKNewsURL[VAKURLNewsTutBy]]) {
         return VAKNameCategoriesTutBy[self.selectedCategoryTag];
     }
-    else if ([self.selectedNewsChannel isEqualToString:@"https:www.onliner.by/feed"]) {
+    else if ([self.selectedNewsChannel isEqualToString:VAKNewsURL[VAKURLNewsOnlinerBy]]) {
         return VAKNameCategoriesOnlinerBy[self.selectedCategoryTag];
     }
     return VAKNameCategoriesLentaRu[self.selectedCategoryTag];
@@ -159,7 +151,6 @@ static NSString * const VAKPlaceholder = @"placeholder";
     return [NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES];
 }
 
-//Подумать как сделать универсальный метод для всех контроллеров!
 #pragma mark - actions with slide menu
 
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
@@ -169,15 +160,16 @@ static NSString * const VAKPlaceholder = @"placeholder";
         self.collectionView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
         self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
         self.toolbar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
-        __weak VAKMainScreenViewController *weakMainScreenVC = self;
-        [VAKSlideMenuViewController sharedSlideMenu].completionBlock = ^{
-            weakMainScreenVC.collectionView.frame = CGRectMake(0.f, weakMainScreenVC.collectionView.frame.origin.y, weakMainScreenVC.collectionView.bounds.size.width, weakMainScreenVC.collectionView.bounds.size.height);
-            weakMainScreenVC.navigationController.navigationBar.frame = CGRectMake(0.f, weakMainScreenVC.navigationController.navigationBar.frame.origin.y, weakMainScreenVC.navigationController.navigationBar.bounds.size.width, weakMainScreenVC.navigationController.navigationBar.bounds.size.height);
-            weakMainScreenVC.toolbar.frame = CGRectMake(0.f, weakMainScreenVC.toolbar.frame.origin.y, weakMainScreenVC.toolbar.bounds.size.width, weakMainScreenVC.toolbar.bounds.size.height);
-        };
+//        __weak VAKMainScreenViewController *weakMainScreenVC = self;
+//        [VAKSlideMenuViewController sharedSlideMenu].completionBlock = ^{
+//            weakMainScreenVC.collectionView.frame = CGRectMake(0.f, weakMainScreenVC.collectionView.frame.origin.y, weakMainScreenVC.collectionView.bounds.size.width, weakMainScreenVC.collectionView.bounds.size.height);
+//            weakMainScreenVC.navigationController.navigationBar.frame = CGRectMake(0.f, weakMainScreenVC.navigationController.navigationBar.frame.origin.y, weakMainScreenVC.navigationController.navigationBar.bounds.size.width, weakMainScreenVC.navigationController.navigationBar.bounds.size.height);
+//            weakMainScreenVC.toolbar.frame = CGRectMake(0.f, weakMainScreenVC.toolbar.frame.origin.y, weakMainScreenVC.toolbar.bounds.size.width, weakMainScreenVC.toolbar.bounds.size.height);
+//        };
     }];
-    
 }
+
+//- (void)
 
 #pragma mark - UIToolbar actions
 
@@ -185,9 +177,9 @@ static NSString * const VAKPlaceholder = @"placeholder";
     
     if (sender.tag != self.selectedCategoryTag) {
         if (self.selectedCategoryTag >= 0) {
-            [self clearAnimatingButton:self.categoriesButtonCollection[self.selectedCategoryTag]];
+            [self animateCategoryCancellation:self.categoriesButtonCollection[self.selectedCategoryTag]];
         }
-        [self animatingButton:sender];
+        [self animateCategorySelection:sender];
         self.selectedCategoryTag = sender.tag;
         self.title = VAKTitleCategories[sender.tag];
         self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[self sortDescriptor]];
@@ -199,7 +191,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 //Подумать как создать категорию UIView!
 #pragma mark - UIToolbar animation
 
-- (void)clearAnimatingButton:(UIButton *)button {
+- (void)animateCategoryCancellation:(UIButton *)button {
     [button setImage:[UIImage imageNamed:VAKLittleImageName[button.tag]] forState:UIControlStateNormal];
     button.imageEdgeInsets = UIEdgeInsetsZero;
     button.layer.cornerRadius = 0;
@@ -207,7 +199,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
     button.layer.backgroundColor = [UIColor clearColor].CGColor;
 }
 
-- (void)animatingButton:(UIButton *)button {
+- (void)animateCategorySelection:(UIButton *)button {
     [button setImage:[UIImage imageNamed:VAKBigImageName[button.tag]] forState:UIControlStateNormal];
     button.imageEdgeInsets = UIEdgeInsetsMake(0.f, 0.f, 25.f, 0.f);
     button.layer.bounds = CGRectMake(0.f, 0.f, button.bounds.size.width * 2.f, button.bounds.size.height * 4.f);
@@ -219,7 +211,6 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    NSLog(@"%@", @"deallocate mainVC");
 }
 
 @end
