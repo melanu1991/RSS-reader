@@ -70,6 +70,10 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 + (void)parserNewsWithTutByData:(NSArray *)data {
 
     [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsTutBy]];
+    
+//    NSArray *arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsTutBy]] sortDescriptor:nil];
+//    NSLog(@"%ld before count news", arr.count);
+//    NSLog(@"%lu data count input", (unsigned long)data.count);
 
     for (NSDictionary *item in data) {
         News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
@@ -90,12 +94,12 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
             news.specification = componentsDescription[0];
         }
         NSString *category = item[VAKCategoryIdentifier][VAKTextIdentifier];
-        Category *entityCategory = [VAKDataManager categoryWithName:category news:news];
-        [VAKDataManager channelWithURL:VAKNewsURL[VAKURLNewsTutBy] category:entityCategory];
+        [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsTutBy] news:news];
     }
     
     [[VAKDataManager sharedManager].managedObjectContext save:nil];
-    
+//    arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsTutBy]] sortDescriptor:nil];
+//    NSLog(@"%ld after count news", arr.count);
 }
 
 @end
@@ -105,6 +109,10 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 + (void)parserNewsWithOnlinerByData:(NSArray *)data {
     
     [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsOnlinerBy]];
+    
+//    NSArray *arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsOnlinerBy]] sortDescriptor:nil];
+//    NSLog(@"%ld before count news", arr.count);
+//    NSLog(@"%lu data count input", (unsigned long)data.count);
     
     for (NSDictionary *item in data) {
         News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
@@ -119,12 +127,12 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
             news.specification = componentsDescription[0];
         }
         NSString *category = item[VAKCategoryIdentifier];
-        Category *entityCategory = [VAKDataManager categoryWithName:category news:news];
-        [VAKDataManager channelWithURL:VAKNewsURL[VAKURLNewsOnlinerBy] category:entityCategory];
+        [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsOnlinerBy] news:news];
     }
     
     [[VAKDataManager sharedManager].managedObjectContext save:nil];
-    
+//    arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsOnlinerBy]] sortDescriptor:nil];
+//    NSLog(@"%ld after count news", arr.count);
 }
 
 @end
@@ -135,6 +143,10 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
     
     [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsLentaRu]];
     
+//    NSArray *arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsLentaRu]] sortDescriptor:nil];
+//    NSLog(@"%ld before count news", arr.count);
+//    NSLog(@"%lu data count input", (unsigned long)data.count);
+    
     for (NSDictionary *item in data) {
         News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
         news.title = item[VAKTitleIdentifier];
@@ -144,12 +156,12 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
         news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
         news.specification = item[VAKDescriptionIdentifier];
         NSString *category = item[VAKCategoryIdentifier];
-        Category *entityCategory = [VAKDataManager categoryWithName:category news:news];
-        [VAKDataManager channelWithURL:VAKNewsURL[VAKURLNewsLentaRu] category:entityCategory];
+        [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsLentaRu] news:news];
     }
     
     [[VAKDataManager sharedManager].managedObjectContext save:nil];
-    
+//    arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsLentaRu]] sortDescriptor:nil];
+//    NSLog(@"%ld after count news", arr.count);
 }
 
 @end

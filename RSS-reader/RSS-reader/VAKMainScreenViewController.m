@@ -68,6 +68,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 - (void)updateData:(NSNotification *)notification {
     self.selectedNewsChannel = notification.userInfo[@"url"];
     self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[self sortDescriptor]];
+//    NSLog(@"%ld main screen VC", self.news.count);
     [self.collectionView reloadData];
 }
 
@@ -90,7 +91,6 @@ static NSString * const VAKPlaceholder = @"placeholder";
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     VAKWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKWebViewControllerIdentifier];
     News *news = self.news[indexPath.row];
@@ -189,23 +189,22 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 }
 
-//Подумать как создать категорию UIView!
 #pragma mark - UIToolbar animation
 
 - (void)animateCategoryCancellation:(UIButton *)button {
     [button setImage:[UIImage imageNamed:VAKLittleImageName[button.tag]] forState:UIControlStateNormal];
     button.imageEdgeInsets = UIEdgeInsetsZero;
     button.layer.cornerRadius = 0;
-    button.layer.bounds = button.layer.bounds = CGRectMake(0.f, 0.f, button.bounds.size.width / 2.f, button.bounds.size.height / 4.f);;
+    button.layer.bounds = button.layer.bounds = CGRectMake(0.f, 0.f, 25.f, 25.f);;
     button.layer.backgroundColor = [UIColor clearColor].CGColor;
 }
 
 - (void)animateCategorySelection:(UIButton *)button {
     [button setImage:[UIImage imageNamed:VAKBigImageName[button.tag]] forState:UIControlStateNormal];
     button.imageEdgeInsets = UIEdgeInsetsMake(0.f, 0.f, 25.f, 0.f);
-    button.layer.bounds = CGRectMake(0.f, 0.f, button.bounds.size.width * 2.f, button.bounds.size.height * 4.f);
+    button.layer.bounds = CGRectMake(0.f, 0.f, 100.f, 100.f);
     button.layer.backgroundColor = [UIColor colorWithRed:55.f / 255.f green:55.f / 255.f blue:55.f / 255.f alpha:1.f].CGColor;
-    button.layer.cornerRadius = button.layer.bounds.size.height / 4.f;
+    button.layer.cornerRadius = 50.f;
 }
 
 #pragma mark - deallocate

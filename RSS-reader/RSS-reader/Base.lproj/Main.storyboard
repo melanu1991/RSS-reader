@@ -186,6 +186,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="N28-9l-DON"/>
+                                                    <segue destination="xE7-Mb-ALd" kind="show" id="2yL-TE-Gcz"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXN-nL-Geg">
@@ -197,6 +198,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="zoe-VA-1cn"/>
+                                                    <segue destination="xE7-Mb-ALd" kind="show" id="btU-CP-GN5"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUz-Bq-Lnj">
@@ -208,6 +210,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="menuButtonPressed:" destination="x9i-0F-HDP" eventType="touchUpInside" id="Prd-Mb-iap"/>
+                                                    <segue destination="xE7-Mb-ALd" kind="show" id="ewf-iT-t1K"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7QR-24-3HD">
@@ -881,4 +884,7 @@
         <image name="society" width="36" height="23"/>
         <image name="world" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ewf-iT-t1K"/>
+    </inferredMetricsTieBreakers>
 </document>

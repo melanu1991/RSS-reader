@@ -1,7 +1,7 @@
 #ifndef VAKNewsURL_h
 #define VAKNewsURL_h
 
-typedef NS_ENUM(NSUInteger, URLNews) {
+typedef NS_ENUM(NSUInteger, VAKURLNews) {
     VAKURLNewsTutBy,
     VAKURLNewsOnlinerBy,
     VAKURLNewsLentaRu

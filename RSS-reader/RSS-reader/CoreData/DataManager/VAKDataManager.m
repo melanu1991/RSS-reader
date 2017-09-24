@@ -94,8 +94,8 @@
     category.channel = channel;
 }
 
-+ (Category *)categoryWithName:(NSString *)name news:(News *)news {
-    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntityName predicate:[NSPredicate predicateWithFormat:@"name == %@", name] sortDescriptor:nil];
++ (void)categoryWithName:(NSString *)name channelURL:(NSString *)channelURL news:(News *)news {
+    NSArray *categories = [VAKDataManager allEntitiesWithName:VAKCategoryEntityName predicate:[NSPredicate predicateWithFormat:@"name == %@ AND channel.url == %@", name, channelURL] sortDescriptor:nil];
     Category *entityCategory;
     if (categories.count > 0) {
         entityCategory = categories[0];
@@ -106,7 +106,7 @@
     }
     news.category = entityCategory;
     [entityCategory addNewsObject:news];
-    return entityCategory;
+    [VAKDataManager channelWithURL:channelURL category:entityCategory];
 }
 
 + (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate sortDescriptor:(NSSortDescriptor *)sortDescriptor {

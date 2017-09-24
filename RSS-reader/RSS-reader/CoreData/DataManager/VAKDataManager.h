@@ -23,8 +23,7 @@ static NSString * const VAKChannelEntityName = @"Channel";
 @interface VAKDataManager (WorkWithData)
 
 + (NSManagedObject *)entityWithName:(NSString *)name;
-+ (void)channelWithURL:(NSString *)url category:(Category *)category;
-+ (Category *)categoryWithName:(NSString *)name news:(News *)news;
++ (void)categoryWithName:(NSString *)name channelURL:(NSString *)channelURL news:(News *)news;
 + (NSArray *)allEntitiesWithName:(NSString *)name predicate:(NSPredicate *)predicate sortDescriptor:(NSSortDescriptor *)sortDescriptor;
 + (void)deleteEntitiesWithChannelURL:(NSString *)url;
 
