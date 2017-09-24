@@ -10,12 +10,13 @@
 #import "VAKConstantsImages.h"
 #import "VAKConstantsCategories.h"
 #import "VAKNewsURL.h"
+#import "VAKSlideMenuDelegate.h"
 
 static NSString * const VAKCellReuseIdentifier = @"newsCell";
 static NSString * const VAKSortDescriptorKey = @"pubDate";
 static NSString * const VAKPlaceholder = @"placeholder";
 
-@interface VAKMainScreenViewController ()
+@interface VAKMainScreenViewController () <VAKSlideMenuDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *categoriesButtonCollection;
@@ -30,6 +31,14 @@ static NSString * const VAKPlaceholder = @"placeholder";
 @end
 
 @implementation VAKMainScreenViewController
+
+#pragma mark - VAKSlideMenuDelegate
+
+- (void)animateHideSlideMenu {
+    self.collectionView.frame = CGRectMake(0.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+    self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
+    self.toolbar.frame = CGRectMake(0.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
+}
 
 #pragma mark - life cycle view controller
 
@@ -154,22 +163,14 @@ static NSString * const VAKPlaceholder = @"placeholder";
 #pragma mark - actions with slide menu
 
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
-    
     [[VAKSlideMenuViewController sharedSlideMenu] showMenu];
+    [VAKSlideMenuViewController sharedSlideMenu].delegate = self;
     [UIView animateWithDuration:0.5f animations:^{
         self.collectionView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
         self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
         self.toolbar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
-//        __weak VAKMainScreenViewController *weakMainScreenVC = self;
-//        [VAKSlideMenuViewController sharedSlideMenu].completionBlock = ^{
-//            weakMainScreenVC.collectionView.frame = CGRectMake(0.f, weakMainScreenVC.collectionView.frame.origin.y, weakMainScreenVC.collectionView.bounds.size.width, weakMainScreenVC.collectionView.bounds.size.height);
-//            weakMainScreenVC.navigationController.navigationBar.frame = CGRectMake(0.f, weakMainScreenVC.navigationController.navigationBar.frame.origin.y, weakMainScreenVC.navigationController.navigationBar.bounds.size.width, weakMainScreenVC.navigationController.navigationBar.bounds.size.height);
-//            weakMainScreenVC.toolbar.frame = CGRectMake(0.f, weakMainScreenVC.toolbar.frame.origin.y, weakMainScreenVC.toolbar.bounds.size.width, weakMainScreenVC.toolbar.bounds.size.height);
-//        };
     }];
 }
-
-//- (void)
 
 #pragma mark - UIToolbar actions
 

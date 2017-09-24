@@ -80,6 +80,7 @@
 		58C5D8431F759DB800DEE601 /* VAKConstantsEmailsChannels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKConstantsEmailsChannels.h; sourceTree = "<group>"; };
 		58C5D8441F75A32500DEE601 /* VAKNSString+ValidatePhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VAKNSString+ValidatePhoneNumber.h"; sourceTree = "<group>"; };
 		58C5D8451F75A32500DEE601 /* VAKNSString+ValidatePhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VAKNSString+ValidatePhoneNumber.m"; sourceTree = "<group>"; };
+		58EDD3EE1F77B3AF007FB7D8 /* VAKSlideMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSlideMenuDelegate.h; sourceTree = "<group>"; };
 		58F03AAF1F742F1800C6DF54 /* VAKNSString+ValidateEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VAKNSString+ValidateEmail.h"; sourceTree = "<group>"; };
 		58F03AB01F742F1800C6DF54 /* VAKNSString+ValidateEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VAKNSString+ValidateEmail.m"; sourceTree = "<group>"; };
 		58F03AB31F74398100C6DF54 /* VAKSKPSMTPMessageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSKPSMTPMessageService.h; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 		581ECCBC1F5D91B80056B644 /* RSS-reader */ = {
 			isa = PBXGroup;
 			children = (
+				58EDD3ED1F77B354007FB7D8 /* Delegates */,
 				58F03AB21F74395C00C6DF54 /* SKPSMTPMessageService */,
 				58F03AAE1F742EAD00C6DF54 /* Categories */,
 				587287801F72EEFF0080A5A5 /* Constants */,
@@ -245,6 +247,15 @@
 			);
 			path = Parsers;
 			sourceTree = "<group>";
+		};
+		58EDD3ED1F77B354007FB7D8 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				58EDD3EE1F77B3AF007FB7D8 /* VAKSlideMenuDelegate.h */,
+			);
+			name = Delegates;
+			path = "RSS-reader/Delegates";
+			sourceTree = SOURCE_ROOT;
 		};
 		58F03AAE1F742EAD00C6DF54 /* Categories */ = {
 			isa = PBXGroup;
