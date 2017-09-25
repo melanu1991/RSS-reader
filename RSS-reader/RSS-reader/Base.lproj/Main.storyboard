@@ -481,11 +481,24 @@
                     <connections>
                         <outlet property="button" destination="YXN-nL-Geg" id="MlE-Jy-Fcb"/>
                         <outlet property="slideMenuView" destination="yBT-kK-2vG" id="AYF-l2-wBa"/>
+                        <outletCollection property="collectionIndicators" destination="y49-MI-yAs" id="KiX-jH-jBT"/>
+                        <outletCollection property="collectionIndicators" destination="BNq-fV-8pq" id="gyk-NA-Zds"/>
+                        <outletCollection property="collectionIndicators" destination="UAY-AW-2ie" id="gdM-EF-6MD"/>
+                        <outletCollection property="collectionIndicators" destination="bOF-FY-la3" id="aRu-xc-lOP"/>
+                        <outletCollection property="collectionIndicators" destination="brL-Td-BTP" id="s54-yB-gRp"/>
+                        <outletCollection property="collectionIndicators" destination="r50-uN-Ukq" id="1t4-UJ-6NE"/>
+                        <outletCollection property="collectionIndicators" destination="0fR-fb-amO" id="koT-Bw-dB0"/>
+                        <outletCollection property="collectionCircles" destination="otQ-9a-DcC" id="l9N-k4-gxs"/>
+                        <outletCollection property="collectionCircles" destination="UCl-jF-irk" id="hfc-LC-zvS"/>
+                        <outletCollection property="collectionCircles" destination="dmz-O6-Oke" id="9E7-At-8M7"/>
+                        <outletCollection property="collectionCircles" destination="orF-6u-mmJ" id="TOR-G3-Ldj"/>
+                        <outletCollection property="collectionCircles" destination="Taq-0e-xDo" id="It3-us-on1"/>
+                        <outletCollection property="collectionCircles" destination="fxA-VZ-EWT" id="zjg-VU-YeF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSC-bl-nmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831.8840579710147" y="138.58695652173915"/>
+            <point key="canvasLocation" x="1832" y="139"/>
         </scene>
         <!--Предложить новость-->
         <scene sceneID="UfV-VK-AtA">

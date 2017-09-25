@@ -12,6 +12,10 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
 
 @property (weak, nonatomic) IBOutlet UIView *slideMenuView;
 @property (weak, nonatomic) IBOutlet UIButton *button;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *collectionIndicators;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *collectionCircles;
+
+@property (assign, nonatomic) NSInteger selectedButtonTag;
 
 @end
 
@@ -29,16 +33,16 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
     return slideMenuVC;
 }
 
-#pragma mark - life cycle view controller
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 #pragma mark - actions
 
 - (IBAction)menuButtonPressed:(UIButton *)sender {
+    
+    [self clearGradient];
+    self.selectedButtonTag = sender.tag;
+    [self addGradientForButtonTag:sender.tag];
+    
     [self hideMenu];
+    
     switch (sender.tag) {
         case 0:
         case 1:
@@ -51,6 +55,37 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
 }
 
 #pragma mark - helpers
+
+- (void)addGradientForButtonTag:(NSInteger)tag {
+    NSInteger startIndex = tag;
+    NSInteger endIndex = startIndex + 1;
+    for (NSInteger i = startIndex; i <= endIndex; i ++) {
+        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+        UIView *view = self.collectionIndicators[i];
+        gradientLayer.frame = view.bounds;
+        [view.layer addSublayer:gradientLayer];
+        gradientLayer.colors = @[ (__bridge id)[UIColor colorWithRed:179.f / 255.f green:179.f / 255.f blue:179.f / 255.f alpha:1.f].CGColor, (__bridge id)[UIColor colorWithRed:179.f / 255.f green:179.f / 255.f blue:179.f / 255.f alpha:1.f].CGColor, (__bridge id)[UIColor colorWithRed:1.f green:1.f blue:1.f alpha:1.f].CGColor ];
+        gradientLayer.startPoint = CGPointMake(0.f, 0.f);
+        gradientLayer.endPoint = CGPointMake(1.f, 1.f);
+    }
+    UIView *circle = self.collectionCircles[tag];
+    circle.backgroundColor = [UIColor colorWithRed:249.f / 255.f green:249.f / 255.f blue:249.f / 255.f alpha:1.f];
+}
+
+- (void)clearGradient {
+    NSInteger startIndex = self.selectedButtonTag;
+    NSInteger endIndex = startIndex + 1;
+    for (NSInteger i = startIndex; i <= endIndex; i ++) {
+        UIView *view = self.collectionIndicators[i];
+        for (CALayer *layer in view.layer.sublayers) {
+            if ([layer isKindOfClass:[CAGradientLayer class]]) {
+                [layer removeFromSuperlayer];
+            }
+        }
+    }
+    UIView *circle = self.collectionCircles[self.selectedButtonTag];
+    circle.backgroundColor = [UIColor colorWithRed:179.f / 255.f green:179.f / 255.f blue:179.f / 255.f alpha:1.f];
+}
 
 - (void)loadDataWithTag:(NSInteger)tag {
     NSString *path = VAKNewsURL[tag];
