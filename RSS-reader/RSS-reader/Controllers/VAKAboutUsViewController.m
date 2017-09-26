@@ -7,6 +7,8 @@
 
 @interface VAKAboutUsViewController () <VAKSlideMenuDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *aboutUsView;
+
 @end
 
 @implementation VAKAboutUsViewController
@@ -14,8 +16,10 @@
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
-    self.view.frame = CGRectMake(0.f, self.view.frame.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
-    self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
+    [UIView animateWithDuration:0.25f animations:^{
+        self.aboutUsView.frame = CGRectMake(0.f, self.aboutUsView.frame.origin.y, self.aboutUsView.bounds.size.width, self.aboutUsView.bounds.size.height);
+        self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
+    }];
 }
 
 #pragma mark - Actions
@@ -24,7 +28,7 @@
     [[VAKSlideMenuViewController sharedSlideMenu] showMenu];
     [VAKSlideMenuViewController sharedSlideMenu].delegate = self;
     [UIView animateWithDuration:0.25f animations:^{
-        self.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.view.frame.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
+        self.aboutUsView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.aboutUsView.frame.origin.y, self.aboutUsView.bounds.size.width, self.aboutUsView.bounds.size.height);
         self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
     }];
 }

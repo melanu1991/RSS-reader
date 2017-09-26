@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIView *offersNewsView;
 
 @property (strong, nonatomic) NSMutableArray *images;
 @property (strong, nonatomic) NSMutableArray *files;
@@ -41,8 +42,10 @@
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
-    self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
-    self.view.frame = CGRectMake(0.f, self.view.frame.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
+    [UIView animateWithDuration:0.25f animations:^{
+        self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
+        self.offersNewsView.frame = CGRectMake(0.f, self.offersNewsView.frame.origin.y, self.offersNewsView.bounds.size.width, self.offersNewsView.bounds.size.height);
+    }];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -59,7 +62,7 @@
     [VAKSlideMenuViewController sharedSlideMenu].delegate = self;
     [UIView animateWithDuration:0.25f animations:^{
         self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
-        self.view.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.view.frame.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
+        self.offersNewsView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.offersNewsView.frame.origin.y, self.offersNewsView.bounds.size.width, self.offersNewsView.bounds.size.height);
     }];
 }
 

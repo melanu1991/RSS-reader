@@ -1,12 +1,10 @@
 #import "VAKSlideMenuViewController.h"
-#import "VAKAboutUsViewController.h"
 #import "VAKUIAlertController+Message.h"
 #import "VAKNetManager.h"
 #import "VAKNewsParser.h"
 #import "VAKNewsURL.h"
 #import "VAKSlideMenuDelegate.h"
-
-static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewController";
+#import "VAKMainScreenViewController.h"
 
 @interface VAKSlideMenuViewController ()
 
@@ -20,6 +18,15 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
 @end
 
 @implementation VAKSlideMenuViewController
+
+#pragma mark - UIStoryboardSegue
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([self.delegate isMemberOfClass:[VAKMainScreenViewController class]] && [identifier isEqualToString:@"VAKMainScreenStoryboardSegue"]) {
+        return NO;
+    }
+    return YES;
+}
 
 #pragma mark - Shared Singleton
 
@@ -40,7 +47,6 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
     [self clearGradient];
     self.selectedButtonTag = sender.tag;
     [self addGradientForButtonTag:sender.tag];
-    
     [self hideMenu];
     
     switch (sender.tag) {
@@ -111,7 +117,7 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
 
 - (void)showMenu {
     self.view.frame = CGRectMake(-[UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    [UIView animateWithDuration:0.5f animations:^{
+    [UIView animateWithDuration:0.25f animations:^{
         self.view.frame = CGRectMake(0.f, 0.f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
         [window addSubview:self.view];
@@ -120,7 +126,7 @@ static NSString * const VAKAboutViewControllerIdentifier = @"VAKAboutUsViewContr
 }
 
 - (void)hideMenu {
-    [UIView animateWithDuration:0.5f animations:^{
+    [UIView animateWithDuration:0.25f animations:^{
         self.view.frame = CGRectMake(-[UIScreen mainScreen].bounds.size.width, 0.f, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         [self.delegate animateHideSlideMenu];
     } completion:^(BOOL finished) {

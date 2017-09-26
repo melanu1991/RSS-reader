@@ -35,9 +35,11 @@ static NSString * const VAKPlaceholder = @"placeholder";
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
-    self.collectionView.frame = CGRectMake(0.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
-    self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
-    self.toolbar.frame = CGRectMake(0.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
+    [UIView animateWithDuration:0.25f animations:^{
+        self.collectionView.frame = CGRectMake(0.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+        self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
+        self.toolbar.frame = CGRectMake(0.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
+    }];
 }
 
 #pragma mark - life cycle view controller
@@ -58,7 +60,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
         [self.collectionView reloadData];
     }
     
-    [self animateCategorySelection:self.categoriesButtonCollection[0]];
+    [self animateSelectionCategory:self.categoriesButtonCollection[0]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData:) name:VAKUpdateDataNotification object:nil];
 }
@@ -68,7 +70,6 @@ static NSString * const VAKPlaceholder = @"placeholder";
 - (void)updateData:(NSNotification *)notification {
     self.selectedNewsChannel = notification.userInfo[@"url"];
     self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[self sortDescriptor]];
-//    NSLog(@"%ld main screen VC", self.news.count);
     [self.collectionView reloadData];
 }
 
@@ -178,9 +179,9 @@ static NSString * const VAKPlaceholder = @"placeholder";
     
     if (sender.tag != self.selectedCategoryTag) {
         if (self.selectedCategoryTag >= 0) {
-            [self animateCategoryCancellation:self.categoriesButtonCollection[self.selectedCategoryTag]];
+            [self animateCancelCategory:self.categoriesButtonCollection[self.selectedCategoryTag]];
         }
-        [self animateCategorySelection:sender];
+        [self animateSelectionCategory:sender];
         self.selectedCategoryTag = sender.tag;
         self.title = VAKTitleCategories[sender.tag];
         self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[self sortDescriptor]];
@@ -191,7 +192,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 #pragma mark - UIToolbar animation
 
-- (void)animateCategoryCancellation:(UIButton *)button {
+- (void)animateCancelCategory:(UIButton *)button {
     [button setImage:[UIImage imageNamed:VAKLittleImageName[button.tag]] forState:UIControlStateNormal];
     button.imageEdgeInsets = UIEdgeInsetsZero;
     button.layer.cornerRadius = 0;
@@ -199,7 +200,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
     button.layer.backgroundColor = [UIColor clearColor].CGColor;
 }
 
-- (void)animateCategorySelection:(UIButton *)button {
+- (void)animateSelectionCategory:(UIButton *)button {
     [button setImage:[UIImage imageNamed:VAKBigImageName[button.tag]] forState:UIControlStateNormal];
     button.imageEdgeInsets = UIEdgeInsetsMake(0.f, 0.f, 25.f, 0.f);
     button.layer.bounds = CGRectMake(0.f, 0.f, 100.f, 100.f);
