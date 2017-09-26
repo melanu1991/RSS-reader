@@ -6,6 +6,7 @@
 #import "VAKUIAlertController+Message.h"
 #import "VAKSlideMenuViewController.h"
 #import "VAKSlideMenuDelegate.h"
+#import "VAKUIView+AnimationViews.h"
 
 @interface VAKOfferNewsViewController () <VAKSlideMenuDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -42,10 +43,7 @@
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
-    [UIView animateWithDuration:0.25f animations:^{
-        self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
-        self.offersNewsView.frame = CGRectMake(0.f, self.offersNewsView.frame.origin.y, self.offersNewsView.bounds.size.width, self.offersNewsView.bounds.size.height);
-    }];
+    [UIView animateWithDuration:0.25f views:@[self.navigationController.navigationBar, self.offersNewsView]];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -77,14 +75,13 @@
 }
 
 - (IBAction)sendMessageButtonPressed:(UIButton *)sender {
-//    if (self.emailTextField.text.isValidEmail || self.phoneNumberTextField.text.isValidPhoneNumber) {
-//        [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.messageOfNewsTextField.text fromEmail:self.emailTextField.text toEmail:VAKEmailsChannels[self.segmentedControl.selectedSegmentIndex] subject:@"Предложить новость"];
-    NSDictionary *info = @{ VAKImagesInfo : self.images, VAKFilesInfo : self.files, VAKPhoneNumberInfo : @"+375(44)792-85-27", VAKFromEmailInfo : @"myEmail@mail.ru" };
-    [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:@"sdfsdf" toEmail:@"lich-se@rambler.ru" subject:@"fsdfsd" info:info];
-//    }
-//    else {
-//        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Error: invalid email or phone number" message:@"You must input correct email or phone number" handler:nil] animated:YES completion:nil];
-//    }
+    NSDictionary *info = @{ VAKImagesInfo : self.images, VAKFilesInfo : self.files, VAKPhoneNumberInfo : self.phoneNumberTextField.text, VAKFromEmailInfo : self.emailTextField.text };
+    if (self.emailTextField.text.isValidEmail || self.phoneNumberTextField.text.isValidPhoneNumber) {
+        [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.messageOfNewsTextField.text toEmail:VAKEmailsChannels[self.segmentedControl.selectedSegmentIndex] subject:@"Предложить новость" info:info];
+    }
+    else {
+        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Error: invalid email or phone number" message:@"You must input correct email or phone number" handler:nil] animated:YES completion:nil];
+    }
 }
 
 @end

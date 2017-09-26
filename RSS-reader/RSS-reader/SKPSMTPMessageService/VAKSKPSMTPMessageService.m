@@ -40,10 +40,10 @@
 
 - (void)sendMessage:(NSString *)message toEmail:(NSString *)toEmail subject:(NSString *)subject info:(NSDictionary *)info {
     
-    NSString *fromEmail = info[@"VAKFromEmail"];
-    NSString *phoneNumber = info[@"VAKPhoneNumber"];
-    NSArray *images = info[@"VAKImages"];
-    __unused NSArray *files = info[@"VAKFiles"];
+    NSString *fromEmail = info[VAKFromEmailInfo];
+    NSString *phoneNumber = info[VAKPhoneNumberInfo];
+    NSArray *images = info[VAKImagesInfo];
+    __unused NSArray *files = info[VAKFilesInfo];
     
     self.sKPSMTPMessage.fromEmail = fromEmail;
     self.sKPSMTPMessage.toEmail = toEmail;

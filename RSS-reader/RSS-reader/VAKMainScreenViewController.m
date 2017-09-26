@@ -11,6 +11,7 @@
 #import "VAKConstantsCategories.h"
 #import "VAKNewsURL.h"
 #import "VAKSlideMenuDelegate.h"
+#import "VAKUIView+AnimationViews.h"
 
 static NSString * const VAKCellReuseIdentifier = @"newsCell";
 static NSString * const VAKSortDescriptorKey = @"pubDate";
@@ -35,11 +36,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
-    [UIView animateWithDuration:0.25f animations:^{
-        self.collectionView.frame = CGRectMake(0.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
-        self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
-        self.toolbar.frame = CGRectMake(0.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
-    }];
+    [UIView animateWithDuration:0.25f views:@[self.navigationController.navigationBar, self.toolbar, self.collectionView]];
 }
 
 #pragma mark - life cycle view controller

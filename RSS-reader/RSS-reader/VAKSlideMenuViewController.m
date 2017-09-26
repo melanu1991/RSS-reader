@@ -36,6 +36,7 @@
     dispatch_once(&onceToken, ^{
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         slideMenuVC = [storyboard instantiateViewControllerWithIdentifier:VAKSlideMenuViewControllerIdentifier];
+        slideMenuVC.selectedButtonTag = -1;
     });
     return slideMenuVC;
 }
@@ -44,20 +45,23 @@
 
 - (IBAction)menuButtonPressed:(UIButton *)sender {
     
-    [self clearGradient];
-    self.selectedButtonTag = sender.tag;
-    [self addGradientForButtonTag:sender.tag];
-    [self hideMenu];
-    
-    switch (sender.tag) {
-        case 0:
-        case 1:
-        case 2:
-            [self loadDataWithTag:sender.tag];
-            break;
-        default:
-            break;
+    if (self.selectedButtonTag != sender.tag) {
+        
+        [self clearGradient];
+        self.selectedButtonTag = sender.tag;
+        [self addGradientForButtonTag:sender.tag];
+        
+        switch (sender.tag) {
+            case 0:
+            case 1:
+            case 2:
+                [self loadDataWithTag:sender.tag];
+                break;
+            default:
+                break;
+        }
     }
+    [self hideMenu];
 }
 
 #pragma mark - helpers
@@ -80,17 +84,19 @@
 
 - (void)clearGradient {
     NSInteger startIndex = self.selectedButtonTag;
-    NSInteger endIndex = startIndex + 1;
-    for (NSInteger i = startIndex; i <= endIndex; i ++) {
-        UIView *view = self.collectionIndicators[i];
-        for (CALayer *layer in view.layer.sublayers) {
-            if ([layer isKindOfClass:[CAGradientLayer class]]) {
-                [layer removeFromSuperlayer];
+    if (startIndex != -1) {
+        NSInteger endIndex = startIndex + 1;
+        for (NSInteger i = startIndex; i <= endIndex; i ++) {
+            UIView *view = self.collectionIndicators[i];
+            for (CALayer *layer in view.layer.sublayers) {
+                if ([layer isKindOfClass:[CAGradientLayer class]]) {
+                    [layer removeFromSuperlayer];
+                }
             }
         }
+        UIView *circle = self.collectionCircles[self.selectedButtonTag];
+        circle.backgroundColor = [UIColor colorWithRed:179.f / 255.f green:179.f / 255.f blue:179.f / 255.f alpha:1.f];
     }
-    UIView *circle = self.collectionCircles[self.selectedButtonTag];
-    circle.backgroundColor = [UIColor colorWithRed:179.f / 255.f green:179.f / 255.f blue:179.f / 255.f alpha:1.f];
 }
 
 - (void)loadDataWithTag:(NSInteger)tag {

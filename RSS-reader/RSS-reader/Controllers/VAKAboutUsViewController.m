@@ -4,6 +4,7 @@
 #import "VAKSendEmailViewController.h"
 #import "VAKSlideMenuDelegate.h"
 #import "VAKSlideMenuViewController.h"
+#import "VAKUIView+AnimationViews.h"
 
 @interface VAKAboutUsViewController () <VAKSlideMenuDelegate>
 
@@ -16,10 +17,7 @@
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
-    [UIView animateWithDuration:0.25f animations:^{
-        self.aboutUsView.frame = CGRectMake(0.f, self.aboutUsView.frame.origin.y, self.aboutUsView.bounds.size.width, self.aboutUsView.bounds.size.height);
-        self.navigationController.navigationBar.frame = CGRectMake(0.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
-    }];
+    [UIView animateWithDuration:0.25f views:@[self.aboutUsView, self.navigationController.navigationBar]];
 }
 
 #pragma mark - Actions
