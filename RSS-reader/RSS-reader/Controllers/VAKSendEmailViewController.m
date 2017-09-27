@@ -46,7 +46,7 @@
 
 - (IBAction)sendEmail:(UIButton *)sender {
     if (self.senderTextField.text.isValidEmail) {
-        if (self.recipients.count > 0) {
+        if (self.isRecipient) {
             for (NSString *recipient in self.recipients) {
                 [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text toEmail:recipient subject:self.subjectTextField.text info:@{ VAKFromEmailInfo : self.senderTextField.text }];
             }

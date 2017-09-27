@@ -1,6 +1,7 @@
 #import "VAKNetManager.h"
 #import "BNRSSFeedParser.h"
 #import "BNRSSFeed.h"
+#import <UIKit/UIKit.h>
 
 @interface VAKNetManager ()
 
@@ -31,6 +32,13 @@
 }
 
 #pragma mark - load data
+
+- (void)loadImageWithPath:(NSString *)path completionBlock:(void (^)(NSData *imageData, NSError *error))completionBlock {
+    NSURLSessionDownloadTask *downloadPhotoTask = [[NSURLSession sharedSession] downloadTaskWithURL:[NSURL URLWithString:path] completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        completionBlock([NSData dataWithContentsOfURL:location], error);
+    }];
+    [downloadPhotoTask resume];
+}
 
 - (void)loadDataWithPath:(NSString *)path completionHandler:(void(^)(NSArray *data, NSError *error))completionHandler {
     

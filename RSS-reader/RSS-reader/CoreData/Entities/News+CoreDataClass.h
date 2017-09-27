@@ -13,6 +13,7 @@
 @property (nullable, nonatomic, copy) NSString *source;
 @property (nullable, nonatomic, copy) NSString *specification;
 @property (nullable, nonatomic, copy) NSString *title;
+@property (nullable, nonatomic, retain) NSData *image;
 @property (nullable, nonatomic, retain) Category *category;
 
 @end

@@ -3,11 +3,13 @@
 #import "News+CoreDataClass.h"
 #import "Category+CoreDataClass.h"
 #import "VAKNewsURL.h"
+//#import "VAKNetManager.h"
+
+//static NSString * const VAKUpdateDataNotification = @"VAKUpdateDataNotification";
 
 static NSString * const VAKDateFormat = @"E, d MMM yyyy HH:mm:ss Z";
 
 static NSString * const VAKSourceLentaRu = @"lenta.ru";
-
 static NSString * const VAKTitleIdentifier = @"title";
 static NSString * const VAKLinkIdentifier = @"link";
 static NSString * const VAKPubDateIdentifier = @"pubDate";
@@ -47,8 +49,8 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 @implementation VAKNewsParser
 
-+ (void)newsWithData:(NSArray *)data urlIdentifier:(NSUInteger)urlIdentifier {
-    switch (urlIdentifier) {
++ (void)newsWithData:(NSArray *)data identifierUrlChannel:(NSUInteger)identifierUrlChannel {
+    switch (identifierUrlChannel) {
         case 0:
             [self parserNewsWithTutByData:data];
             break;
@@ -68,12 +70,10 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 @implementation VAKNewsParser (ParserNewsWithTutBy)
 
 + (void)parserNewsWithTutByData:(NSArray *)data {
+    
+//    static NSUInteger count = 0;
 
     [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsTutBy]];
-    
-//    NSArray *arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsTutBy]] sortDescriptor:nil];
-//    NSLog(@"%ld before count news", arr.count);
-//    NSLog(@"%lu data count input", (unsigned long)data.count);
 
     for (NSDictionary *item in data) {
         News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
@@ -88,6 +88,21 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
             news.source = authors[0][VAKNameIdentifier];
         }
         news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
+        
+//        [[VAKNetManager sharedManager] loadImageWithPath:news.imageURL completionBlock:^(NSData *imageData, NSError *error) {
+//            news.image = imageData;
+//            count++;
+//            NSLog(@"%ld", count);
+//            if (count == data.count) {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [[VAKDataManager sharedManager].managedObjectContext save:nil];
+//                    NSString *path = VAKNewsURL[VAKURLNewsTutBy];
+//                    NSDictionary *info = @{ @"url" : path };
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];
+//                });
+//            }
+//        }];
+        
         NSArray *componentsDescription = [item[VAKDescriptionIdentifier] componentsSeparatedByString:@"/>"];
         if (componentsDescription.count > 1) {
             componentsDescription = [componentsDescription[1] componentsSeparatedByString:@"<br clear=\"all\""];
@@ -96,10 +111,7 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
         NSString *category = item[VAKCategoryIdentifier][VAKTextIdentifier];
         [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsTutBy] news:news];
     }
-    
     [[VAKDataManager sharedManager].managedObjectContext save:nil];
-//    arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsTutBy]] sortDescriptor:nil];
-//    NSLog(@"%ld after count news", arr.count);
 }
 
 @end
@@ -109,10 +121,6 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 + (void)parserNewsWithOnlinerByData:(NSArray *)data {
     
     [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsOnlinerBy]];
-    
-//    NSArray *arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsOnlinerBy]] sortDescriptor:nil];
-//    NSLog(@"%ld before count news", arr.count);
-//    NSLog(@"%lu data count input", (unsigned long)data.count);
     
     for (NSDictionary *item in data) {
         News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
@@ -131,8 +139,6 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
     }
     
     [[VAKDataManager sharedManager].managedObjectContext save:nil];
-//    arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsOnlinerBy]] sortDescriptor:nil];
-//    NSLog(@"%ld after count news", arr.count);
 }
 
 @end
@@ -142,10 +148,6 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 + (void)parserNewsWithLentaRuData:(NSArray *)data {
     
     [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsLentaRu]];
-    
-//    NSArray *arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsLentaRu]] sortDescriptor:nil];
-//    NSLog(@"%ld before count news", arr.count);
-//    NSLog(@"%lu data count input", (unsigned long)data.count);
     
     for (NSDictionary *item in data) {
         News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
@@ -160,8 +162,6 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
     }
     
     [[VAKDataManager sharedManager].managedObjectContext save:nil];
-//    arr = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[NSPredicate predicateWithFormat:@"category.channel.url == %@", VAKNewsURL[VAKURLNewsLentaRu]] sortDescriptor:nil];
-//    NSLog(@"%ld after count news", arr.count);
 }
 
 @end

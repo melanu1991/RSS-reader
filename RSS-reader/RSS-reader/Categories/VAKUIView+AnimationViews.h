@@ -2,6 +2,6 @@
 
 @interface UIView (VAKAnimationViews)
 
-+ (void)animateWithDuration:(NSTimeInterval)duration views:(NSArray *)views;
++ (void)animateWithDuration:(NSTimeInterval)duration coordinateX:(CGFloat)coordinateX views:(NSArray *)views;
 
 @end

@@ -17,7 +17,7 @@
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
-    [UIView animateWithDuration:0.25f views:@[self.aboutUsView, self.navigationController.navigationBar]];
+    [UIView animateWithDuration:0.25f coordinateX:0.f views:@[self.aboutUsView, self.navigationController.navigationBar]];
 }
 
 #pragma mark - Actions
@@ -25,10 +25,7 @@
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
     [[VAKSlideMenuViewController sharedSlideMenu] showMenu];
     [VAKSlideMenuViewController sharedSlideMenu].delegate = self;
-    [UIView animateWithDuration:0.25f animations:^{
-        self.aboutUsView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.aboutUsView.frame.origin.y, self.aboutUsView.bounds.size.width, self.aboutUsView.bounds.size.height);
-        self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
-    }];
+    [UIView animateWithDuration:0.25f coordinateX:[UIScreen mainScreen].bounds.size.width / 2.f views:@[self.aboutUsView, self.navigationController.navigationBar]];
 }
 
 - (IBAction)menuAboutUsButtonPressed:(UIButton *)sender {

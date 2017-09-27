@@ -36,7 +36,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
-    [UIView animateWithDuration:0.25f views:@[self.navigationController.navigationBar, self.toolbar, self.collectionView]];
+    [UIView animateWithDuration:0.25f coordinateX:0.f views:@[self.navigationController.navigationBar, self.toolbar, self.collectionView]];
 }
 
 #pragma mark - life cycle view controller
@@ -80,6 +80,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
     VAKNewsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:VAKCellReuseIdentifier forIndexPath:indexPath];
     News *news = self.news[indexPath.row];
     cell.newsTitle.text = news.title;
+//    cell.newsImageView.image = [UIImage imageWithData:news.image];
     [cell.newsImageView sd_setShowActivityIndicatorView:YES];
     [cell.newsImageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [cell.newsImageView sd_setImageWithURL:[NSURL URLWithString:news.imageURL] placeholderImage:[UIImage imageNamed:VAKPlaceholder]];
@@ -99,8 +100,9 @@ static NSString * const VAKPlaceholder = @"placeholder";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     News *news = [self.news objectAtIndex:indexPath.row];
-    CGFloat labelSize = [self calculateHeightForLabel:news.title width:self.view.frame.size.width / 2 - 20];
-    return CGSizeMake(self.view.frame.size.width / 2 - 20, labelSize + 30 + 120);
+    CGFloat labelSize = [self calculateHeightForLabel:news.title width:self.view.frame.size.width / 2.f - 20.f];
+//    UIImage *img = [UIImage imageWithData:news.image];
+    return CGSizeMake(self.view.frame.size.width / 2.f - 20.f, labelSize + 30.f + 120.f);
     
 }
 
@@ -113,7 +115,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 10, 0, 10);
+    return UIEdgeInsetsMake(0.f, 10.f, 0.f, 10.f);
 }
 
 #pragma mark - helpers
@@ -130,7 +132,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
     
     size = CGSizeMake(ceil(boundingBox.width), ceil(boundingBox.height));
     
-    return size.height + 10;
+    return size.height + 10.f;
 }
 
 - (NSString *)nameSelectedCategory {
@@ -163,11 +165,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
     [[VAKSlideMenuViewController sharedSlideMenu] showMenu];
     [VAKSlideMenuViewController sharedSlideMenu].delegate = self;
-    [UIView animateWithDuration:0.25f animations:^{
-        self.collectionView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.collectionView.frame.origin.y, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
-        self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
-        self.toolbar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.toolbar.frame.origin.y, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
-    }];
+    [UIView animateWithDuration:0.25f coordinateX:[UIScreen mainScreen].bounds.size.width / 2.f views:@[self.navigationController.navigationBar, self.toolbar, self.collectionView]];
 }
 
 #pragma mark - UIToolbar actions

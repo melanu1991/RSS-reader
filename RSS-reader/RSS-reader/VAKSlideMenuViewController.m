@@ -104,11 +104,13 @@
     NSDictionary *info = @{ @"url" : path };
     [[VAKNetManager sharedManager] loadDataWithPath:path completionHandler:^(NSArray *data, NSError *error) {
         if (!error) {
-            [VAKNewsParser newsWithData:data urlIdentifier:tag];
+            [VAKNewsParser newsWithData:data identifierUrlChannel:tag];
             [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];
         }
         else {
-            [self.view.window.rootViewController presentViewController:[UIAlertController alertControllerWithTitle:@"Error load data" message:@"No connection to the server" handler:nil] animated:YES completion:nil];
+            [self.view.window.rootViewController presentViewController:[UIAlertController alertControllerWithTitle:@"Error load data" message:@"No connection to the server. Data will be downloaded from the database." handler:^(UIAlertAction * _Nonnull action) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];
+            }] animated:YES completion:nil];
         }
     }];
 }

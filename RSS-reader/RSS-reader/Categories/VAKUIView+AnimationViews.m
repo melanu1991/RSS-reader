@@ -2,10 +2,10 @@
 
 @implementation UIView (VAKAnimationViews)
 
-+ (void)animateWithDuration:(NSTimeInterval)duration views:(NSArray *)views {
++ (void)animateWithDuration:(NSTimeInterval)duration coordinateX:(CGFloat)coordinateX views:(NSArray *)views {
     [UIView animateWithDuration:duration animations:^{
         for (UIView *view in views) {
-            view.frame = CGRectMake(0.f, view.frame.origin.y, view.bounds.size.width, view.bounds.size.height);
+            view.frame = CGRectMake(coordinateX, view.frame.origin.y, view.bounds.size.width, view.bounds.size.height);
         }
     }];
 }

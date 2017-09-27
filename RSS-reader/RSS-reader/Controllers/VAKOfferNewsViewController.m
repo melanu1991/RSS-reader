@@ -43,7 +43,7 @@
 #pragma mark - VAKSlideMenuDelegate
 
 - (void)animateHideSlideMenu {
-    [UIView animateWithDuration:0.25f views:@[self.navigationController.navigationBar, self.offersNewsView]];
+    [UIView animateWithDuration:0.25f coordinateX:0.f views:@[self.navigationController.navigationBar, self.offersNewsView]];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -58,10 +58,7 @@
 - (IBAction)slideMenuButtonPressed:(UIBarButtonItem *)sender {
     [[VAKSlideMenuViewController sharedSlideMenu] showMenu];
     [VAKSlideMenuViewController sharedSlideMenu].delegate = self;
-    [UIView animateWithDuration:0.25f animations:^{
-        self.navigationController.navigationBar.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.navigationController.navigationBar.frame.origin.y, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height);
-        self.offersNewsView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2.f, self.offersNewsView.frame.origin.y, self.offersNewsView.bounds.size.width, self.offersNewsView.bounds.size.height);
-    }];
+    [UIView animateWithDuration:0.25f coordinateX:[UIScreen mainScreen].bounds.size.width / 2.f views:@[self.navigationController.navigationBar, self.offersNewsView]];
 }
 
 - (IBAction)selectPhotosButtonPressed:(UIButton *)sender {

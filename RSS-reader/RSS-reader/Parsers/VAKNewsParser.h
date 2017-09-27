@@ -2,6 +2,6 @@
 
 @interface VAKNewsParser : NSObject
 
-+ (void)newsWithData:(NSArray *)data urlIdentifier:(NSUInteger)urlIdentifier;
++ (void)newsWithData:(NSArray *)data identifierUrlChannel:(NSUInteger)identifierUrlChannel;
 
 @end
