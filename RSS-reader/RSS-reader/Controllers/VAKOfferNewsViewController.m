@@ -7,8 +7,9 @@
 #import "VAKSlideMenuViewController.h"
 #import "VAKSlideMenuDelegate.h"
 #import "VAKUIView+AnimationViews.h"
+#import "VAKSKPSMTPMessageServiceDelegate.h"
 
-@interface VAKOfferNewsViewController () <VAKSlideMenuDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface VAKOfferNewsViewController () <VAKSlideMenuDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, VAKSKPSMTPMessageServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *messageOfNewsTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
@@ -23,6 +24,24 @@
 @end
 
 @implementation VAKOfferNewsViewController
+
+#pragma mark - Implementation protocol VAKSKPSMTPMessageServiceDelegate
+
+- (void)confirmOfSendingMessage:(NSError *)error {
+    NSString *title;
+    NSString *message;
+    if (error) {
+        title = @"Message not sent!";
+        message = [NSString stringWithFormat:@"Error %@", error];
+    }
+    else {
+        title = @"Message sent!";
+        message = @"Success!";
+    }
+    [self presentViewController:[UIAlertController alertControllerWithTitle:title message:message handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }] animated:YES completion:nil];
+}
 
 #pragma mark - Lazy getters
 
@@ -74,6 +93,7 @@
 - (IBAction)sendMessageButtonPressed:(UIButton *)sender {
     NSDictionary *info = @{ VAKImagesInfo : self.images, VAKFilesInfo : self.files, VAKPhoneNumberInfo : self.phoneNumberTextField.text, VAKFromEmailInfo : self.emailTextField.text };
     if (self.emailTextField.text.isValidEmail || self.phoneNumberTextField.text.isValidPhoneNumber) {
+        [VAKSKPSMTPMessageService sharedSKPSMTPMessageService].delegate = self;
         [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.messageOfNewsTextField.text toEmail:VAKEmailsChannels[self.segmentedControl.selectedSegmentIndex] subject:@"Предложить новость" info:info];
     }
     else {

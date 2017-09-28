@@ -4,6 +4,5 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *newsImageView;
 @property (weak, nonatomic) IBOutlet UILabel *newsTitle;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *newsImageViewHeight;
 
 @end

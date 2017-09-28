@@ -39,7 +39,7 @@
         case 1:
         {
             VAKWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKWebViewControllerIdentifier];
-            webVC.link = @"https://itunes.apple.com/by/app/newsify-rss-reader/id510153374?mt=8";
+            webVC.link = @"https://itunes.apple.com/by/app/newsify-rss-reader/id510153374";
             [self.navigationController pushViewController:webVC animated:YES];
         }
             break;

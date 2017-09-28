@@ -2,8 +2,9 @@
 #import "VAKNSString+ValidateEmail.h"
 #import "VAKUIAlertController+Message.h"
 #import "VAKSKPSMTPMessageService.h"
+#import "VAKSKPSMTPMessageServiceDelegate.h"
 
-@interface VAKSendEmailViewController () <UITextFieldDelegate, UITextViewDelegate>
+@interface VAKSendEmailViewController () <UITextFieldDelegate, UITextViewDelegate, VAKSKPSMTPMessageServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *senderTextField;
 @property (weak, nonatomic) IBOutlet UITextField *subjectTextField;
@@ -16,6 +17,24 @@
 @end
 
 @implementation VAKSendEmailViewController
+
+#pragma mark - Implementation protocol VAKSKPSMTPMessageServiceDelegate
+
+- (void)confirmOfSendingMessage:(NSError *)error {
+    NSString *title;
+    NSString *message;
+    if (error) {
+        title = @"Message not sent!";
+        message = [NSString stringWithFormat:@"Error %@", error];
+    }
+    else {
+        title = @"Message sent!";
+        message = @"Success!";
+    }
+    [self presentViewController:[UIAlertController alertControllerWithTitle:title message:message handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }] animated:YES completion:nil];
+}
 
 #pragma mark - Lazy getters
 
@@ -36,10 +55,12 @@
     self.subjectTextField.delegate = self;
     self.recipientTextField.delegate = self;
     
+    self.title = @"Рассказать друзьям";
+    
     if (!self.recipient) {
         self.recipientStackView.hidden = YES;
+        self.title = @"Обратная связь";
     }
-    
 }
 
 #pragma mark - Actions
@@ -47,6 +68,7 @@
 - (IBAction)sendEmail:(UIButton *)sender {
     if (self.senderTextField.text.isValidEmail) {
         if (self.isRecipient) {
+            [VAKSKPSMTPMessageService sharedSKPSMTPMessageService].delegate = self;
             for (NSString *recipient in self.recipients) {
                 [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text toEmail:recipient subject:self.subjectTextField.text info:@{ VAKFromEmailInfo : self.senderTextField.text }];
             }
@@ -54,7 +76,6 @@
         else {
             [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text toEmail:@"lich-se@rambler.ru" subject:self.subjectTextField.text info:@{ VAKFromEmailInfo : self.senderTextField.text }];
         }
-        [self.navigationController popViewControllerAnimated:YES];
     }
     else {
         [self presentViewController:[UIAlertController alertControllerWithTitle:@"Error: invalid email" message:@"Input correct email" handler:nil] animated:YES completion:nil];

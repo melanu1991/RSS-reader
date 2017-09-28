@@ -3,9 +3,6 @@
 #import "News+CoreDataClass.h"
 #import "Category+CoreDataClass.h"
 #import "VAKNewsURL.h"
-//#import "VAKNetManager.h"
-
-//static NSString * const VAKUpdateDataNotification = @"VAKUpdateDataNotification";
 
 static NSString * const VAKDateFormat = @"E, d MMM yyyy HH:mm:ss Z";
 
@@ -71,8 +68,6 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 + (void)parserNewsWithTutByData:(NSArray *)data {
     
-//    static NSUInteger count = 0;
-
     [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsTutBy]];
 
     for (NSDictionary *item in data) {
@@ -88,21 +83,6 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
             news.source = authors[0][VAKNameIdentifier];
         }
         news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
-        
-//        [[VAKNetManager sharedManager] loadImageWithPath:news.imageURL completionBlock:^(NSData *imageData, NSError *error) {
-//            news.image = imageData;
-//            count++;
-//            NSLog(@"%ld", count);
-//            if (count == data.count) {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [[VAKDataManager sharedManager].managedObjectContext save:nil];
-//                    NSString *path = VAKNewsURL[VAKURLNewsTutBy];
-//                    NSDictionary *info = @{ @"url" : path };
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];
-//                });
-//            }
-//        }];
-        
         NSArray *componentsDescription = [item[VAKDescriptionIdentifier] componentsSeparatedByString:@"/>"];
         if (componentsDescription.count > 1) {
             componentsDescription = [componentsDescription[1] componentsSeparatedByString:@"<br clear=\"all\""];

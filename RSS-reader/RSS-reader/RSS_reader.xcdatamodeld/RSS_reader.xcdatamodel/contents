@@ -10,7 +10,6 @@
         <relationship name="categories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Category" inverseName="channel" inverseEntity="Category" syncable="YES"/>
     </entity>
     <entity name="News" representedClassName="News" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pubDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -22,6 +21,6 @@
     <elements>
         <element name="Category" positionX="-63" positionY="-9" width="128" height="88"/>
         <element name="Channel" positionX="144" positionY="-18" width="128" height="73"/>
-        <element name="News" positionX="-279" positionY="-18" width="128" height="163"/>
+        <element name="News" positionX="-279" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

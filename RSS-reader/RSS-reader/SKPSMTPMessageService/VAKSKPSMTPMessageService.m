@@ -87,13 +87,13 @@
 #pragma mark - SKPSMTPMessageDelegate
 
 - (void)messageSent:(SKPSMTPMessage *)message {
-    NSLog(@"%@", @"successful");
     self.sKPSMTPMessage = nil;
+    [self.delegate confirmOfSendingMessage:nil];
 }
 
 - (void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error {
-    NSLog(@"%@", @"fail");
     self.sKPSMTPMessage = nil;
+    [self.delegate confirmOfSendingMessage:error];
 }
 
 @end

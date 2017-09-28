@@ -51,9 +51,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
         VAKCustomFlowLayout *layout = [VAKCustomFlowLayout new];
         layout.delegate = self;
         layout.columnCount = self.columnCount;
-        
         self.collectionView.collectionViewLayout = layout;
-        
         [self.collectionView reloadData];
     }
     
@@ -80,7 +78,6 @@ static NSString * const VAKPlaceholder = @"placeholder";
     VAKNewsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:VAKCellReuseIdentifier forIndexPath:indexPath];
     News *news = self.news[indexPath.row];
     cell.newsTitle.text = news.title;
-//    cell.newsImageView.image = [UIImage imageWithData:news.image];
     [cell.newsImageView sd_setShowActivityIndicatorView:YES];
     [cell.newsImageView sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [cell.newsImageView sd_setImageWithURL:[NSURL URLWithString:news.imageURL] placeholderImage:[UIImage imageNamed:VAKPlaceholder]];
@@ -101,9 +98,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
     
     News *news = [self.news objectAtIndex:indexPath.row];
     CGFloat labelSize = [self calculateHeightForLabel:news.title width:self.view.frame.size.width / 2.f - 20.f];
-//    UIImage *img = [UIImage imageWithData:news.image];
     return CGSizeMake(self.view.frame.size.width / 2.f - 20.f, labelSize + 30.f + 120.f);
-    
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
@@ -157,7 +152,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 }
 
 - (NSSortDescriptor *)sortDescriptor {
-    return [NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:YES];
+    return [NSSortDescriptor sortDescriptorWithKey:VAKSortDescriptorKey ascending:NO];
 }
 
 #pragma mark - actions with slide menu

@@ -13,7 +13,6 @@
 @dynamic source;
 @dynamic specification;
 @dynamic title;
-@dynamic image;
 @dynamic category;
 
 @end
