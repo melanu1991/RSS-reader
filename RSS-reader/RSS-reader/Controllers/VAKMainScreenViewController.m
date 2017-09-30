@@ -9,7 +9,7 @@
 #import "VAKNewsCollectionViewCell.h"
 #import "VAKConstantsImages.h"
 #import "VAKConstantsCategories.h"
-#import "VAKNewsURL.h"
+#import "VAKConstantsNewsURL.h"
 #import "VAKSlideMenuDelegate.h"
 #import "VAKUIView+AnimationViews.h"
 
@@ -95,10 +95,9 @@ static NSString * const VAKPlaceholder = @"placeholder";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     News *news = [self.news objectAtIndex:indexPath.row];
     CGFloat labelSize = [self calculateHeightForLabel:news.title width:self.view.frame.size.width / 2.f - 20.f];
-    return CGSizeMake(self.view.frame.size.width / 2.f - 20.f, labelSize + 30.f + 120.f);
+    return CGSizeMake(self.view.frame.size.width / 2.f - 20.f, labelSize + 30.f + 112.f);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {

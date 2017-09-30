@@ -1,7 +1,7 @@
 #ifndef VAKConstantsEmailsChannels_h
 #define VAKConstantsEmailsChannels_h
 
-typedef NS_ENUM(NSUInteger, EmailChannel) {
+typedef NS_ENUM(NSUInteger, VAKEmailChannel) {
     VAKEmailChannelTutBy,
     VAKEmailChannelOnlinerBy,
     VAKEmailChannelLentaRu

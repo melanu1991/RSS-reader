@@ -38,9 +38,10 @@
             break;
         case 1:
         {
-            VAKWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:VAKWebViewControllerIdentifier];
-            webVC.link = @"https://itunes.apple.com/by/app/newsify-rss-reader/id510153374";
-            [self.navigationController pushViewController:webVC animated:YES];
+            NSString *appStoreLink = @"https://itunes.apple.com/by/app/newsify-rss-reader/id510153374?mt=8";
+            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:appStoreLink]]) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appStoreLink] options:@{} completionHandler:nil];
+            }
         }
             break;
         case 2:

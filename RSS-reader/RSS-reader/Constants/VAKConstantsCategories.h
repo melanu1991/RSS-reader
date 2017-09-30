@@ -8,7 +8,6 @@ static NSString * const VAKTitleCategories[] = {
     [3] = @"Люди"
 };
 
-//Пересмотреть используемые категории
 static NSString * const VAKNameCategoriesTutBy[] = {
     [0] = @"В мире",
     [1] = @"Публичный счет",

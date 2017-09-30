@@ -2,7 +2,7 @@
 #import "VAKUIAlertController+Message.h"
 #import "VAKNetManager.h"
 #import "VAKNewsParser.h"
-#import "VAKNewsURL.h"
+#import "VAKConstantsNewsURL.h"
 #import "VAKSlideMenuDelegate.h"
 #import "VAKMainScreenViewController.h"
 

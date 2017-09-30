@@ -2,7 +2,7 @@
 #import "VAKDataManager.h"
 #import "News+CoreDataClass.h"
 #import "Category+CoreDataClass.h"
-#import "VAKNewsURL.h"
+#import "VAKConstantsNewsURL.h"
 
 static NSString * const VAKDateFormat = @"E, d MMM yyyy HH:mm:ss Z";
 

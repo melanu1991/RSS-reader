@@ -28,19 +28,19 @@
 #pragma mark - Implementation protocol VAKSKPSMTPMessageServiceDelegate
 
 - (void)confirmOfSendingMessage:(NSError *)error {
-    NSString *title;
-    NSString *message;
-    if (error) {
-        title = @"Message not sent!";
-        message = [NSString stringWithFormat:@"Error %@", error];
+    if (!self.presentedViewController) {
+        NSString *title;
+        NSString *message;
+        if (error) {
+            title = @"Message not sent!";
+            message = [NSString stringWithFormat:@"Error %@", error];
+        }
+        else {
+            title = @"Message sent!";
+            message = @"Success!";
+        }
+        [self presentViewController:[UIAlertController alertControllerWithTitle:title message:message handler:nil] animated:YES completion:nil];
     }
-    else {
-        title = @"Message sent!";
-        message = @"Success!";
-    }
-    [self presentViewController:[UIAlertController alertControllerWithTitle:title message:message handler:^(UIAlertAction * _Nonnull action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }] animated:YES completion:nil];
 }
 
 #pragma mark - Lazy getters
@@ -91,8 +91,8 @@
 }
 
 - (IBAction)sendMessageButtonPressed:(UIButton *)sender {
-    NSDictionary *info = @{ VAKImagesInfo : self.images, VAKFilesInfo : self.files, VAKPhoneNumberInfo : self.phoneNumberTextField.text, VAKFromEmailInfo : self.emailTextField.text };
     if (self.emailTextField.text.isValidEmail || self.phoneNumberTextField.text.isValidPhoneNumber) {
+        NSDictionary *info = @{ VAKImagesInfo : self.images, VAKFilesInfo : self.files, VAKPhoneNumberInfo : self.phoneNumberTextField.text, VAKFromEmailInfo : self.emailTextField.text };
         [VAKSKPSMTPMessageService sharedSKPSMTPMessageService].delegate = self;
         [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.messageOfNewsTextField.text toEmail:VAKEmailsChannels[self.segmentedControl.selectedSegmentIndex] subject:@"Предложить новость" info:info];
     }
