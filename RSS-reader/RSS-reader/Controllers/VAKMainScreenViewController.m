@@ -43,7 +43,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.columnCount = 2;
     self.miniInteriorSpacing = 10;
     

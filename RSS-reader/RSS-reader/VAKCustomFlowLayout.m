@@ -28,6 +28,7 @@
     
     self.itemSize = CGSizeMake(itemWidth, itemWidth);
 }
+
 -(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray *itemAttributes = [NSMutableArray array];
     self.contentHeight = 0;

@@ -3,6 +3,7 @@
 @protocol VAKSlideMenuDelegate;
 
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
+static NSString * const VAKMainScreenStoryboardSegue = @"VAKMainScreenStoryboardSegue";
 static NSString * const VAKUpdateDataNotification = @"VAKUpdateDataNotification";
 
 @interface VAKSlideMenuViewController : UIViewController

@@ -25,6 +25,9 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    if ([error code] == NSURLErrorCancelled) {
+        return;
+    }
     [self.activityIndicator stopAnimating];
     if (!self.presentedViewController) {
         [self presentViewController:[UIAlertController alertControllerWithTitle:@"Error load data" message:@"No connection to the server" handler:^(UIAlertAction * _Nonnull action) {

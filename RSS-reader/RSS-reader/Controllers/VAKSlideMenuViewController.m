@@ -22,7 +22,7 @@
 #pragma mark - UIStoryboardSegue
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if ([self.delegate isMemberOfClass:[VAKMainScreenViewController class]] && [identifier isEqualToString:@"VAKMainScreenStoryboardSegue"]) {
+    if ([self.delegate isMemberOfClass:[VAKMainScreenViewController class]] && [identifier isEqualToString:VAKMainScreenStoryboardSegue]) {
         return NO;
     }
     return YES;
@@ -46,7 +46,6 @@
 - (IBAction)menuButtonPressed:(UIButton *)sender {
     
     if (self.selectedButtonTag != sender.tag) {
-        
         [self clearGradient];
         self.selectedButtonTag = sender.tag;
         [self addGradientForButtonTag:sender.tag];
@@ -102,7 +101,7 @@
 - (void)loadDataWithTag:(NSInteger)tag {
     NSString *path = VAKNewsURL[tag];
     NSDictionary *info = @{ @"url" : path };
-    [[VAKNetManager sharedManager] loadDataWithPath:path completionHandler:^(NSArray *data, NSError *error) {
+    [[VAKNetManager sharedManager] loadDataWithPath:path completionBlock:^(NSArray *data, NSError *error) {
         if (!error) {
             [VAKNewsParser newsWithData:data identifierUrlChannel:tag completionBlock:^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:VAKUpdateDataNotification object:nil userInfo:info];

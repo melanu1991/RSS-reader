@@ -40,15 +40,13 @@
     [downloadPhotoTask resume];
 }
 
-- (void)loadDataWithPath:(NSString *)path completionHandler:(void(^)(NSArray *data, NSError *error))completionHandler {
-    
+- (void)loadDataWithPath:(NSString *)path completionBlock:(void(^)(NSArray *data, NSError *error))completionBlock {
     NSURL *url = [NSURL URLWithString:path];
     [self.feedParse parseFeedURL:url withETag:nil untilPubDate:nil success:^(NSHTTPURLResponse *response, BNRSSFeed *feed) {
-        completionHandler(feed.items, nil);
+        completionBlock(feed.items, nil);
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        completionHandler(nil, error);
+        completionBlock(nil, error);
     }];
-    
 }
 
 @end

@@ -11,7 +11,7 @@ static NSString * const VAKTitleCategories[] = {
 static NSString * const VAKNameCategoriesTutBy[] = {
     [0] = @"В мире",
     [1] = @"Публичный счет",
-    [2] = @"Деньги",
+    [2] = @"Деньги и власть",
     [3] = @"Общество"
 };
 

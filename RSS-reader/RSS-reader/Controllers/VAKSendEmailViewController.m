@@ -4,6 +4,8 @@
 #import "VAKSKPSMTPMessageService.h"
 #import "VAKSKPSMTPMessageServiceDelegate.h"
 
+static NSString * const VAKEmailAuthor = @"lich-se@rambler.ru";
+
 @interface VAKSendEmailViewController () <UITextFieldDelegate, UITextViewDelegate, VAKSKPSMTPMessageServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *senderTextField;
@@ -74,7 +76,7 @@
             }
         }
         else {
-            [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text toEmail:@"lich-se@rambler.ru" subject:self.subjectTextField.text info:@{ VAKFromEmailInfo : self.senderTextField.text }];
+            [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text toEmail:VAKEmailAuthor subject:self.subjectTextField.text info:@{ VAKFromEmailInfo : self.senderTextField.text }];
         }
     }
     else {
