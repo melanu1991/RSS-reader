@@ -22,19 +22,19 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 @interface VAKNewsParser (ParserNewsWithTutBy)
 
-+ (void)parserNewsWithTutByData:(NSArray *)data;
++ (void)parserNewsWithTutByData:(NSArray *)data completionBlock:(void(^)(void))completionBlock;
 
 @end
 
 @interface VAKNewsParser (ParserNewsWithOnlinerBy)
 
-+ (void)parserNewsWithOnlinerByData:(NSArray *)data;
++ (void)parserNewsWithOnlinerByData:(NSArray *)data completionBlock:(void(^)(void))completionBlock;
 
 @end
 
 @interface VAKNewsParser (ParserNewsWithLentaRu)
 
-+ (void)parserNewsWithLentaRuData:(NSArray *)data;
++ (void)parserNewsWithLentaRuData:(NSArray *)data completionBlock:(void(^)(void))completionBlock;
 
 @end
 
@@ -46,16 +46,16 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 @implementation VAKNewsParser
 
-+ (void)newsWithData:(NSArray *)data identifierUrlChannel:(NSUInteger)identifierUrlChannel {
++ (void)newsWithData:(NSArray *)data identifierUrlChannel:(NSUInteger)identifierUrlChannel completionBlock:(void (^)(void))completionBlock {
     switch (identifierUrlChannel) {
         case 0:
-            [self parserNewsWithTutByData:data];
+            [self parserNewsWithTutByData:data completionBlock:completionBlock];
             break;
         case 1:
-            [self parserNewsWithOnlinerByData:data];
+            [self parserNewsWithOnlinerByData:data completionBlock:completionBlock];
             break;
         case 2:
-            [self parserNewsWithLentaRuData:data];
+            [self parserNewsWithLentaRuData:data completionBlock:completionBlock];
             break;
         default:
             break;
@@ -66,82 +66,92 @@ static NSString * const VAKMediaIdentifier = @"media:thumbnail";
 
 @implementation VAKNewsParser (ParserNewsWithTutBy)
 
-+ (void)parserNewsWithTutByData:(NSArray *)data {
-    
-    [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsTutBy]];
++ (void)parserNewsWithTutByData:(NSArray *)data completionBlock:(void (^)(void))completionBlock {
 
-    for (NSDictionary *item in data) {
-        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
-        news.title = item[VAKTitleIdentifier];
-        news.link = item[VAKLinkIdentifier];
-        news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
-        id authors = item[VAKAuthorIdentifier];
-        if ([authors isKindOfClass:[NSDictionary class]]) {
-            news.source = authors[VAKNameIdentifier];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsTutBy]];
+        for (NSDictionary *item in data) {
+            News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
+            news.title = item[VAKTitleIdentifier];
+            news.link = item[VAKLinkIdentifier];
+            news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
+            id authors = item[VAKAuthorIdentifier];
+            if ([authors isKindOfClass:[NSDictionary class]]) {
+                news.source = authors[VAKNameIdentifier];
+            }
+            else if ([authors isKindOfClass:[NSArray class]]) {
+                news.source = authors[0][VAKNameIdentifier];
+            }
+            news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
+            NSArray *componentsDescription = [item[VAKDescriptionIdentifier] componentsSeparatedByString:@"/>"];
+            if (componentsDescription.count > 1) {
+                componentsDescription = [componentsDescription[1] componentsSeparatedByString:@"<br clear=\"all\""];
+                news.specification = componentsDescription[0];
+            }
+            NSString *category = item[VAKCategoryIdentifier][VAKTextIdentifier];
+            [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsTutBy] news:news];
         }
-        else if ([authors isKindOfClass:[NSArray class]]) {
-            news.source = authors[0][VAKNameIdentifier];
-        }
-        news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
-        NSArray *componentsDescription = [item[VAKDescriptionIdentifier] componentsSeparatedByString:@"/>"];
-        if (componentsDescription.count > 1) {
-            componentsDescription = [componentsDescription[1] componentsSeparatedByString:@"<br clear=\"all\""];
-            news.specification = componentsDescription[0];
-        }
-        NSString *category = item[VAKCategoryIdentifier][VAKTextIdentifier];
-        [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsTutBy] news:news];
-    }
-    [[VAKDataManager sharedManager].managedObjectContext save:nil];
+        [[VAKDataManager sharedManager].managedObjectContext save:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionBlock();
+        });
+    });
 }
 
 @end
 
 @implementation VAKNewsParser (ParserNewsWithOnlinerBy)
 
-+ (void)parserNewsWithOnlinerByData:(NSArray *)data {
++ (void)parserNewsWithOnlinerByData:(NSArray *)data completionBlock:(void (^)(void))completionBlock {
     
-    [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsOnlinerBy]];
-    
-    for (NSDictionary *item in data) {
-        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
-        news.title = item[VAKTitleIdentifier];
-        news.link = item[VAKLinkIdentifier];
-        news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
-        news.source = item[VAKCreatorIdentifier];
-        news.imageURL = item[VAKMediaIdentifier][VAKUrlImageIdentifier];
-        NSArray *componentsDescription = [item[VAKDescriptionIdentifier] componentsSeparatedByString:@"<p>"];
-        if (componentsDescription.count > 0) {
-            componentsDescription = [componentsDescription[2] componentsSeparatedByString:@"</p>"];
-            news.specification = componentsDescription[0];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsOnlinerBy]];
+        for (NSDictionary *item in data) {
+            News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
+            news.title = item[VAKTitleIdentifier];
+            news.link = item[VAKLinkIdentifier];
+            news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
+            news.source = item[VAKCreatorIdentifier];
+            news.imageURL = item[VAKMediaIdentifier][VAKUrlImageIdentifier];
+            NSArray *componentsDescription = [item[VAKDescriptionIdentifier] componentsSeparatedByString:@"<p>"];
+            if (componentsDescription.count > 0) {
+                componentsDescription = [componentsDescription[2] componentsSeparatedByString:@"</p>"];
+                news.specification = componentsDescription[0];
+            }
+            NSString *category = item[VAKCategoryIdentifier];
+            [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsOnlinerBy] news:news];
         }
-        NSString *category = item[VAKCategoryIdentifier];
-        [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsOnlinerBy] news:news];
-    }
-    
-    [[VAKDataManager sharedManager].managedObjectContext save:nil];
+        [[VAKDataManager sharedManager].managedObjectContext save:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionBlock();
+        });
+    });
 }
 
 @end
 
 @implementation VAKNewsParser (ParserNewsWithLentaRu)
 
-+ (void)parserNewsWithLentaRuData:(NSArray *)data {
++ (void)parserNewsWithLentaRuData:(NSArray *)data completionBlock:(void (^)(void))completionBlock {
     
-    [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsLentaRu]];
-    
-    for (NSDictionary *item in data) {
-        News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
-        news.title = item[VAKTitleIdentifier];
-        news.link = item[VAKLinkIdentifier];
-        news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
-        news.source = VAKSourceLentaRu;
-        news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
-        news.specification = item[VAKDescriptionIdentifier];
-        NSString *category = item[VAKCategoryIdentifier];
-        [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsLentaRu] news:news];
-    }
-    
-    [[VAKDataManager sharedManager].managedObjectContext save:nil];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [VAKDataManager deleteEntitiesWithChannelURL:VAKNewsURL[VAKURLNewsLentaRu]];
+        for (NSDictionary *item in data) {
+            News *news = (News *)[VAKDataManager entityWithName:VAKNewsEntityName];
+            news.title = item[VAKTitleIdentifier];
+            news.link = item[VAKLinkIdentifier];
+            news.pubDate = [NSDate dateWithString:item[VAKPubDateIdentifier]];
+            news.source = VAKSourceLentaRu;
+            news.imageURL = item[VAKEnclosureIdentifier][VAKUrlImageIdentifier];
+            news.specification = item[VAKDescriptionIdentifier];
+            NSString *category = item[VAKCategoryIdentifier];
+            [VAKDataManager categoryWithName:category channelURL:VAKNewsURL[VAKURLNewsLentaRu] news:news];
+        }
+        [[VAKDataManager sharedManager].managedObjectContext save:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionBlock();
+        });
+    });
 }
 
 @end

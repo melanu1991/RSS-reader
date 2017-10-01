@@ -6,7 +6,6 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-
 @end
 
 @implementation VAKWebViewController
@@ -20,15 +19,6 @@
 }
 
 #pragma mark - UIWebViewDelegate
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
- navigationType:(UIWebViewNavigationType)navigationType {
-    if ( ([[[request URL] scheme] isEqual:@"mailto"]) || ([[[request URL] scheme] isEqual:@"itms-apps"])) {
-        [[UIApplication sharedApplication] openURL:[request URL] options:@{} completionHandler:nil];
-        return NO;
-    }
-    return YES;
-}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.activityIndicator stopAnimating];
