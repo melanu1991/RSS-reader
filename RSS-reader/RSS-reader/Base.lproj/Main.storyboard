@@ -25,7 +25,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FRi-qC-H9E">
                                 <rect key="frame" x="0.0" y="20" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H8V-M1-ud0">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ezu-wS-8p5">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -552,7 +552,10 @@
                                                 <rect key="frame" x="20" y="49" width="354" height="171.66666666666669"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5RJ-EU-U2i" id="sra-jM-UCA"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAJ-As-7lM">
                                                 <rect key="frame" x="344.66666666666674" y="20" width="9.3333333333333144" height="17"/>
@@ -612,7 +615,10 @@
                                                 <rect key="frame" x="20" y="0.0" width="354" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5RJ-EU-U2i" id="J0m-VW-0Kk"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -645,7 +651,10 @@
                                                 <rect key="frame" x="20" y="0.0" width="354" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="5RJ-EU-U2i" id="W6J-ZK-UIu"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -905,7 +914,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="68f-d3-pLc">
-                                <rect key="frame" x="20" y="80" width="374" height="230"/>
+                                <rect key="frame" x="20" y="28" width="374" height="230"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wvq-ai-ZA3">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
@@ -1020,13 +1029,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текст" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gii-IP-TZZ">
-                                <rect key="frame" x="20" y="318" width="44.666666666666671" height="20.333333333333314"/>
+                                <rect key="frame" x="20" y="266" width="44.666666666666671" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Fim-sI-TnV">
-                                <rect key="frame" x="20" y="346" width="374" height="322"/>
+                                <rect key="frame" x="20" y="294" width="374" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
@@ -1053,7 +1062,7 @@
                             <constraint firstItem="Fim-sI-TnV" firstAttribute="leading" secondItem="sOD-Tm-Kzx" secondAttribute="leading" constant="20" symbolic="YES" id="PVW-hl-mU5"/>
                             <constraint firstItem="095-Z0-1IU" firstAttribute="top" secondItem="Fim-sI-TnV" secondAttribute="bottom" constant="8" symbolic="YES" id="igV-vG-gxJ"/>
                             <constraint firstItem="gii-IP-TZZ" firstAttribute="leading" secondItem="sOD-Tm-Kzx" secondAttribute="leading" constant="20" symbolic="YES" id="ruI-kk-ZxW"/>
-                            <constraint firstItem="68f-d3-pLc" firstAttribute="top" secondItem="EGs-jb-Rvi" secondAttribute="bottom" constant="60" id="wl8-Zc-zjo"/>
+                            <constraint firstItem="68f-d3-pLc" firstAttribute="top" secondItem="EGs-jb-Rvi" secondAttribute="bottom" constant="8" symbolic="YES" id="wl8-Zc-zjo"/>
                         </constraints>
                     </view>
                     <connections>

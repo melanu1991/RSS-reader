@@ -69,8 +69,8 @@ static NSString * const VAKEmailAuthor = @"lich-se@rambler.ru";
 
 - (IBAction)sendEmail:(UIButton *)sender {
     if (self.senderTextField.text.isValidEmail) {
+        [VAKSKPSMTPMessageService sharedSKPSMTPMessageService].delegate = self;
         if (self.isRecipient) {
-            [VAKSKPSMTPMessageService sharedSKPSMTPMessageService].delegate = self;
             for (NSString *recipient in self.recipients) {
                 [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.bodyMessageTextView.text toEmail:recipient subject:self.subjectTextField.text info:@{ VAKFromEmailInfo : self.senderTextField.text }];
             }

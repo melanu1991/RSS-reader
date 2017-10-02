@@ -9,7 +9,7 @@
 #import "VAKUIView+AnimationViews.h"
 #import "VAKSKPSMTPMessageServiceDelegate.h"
 
-@interface VAKOfferNewsViewController () <VAKSlideMenuDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, VAKSKPSMTPMessageServiceDelegate>
+@interface VAKOfferNewsViewController () <VAKSlideMenuDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, VAKSKPSMTPMessageServiceDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *messageOfNewsTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
@@ -24,6 +24,63 @@
 @end
 
 @implementation VAKOfferNewsViewController
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if ([textField isEqual:self.phoneNumberTextField] && ![textField.text containsString:@"+375("]) {
+        textField.text = [textField.text stringByAppendingString:@"+375("];
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([textField isEqual:self.phoneNumberTextField] && string.integerValue && textField.text.length < 17) {
+        if (range.location == 0 && ![textField.text containsString:@"+375("]) {
+            textField.text = [textField.text stringByAppendingString:@"+375("];
+        }
+        if (range.location == 6 && ![textField.text containsString:@")"]) {
+            textField.text = [textField.text stringByAppendingString:[NSString stringWithFormat:@"%@)", string]];
+            return NO;
+        }
+        else if ( range.location == 10 || range.location == 13 ) {
+            textField.text = [textField.text stringByAppendingString:[NSString stringWithFormat:@"%@-", string]];
+            return NO;
+        }
+        return YES;
+    }
+    else if (![textField isEqual:self.phoneNumberTextField]) {
+        return YES;
+    }
+    else if ( [textField isEqual:self.messageOfNewsTextField] && textField.text.length > 5000) {
+        return NO;
+    }
+    return NO;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (self.messageOfNewsTextField.isFirstResponder) {
+        [self.phoneNumberTextField becomeFirstResponder];
+    }
+    else if (self.phoneNumberTextField.isFirstResponder) {
+        [self.emailTextField becomeFirstResponder];
+    }
+    else if (self.emailTextField.isFirstResponder) {
+        [self.emailTextField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
+    if (self.messageOfNewsTextField.isFirstResponder) {
+        [self.messageOfNewsTextField resignFirstResponder];
+    }
+    else if (self.phoneNumberTextField.isFirstResponder) {
+        [self.phoneNumberTextField resignFirstResponder];
+    }
+    else if (self.emailTextField.isFirstResponder) {
+        [self.emailTextField resignFirstResponder];
+    }
+}
 
 #pragma mark - Implementation protocol VAKSKPSMTPMessageServiceDelegate
 
@@ -94,7 +151,7 @@
     if (self.emailTextField.text.isValidEmail || self.phoneNumberTextField.text.isValidPhoneNumber) {
         NSDictionary *info = @{ VAKImagesInfo : self.images, VAKFilesInfo : self.files, VAKPhoneNumberInfo : self.phoneNumberTextField.text, VAKFromEmailInfo : self.emailTextField.text };
         [VAKSKPSMTPMessageService sharedSKPSMTPMessageService].delegate = self;
-        [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.messageOfNewsTextField.text toEmail:VAKEmailsChannels[self.segmentedControl.selectedSegmentIndex] subject:@"Предложить новость" info:info];
+        [[VAKSKPSMTPMessageService sharedSKPSMTPMessageService] sendMessage:self.messageOfNewsTextField.text toEmail:VAKEmailsChannels[self.segmentedControl.selectedSegmentIndex] subject:@"Offers news" info:info];
     }
     else {
         [self presentViewController:[UIAlertController alertControllerWithTitle:@"Error: invalid email or phone number" message:@"You must input correct email or phone number" handler:nil] animated:YES completion:nil];

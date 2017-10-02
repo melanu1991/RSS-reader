@@ -38,7 +38,7 @@
             break;
         case 1:
         {
-            NSString *appStoreLink = @"https://itunes.apple.com/by/app/newsify-rss-reader/id510153374?mt=8";
+            NSString *appStoreLink = @"https://www.apple.com/itunes/";
             if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:appStoreLink]]) {
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appStoreLink] options:@{} completionHandler:nil];
             }
