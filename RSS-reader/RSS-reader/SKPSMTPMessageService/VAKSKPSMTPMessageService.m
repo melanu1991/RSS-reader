@@ -2,6 +2,10 @@
 #import <skpsmtpmessage/SKPSMTPMessage.h>
 #import <skpsmtpmessage/NSData+Base64Additions.h>
 
+static NSString * const VAKSMTPServer = @"smtp.gmail.com";
+static NSString * const VAKSMTPServerLogin = @"myRSSTestAcc@gmail.com";
+static NSString * const VAKSMTPServerPassword = @"myPassword";
+
 @interface VAKSKPSMTPMessageService () <SKPSMTPMessageDelegate>
 
 @property (strong, nonatomic) SKPSMTPMessage *sKPSMTPMessage;
@@ -15,10 +19,10 @@
 - (SKPSMTPMessage *)sKPSMTPMessage {
     if (!_sKPSMTPMessage) {
         self.sKPSMTPMessage = [[SKPSMTPMessage alloc] init];
-        self.sKPSMTPMessage.relayHost = @"smtp.gmail.com";
+        self.sKPSMTPMessage.relayHost = VAKSMTPServer;
         self.sKPSMTPMessage.requiresAuth = YES;
-        self.sKPSMTPMessage.login = @"myRSSTestAcc@gmail.com";
-        self.sKPSMTPMessage.pass = @"myPassword";
+        self.sKPSMTPMessage.login = VAKSMTPServerLogin;
+        self.sKPSMTPMessage.pass = VAKSMTPServerPassword;
         self.sKPSMTPMessage.wantsSecure = YES;
         self.sKPSMTPMessage.delegate = self;
     }

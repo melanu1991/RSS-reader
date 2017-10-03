@@ -43,9 +43,13 @@
 - (void)loadDataWithPath:(NSString *)path completionBlock:(void(^)(NSArray *data, NSError *error))completionBlock {
     NSURL *url = [NSURL URLWithString:path];
     [self.feedParse parseFeedURL:url withETag:nil untilPubDate:nil success:^(NSHTTPURLResponse *response, BNRSSFeed *feed) {
-        completionBlock(feed.items, nil);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionBlock(feed.items, nil);
+        });
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        completionBlock(nil, error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionBlock(nil, error);
+        });
     }];
 }
 

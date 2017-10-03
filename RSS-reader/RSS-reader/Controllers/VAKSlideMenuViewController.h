@@ -5,6 +5,7 @@
 static NSString * const VAKSlideMenuViewControllerIdentifier = @"VAKSlideMenuViewController";
 static NSString * const VAKMainScreenStoryboardSegue = @"VAKMainScreenStoryboardSegue";
 static NSString * const VAKUpdateDataNotification = @"VAKUpdateDataNotification";
+static NSString * const VAKUpdateDataNotificationKey = @"url";
 
 @interface VAKSlideMenuViewController : UIViewController
 

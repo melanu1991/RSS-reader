@@ -63,7 +63,7 @@ static NSString * const VAKPlaceholder = @"placeholder";
 #pragma mark - notification method
 
 - (void)updateData:(NSNotification *)notification {
-    self.selectedNewsChannel = notification.userInfo[@"url"];
+    self.selectedNewsChannel = notification.userInfo[VAKUpdateDataNotificationKey];
     self.news = [VAKDataManager allEntitiesWithName:VAKNewsEntityName predicate:[self predicate] sortDescriptor:[self sortDescriptor]];
     [self.collectionView reloadData];
 }

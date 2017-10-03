@@ -747,7 +747,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="BeS-7U-izG" id="y5l-d9-9bh"/>
                         <outlet property="infoLabel" destination="1HB-sj-KI1" id="9AD-nu-jk2"/>
-                        <outlet property="messageOfNewsTextField" destination="5vR-bv-k9N" id="Qbt-8P-hDk"/>
+                        <outlet property="messageOfNewsTextField" destination="5vR-bv-k9N" id="83F-6t-gUM"/>
                         <outlet property="offersNewsView" destination="dcR-q2-fIj" id="bZq-gk-fZW"/>
                         <outlet property="phoneNumberTextField" destination="VPy-V8-IuV" id="fbN-kC-neI"/>
                         <outlet property="segmentedControl" destination="754-v8-Nxm" id="DMT-jL-4iT"/>

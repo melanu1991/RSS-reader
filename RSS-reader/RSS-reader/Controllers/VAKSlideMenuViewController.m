@@ -6,6 +6,8 @@
 #import "VAKSlideMenuDelegate.h"
 #import "VAKMainScreenViewController.h"
 
+static NSString * const VAKStoryboardIdentifier = @"Main";
+
 @interface VAKSlideMenuViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *slideMenuView;
@@ -34,7 +36,7 @@
     static VAKSlideMenuViewController *slideMenuVC = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:VAKStoryboardIdentifier bundle:nil];
         slideMenuVC = [storyboard instantiateViewControllerWithIdentifier:VAKSlideMenuViewControllerIdentifier];
         slideMenuVC.selectedButtonTag = -1;
     });
@@ -49,7 +51,6 @@
         [self clearGradient];
         self.selectedButtonTag = sender.tag;
         [self addGradientForButtonTag:sender.tag];
-        
         switch (sender.tag) {
             case 0:
             case 1:
@@ -100,7 +101,7 @@
 
 - (void)loadDataWithTag:(NSInteger)tag {
     NSString *path = VAKNewsURL[tag];
-    NSDictionary *info = @{ @"url" : path };
+    NSDictionary *info = @{ VAKUpdateDataNotificationKey : path };
     [[VAKNetManager sharedManager] loadDataWithPath:path completionBlock:^(NSArray *data, NSError *error) {
         if (!error) {
             [VAKNewsParser newsWithData:data identifierUrlChannel:tag completionBlock:^{
