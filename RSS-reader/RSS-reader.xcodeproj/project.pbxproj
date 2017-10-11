@@ -7,27 +7,97 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580F04551F63D82500A54C0E /* Channel+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 580F044A1F63D82500A54C0E /* Channel+CoreDataClass.m */; };
+		580F04571F63D82600A54C0E /* News+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 580F044E1F63D82500A54C0E /* News+CoreDataClass.m */; };
+		580F04591F63D82600A54C0E /* Category+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 580F04521F63D82500A54C0E /* Category+CoreDataClass.m */; };
+		581832401F6E8C7200CD5D6F /* VAKNewsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5818323F1F6E8C7200CD5D6F /* VAKNewsCollectionViewCell.m */; };
+		581832431F6E8D6200CD5D6F /* VAKCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 581832421F6E8D6200CD5D6F /* VAKCustomFlowLayout.m */; };
 		581ECCBF1F5D91B80056B644 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 581ECCBE1F5D91B80056B644 /* main.m */; };
 		581ECCC21F5D91B80056B644 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 581ECCC11F5D91B80056B644 /* AppDelegate.m */; };
-		581ECCC51F5D91B80056B644 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581ECCC41F5D91B80056B644 /* ViewController.m */; };
 		581ECCC81F5D91B80056B644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 581ECCC61F5D91B80056B644 /* Main.storyboard */; };
 		581ECCCB1F5D91B90056B644 /* RSS_reader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 581ECCC91F5D91B90056B644 /* RSS_reader.xcdatamodeld */; };
 		581ECCCD1F5D91B90056B644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 581ECCCC1F5D91B90056B644 /* Assets.xcassets */; };
 		581ECCD01F5D91B90056B644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 581ECCCE1F5D91B90056B644 /* LaunchScreen.storyboard */; };
+		582E19181F6EC5F200BD4D8E /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 582E19171F6EC5F200BD4D8E /* Placeholder.png */; };
+		582E19211F6EEE1000BD4D8E /* VAKAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582E19201F6EEE1000BD4D8E /* VAKAboutUsViewController.m */; };
+		587287881F72FD970080A5A5 /* VAKSendEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587287871F72FD970080A5A5 /* VAKSendEmailViewController.m */; };
+		58A8E1F71F703E8C00A537AA /* VAKOfferNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8E1F61F703E8C00A537AA /* VAKOfferNewsViewController.m */; };
+		58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */; };
+		58B8FB821F5FFE6300C51BC1 /* VAKNewsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */; };
+		58C2F73D1F7AB86D00E90FF3 /* VAKUIView+AnimationViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C2F73C1F7AB86D00E90FF3 /* VAKUIView+AnimationViews.m */; };
+		58C5A0061F7FA9DC0089A68A /* VAKSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C5A0051F7FA9DC0089A68A /* VAKSettingsViewController.m */; };
+		58C5A00E1F7FB4230089A68A /* VAKMainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C5A0091F7FB4230089A68A /* VAKMainScreenViewController.m */; };
+		58C5A00F1F7FB4230089A68A /* VAKSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C5A00B1F7FB4230089A68A /* VAKSlideMenuViewController.m */; };
+		58C5A0101F7FB4230089A68A /* VAKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C5A00D1F7FB4230089A68A /* VAKWebViewController.m */; };
+		58C5A0141F7FB4400089A68A /* VAKNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C5A0131F7FB4400089A68A /* VAKNetManager.m */; };
+		58C5D8461F75A32500DEE601 /* VAKNSString+ValidatePhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C5D8451F75A32500DEE601 /* VAKNSString+ValidatePhoneNumber.m */; };
+		58F03AB11F742F1800C6DF54 /* VAKNSString+ValidateEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F03AB01F742F1800C6DF54 /* VAKNSString+ValidateEmail.m */; };
+		58F03AB51F74398100C6DF54 /* VAKSKPSMTPMessageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F03AB41F74398100C6DF54 /* VAKSKPSMTPMessageService.m */; };
+		58F03AB81F7447D200C6DF54 /* VAKUIAlertController+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F03AB71F7447D200C6DF54 /* VAKUIAlertController+Message.m */; };
+		E94314D25A35A4CA912690A8 /* libPods-RSS-reader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		580F04491F63D82500A54C0E /* Channel+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Channel+CoreDataClass.h"; sourceTree = "<group>"; };
+		580F044A1F63D82500A54C0E /* Channel+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Channel+CoreDataClass.m"; sourceTree = "<group>"; };
+		580F044D1F63D82500A54C0E /* News+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "News+CoreDataClass.h"; sourceTree = "<group>"; };
+		580F044E1F63D82500A54C0E /* News+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "News+CoreDataClass.m"; sourceTree = "<group>"; };
+		580F04511F63D82500A54C0E /* Category+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Category+CoreDataClass.h"; sourceTree = "<group>"; };
+		580F04521F63D82500A54C0E /* Category+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Category+CoreDataClass.m"; sourceTree = "<group>"; };
+		5818323E1F6E8C7200CD5D6F /* VAKNewsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNewsCollectionViewCell.h; sourceTree = "<group>"; };
+		5818323F1F6E8C7200CD5D6F /* VAKNewsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKNewsCollectionViewCell.m; sourceTree = "<group>"; };
+		581832411F6E8D6200CD5D6F /* VAKCustomFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKCustomFlowLayout.h; sourceTree = "<group>"; };
+		581832421F6E8D6200CD5D6F /* VAKCustomFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKCustomFlowLayout.m; sourceTree = "<group>"; };
 		581ECCBA1F5D91B80056B644 /* RSS-reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RSS-reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		581ECCBE1F5D91B80056B644 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		581ECCC01F5D91B80056B644 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		581ECCC11F5D91B80056B644 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		581ECCC31F5D91B80056B644 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		581ECCC41F5D91B80056B644 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		581ECCC71F5D91B80056B644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		581ECCCA1F5D91B90056B644 /* RSS_reader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSS_reader.xcdatamodel; sourceTree = "<group>"; };
 		581ECCCC1F5D91B90056B644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		581ECCCF1F5D91B90056B644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		581ECCD11F5D91B90056B644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		582E19171F6EC5F200BD4D8E /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
+		582E191F1F6EEE1000BD4D8E /* VAKAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKAboutUsViewController.h; sourceTree = "<group>"; };
+		582E19201F6EEE1000BD4D8E /* VAKAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKAboutUsViewController.m; sourceTree = "<group>"; };
+		587287841F72FB720080A5A5 /* VAKConstantsImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKConstantsImages.h; sourceTree = "<group>"; };
+		587287851F72FBDF0080A5A5 /* VAKConstantsCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKConstantsCategories.h; sourceTree = "<group>"; };
+		587287861F72FD970080A5A5 /* VAKSendEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSendEmailViewController.h; sourceTree = "<group>"; };
+		587287871F72FD970080A5A5 /* VAKSendEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKSendEmailViewController.m; sourceTree = "<group>"; };
+		58A8E1F51F703E8C00A537AA /* VAKOfferNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKOfferNewsViewController.h; sourceTree = "<group>"; };
+		58A8E1F61F703E8C00A537AA /* VAKOfferNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKOfferNewsViewController.m; sourceTree = "<group>"; };
+		58B8FB731F5FF06100C51BC1 /* VAKDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKDataManager.h; sourceTree = "<group>"; };
+		58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKDataManager.m; sourceTree = "<group>"; };
+		58B8FB801F5FFE6300C51BC1 /* VAKNewsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNewsParser.h; sourceTree = "<group>"; };
+		58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKNewsParser.m; sourceTree = "<group>"; };
+		58C10F0B1F7D56EF00B378F9 /* VAKSKPSMTPMessageServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSKPSMTPMessageServiceDelegate.h; sourceTree = "<group>"; };
+		58C2F73B1F7AB86D00E90FF3 /* VAKUIView+AnimationViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VAKUIView+AnimationViews.h"; sourceTree = "<group>"; };
+		58C2F73C1F7AB86D00E90FF3 /* VAKUIView+AnimationViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VAKUIView+AnimationViews.m"; sourceTree = "<group>"; };
+		58C5A0041F7FA9DC0089A68A /* VAKSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSettingsViewController.h; sourceTree = "<group>"; };
+		58C5A0051F7FA9DC0089A68A /* VAKSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKSettingsViewController.m; sourceTree = "<group>"; };
+		58C5A0081F7FB4230089A68A /* VAKMainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKMainScreenViewController.h; sourceTree = "<group>"; };
+		58C5A0091F7FB4230089A68A /* VAKMainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKMainScreenViewController.m; sourceTree = "<group>"; };
+		58C5A00A1F7FB4230089A68A /* VAKSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSlideMenuViewController.h; sourceTree = "<group>"; };
+		58C5A00B1F7FB4230089A68A /* VAKSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKSlideMenuViewController.m; sourceTree = "<group>"; };
+		58C5A00C1F7FB4230089A68A /* VAKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKWebViewController.h; sourceTree = "<group>"; };
+		58C5A00D1F7FB4230089A68A /* VAKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKWebViewController.m; sourceTree = "<group>"; };
+		58C5A0111F7FB4320089A68A /* VAKConstantsNewsURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKConstantsNewsURL.h; sourceTree = "<group>"; };
+		58C5A0121F7FB4400089A68A /* VAKNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKNetManager.h; sourceTree = "<group>"; };
+		58C5A0131F7FB4400089A68A /* VAKNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKNetManager.m; sourceTree = "<group>"; };
+		58C5D8431F759DB800DEE601 /* VAKConstantsEmailsChannels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKConstantsEmailsChannels.h; sourceTree = "<group>"; };
+		58C5D8441F75A32500DEE601 /* VAKNSString+ValidatePhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VAKNSString+ValidatePhoneNumber.h"; sourceTree = "<group>"; };
+		58C5D8451F75A32500DEE601 /* VAKNSString+ValidatePhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VAKNSString+ValidatePhoneNumber.m"; sourceTree = "<group>"; };
+		58EDD3EE1F77B3AF007FB7D8 /* VAKSlideMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSlideMenuDelegate.h; sourceTree = "<group>"; };
+		58F03AAF1F742F1800C6DF54 /* VAKNSString+ValidateEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VAKNSString+ValidateEmail.h"; sourceTree = "<group>"; };
+		58F03AB01F742F1800C6DF54 /* VAKNSString+ValidateEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VAKNSString+ValidateEmail.m"; sourceTree = "<group>"; };
+		58F03AB31F74398100C6DF54 /* VAKSKPSMTPMessageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAKSKPSMTPMessageService.h; sourceTree = "<group>"; };
+		58F03AB41F74398100C6DF54 /* VAKSKPSMTPMessageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAKSKPSMTPMessageService.m; sourceTree = "<group>"; };
+		58F03AB61F7447D200C6DF54 /* VAKUIAlertController+Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VAKUIAlertController+Message.h"; sourceTree = "<group>"; };
+		58F03AB71F7447D200C6DF54 /* VAKUIAlertController+Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VAKUIAlertController+Message.m"; sourceTree = "<group>"; };
+		58F03AB91F74510800C6DF54 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSS-reader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		932EE37FDE299558F8E5584E /* Pods-RSS-reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSS-reader/Pods-RSS-reader.debug.xcconfig"; sourceTree = "<group>"; };
+		CCDD939DD19C508825177B8D /* Pods-RSS-reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-reader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSS-reader/Pods-RSS-reader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +105,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94314D25A35A4CA912690A8 /* libPods-RSS-reader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23A02989CAD084F2D0964589 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				58F03AB91F74510800C6DF54 /* MessageUI.framework */,
+				5C6551CE7D2ED30EC1C8FF41 /* libPods-RSS-reader.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		48611E9EC8094FD454DD6680 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				932EE37FDE299558F8E5584E /* Pods-RSS-reader.debug.xcconfig */,
+				CCDD939DD19C508825177B8D /* Pods-RSS-reader.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		581ECCB11F5D91B80056B644 = {
 			isa = PBXGroup;
 			children = (
 				581ECCBC1F5D91B80056B644 /* RSS-reader */,
 				581ECCBB1F5D91B80056B644 /* Products */,
+				48611E9EC8094FD454DD6680 /* Pods */,
+				23A02989CAD084F2D0964589 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,10 +151,18 @@
 		581ECCBC1F5D91B80056B644 /* RSS-reader */ = {
 			isa = PBXGroup;
 			children = (
-				581ECCC01F5D91B80056B644 /* AppDelegate.h */,
-				581ECCC11F5D91B80056B644 /* AppDelegate.m */,
-				581ECCC31F5D91B80056B644 /* ViewController.h */,
-				581ECCC41F5D91B80056B644 /* ViewController.m */,
+				58C5A0071F7FB36B0089A68A /* NetManager */,
+				58EDD3ED1F77B354007FB7D8 /* Delegates */,
+				58F03AB21F74395C00C6DF54 /* SKPSMTPMessageService */,
+				58F03AAE1F742EAD00C6DF54 /* Categories */,
+				587287801F72EEFF0080A5A5 /* Constants */,
+				582E191E1F6EEDD400BD4D8E /* Controllers */,
+				58B8FB7C1F5FF72300C51BC1 /* Parsers */,
+				58B8FB701F5FEFEE00C51BC1 /* CoreData */,
+				581832411F6E8D6200CD5D6F /* VAKCustomFlowLayout.h */,
+				581832421F6E8D6200CD5D6F /* VAKCustomFlowLayout.m */,
+				5818323E1F6E8C7200CD5D6F /* VAKNewsCollectionViewCell.h */,
+				5818323F1F6E8C7200CD5D6F /* VAKNewsCollectionViewCell.m */,
 				581ECCC61F5D91B80056B644 /* Main.storyboard */,
 				581ECCCC1F5D91B90056B644 /* Assets.xcassets */,
 				581ECCCE1F5D91B90056B644 /* LaunchScreen.storyboard */,
@@ -77,9 +176,127 @@
 		581ECCBD1F5D91B80056B644 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				582E19171F6EC5F200BD4D8E /* Placeholder.png */,
+				581ECCC01F5D91B80056B644 /* AppDelegate.h */,
+				581ECCC11F5D91B80056B644 /* AppDelegate.m */,
 				581ECCBE1F5D91B80056B644 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		582E191E1F6EEDD400BD4D8E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				58C5A0081F7FB4230089A68A /* VAKMainScreenViewController.h */,
+				58C5A0091F7FB4230089A68A /* VAKMainScreenViewController.m */,
+				58C5A00A1F7FB4230089A68A /* VAKSlideMenuViewController.h */,
+				58C5A00B1F7FB4230089A68A /* VAKSlideMenuViewController.m */,
+				58C5A00C1F7FB4230089A68A /* VAKWebViewController.h */,
+				58C5A00D1F7FB4230089A68A /* VAKWebViewController.m */,
+				587287861F72FD970080A5A5 /* VAKSendEmailViewController.h */,
+				587287871F72FD970080A5A5 /* VAKSendEmailViewController.m */,
+				58A8E1F51F703E8C00A537AA /* VAKOfferNewsViewController.h */,
+				58A8E1F61F703E8C00A537AA /* VAKOfferNewsViewController.m */,
+				582E191F1F6EEE1000BD4D8E /* VAKAboutUsViewController.h */,
+				582E19201F6EEE1000BD4D8E /* VAKAboutUsViewController.m */,
+				58C5A0041F7FA9DC0089A68A /* VAKSettingsViewController.h */,
+				58C5A0051F7FA9DC0089A68A /* VAKSettingsViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		587287801F72EEFF0080A5A5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				58C5A0111F7FB4320089A68A /* VAKConstantsNewsURL.h */,
+				587287841F72FB720080A5A5 /* VAKConstantsImages.h */,
+				587287851F72FBDF0080A5A5 /* VAKConstantsCategories.h */,
+				58C5D8431F759DB800DEE601 /* VAKConstantsEmailsChannels.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		58B8FB701F5FEFEE00C51BC1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				58B8FB711F5FEFEE00C51BC1 /* DataManager */,
+				58B8FB721F5FEFEE00C51BC1 /* Entities */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		58B8FB711F5FEFEE00C51BC1 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				58B8FB731F5FF06100C51BC1 /* VAKDataManager.h */,
+				58B8FB741F5FF06100C51BC1 /* VAKDataManager.m */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		58B8FB721F5FEFEE00C51BC1 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				580F04491F63D82500A54C0E /* Channel+CoreDataClass.h */,
+				580F044A1F63D82500A54C0E /* Channel+CoreDataClass.m */,
+				580F044D1F63D82500A54C0E /* News+CoreDataClass.h */,
+				580F044E1F63D82500A54C0E /* News+CoreDataClass.m */,
+				580F04511F63D82500A54C0E /* Category+CoreDataClass.h */,
+				580F04521F63D82500A54C0E /* Category+CoreDataClass.m */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		58B8FB7C1F5FF72300C51BC1 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				58B8FB801F5FFE6300C51BC1 /* VAKNewsParser.h */,
+				58B8FB811F5FFE6300C51BC1 /* VAKNewsParser.m */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		58C5A0071F7FB36B0089A68A /* NetManager */ = {
+			isa = PBXGroup;
+			children = (
+				58C5A0121F7FB4400089A68A /* VAKNetManager.h */,
+				58C5A0131F7FB4400089A68A /* VAKNetManager.m */,
+			);
+			path = NetManager;
+			sourceTree = "<group>";
+		};
+		58EDD3ED1F77B354007FB7D8 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				58EDD3EE1F77B3AF007FB7D8 /* VAKSlideMenuDelegate.h */,
+				58C10F0B1F7D56EF00B378F9 /* VAKSKPSMTPMessageServiceDelegate.h */,
+			);
+			name = Delegates;
+			path = "RSS-reader/Delegates";
+			sourceTree = SOURCE_ROOT;
+		};
+		58F03AAE1F742EAD00C6DF54 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				58F03AAF1F742F1800C6DF54 /* VAKNSString+ValidateEmail.h */,
+				58F03AB01F742F1800C6DF54 /* VAKNSString+ValidateEmail.m */,
+				58F03AB61F7447D200C6DF54 /* VAKUIAlertController+Message.h */,
+				58F03AB71F7447D200C6DF54 /* VAKUIAlertController+Message.m */,
+				58C5D8441F75A32500DEE601 /* VAKNSString+ValidatePhoneNumber.h */,
+				58C5D8451F75A32500DEE601 /* VAKNSString+ValidatePhoneNumber.m */,
+				58C2F73B1F7AB86D00E90FF3 /* VAKUIView+AnimationViews.h */,
+				58C2F73C1F7AB86D00E90FF3 /* VAKUIView+AnimationViews.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		58F03AB21F74395C00C6DF54 /* SKPSMTPMessageService */ = {
+			isa = PBXGroup;
+			children = (
+				58F03AB31F74398100C6DF54 /* VAKSKPSMTPMessageService.h */,
+				58F03AB41F74398100C6DF54 /* VAKSKPSMTPMessageService.m */,
+			);
+			path = SKPSMTPMessageService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,9 +306,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 581ECCD41F5D91B90056B644 /* Build configuration list for PBXNativeTarget "RSS-reader" */;
 			buildPhases = (
+				5462C877E16DAFFC4ADF4CDE /* [CP] Check Pods Manifest.lock */,
 				581ECCB61F5D91B80056B644 /* Sources */,
 				581ECCB71F5D91B80056B644 /* Frameworks */,
 				581ECCB81F5D91B80056B644 /* Resources */,
+				7A2683F9A834D492ADF23FD6 /* [CP] Embed Pods Frameworks */,
+				FA0340A4491AAA7BADA8111B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -141,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				582E19181F6EC5F200BD4D8E /* Placeholder.png in Resources */,
 				581ECCD01F5D91B90056B644 /* LaunchScreen.storyboard in Resources */,
 				581ECCCD1F5D91B90056B644 /* Assets.xcassets in Resources */,
 				581ECCC81F5D91B80056B644 /* Main.storyboard in Resources */,
@@ -149,15 +370,82 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5462C877E16DAFFC4ADF4CDE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7A2683F9A834D492ADF23FD6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSS-reader/Pods-RSS-reader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA0340A4491AAA7BADA8111B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSS-reader/Pods-RSS-reader-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		581ECCB61F5D91B80056B644 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				581ECCC51F5D91B80056B644 /* ViewController.m in Sources */,
+				580F04551F63D82500A54C0E /* Channel+CoreDataClass.m in Sources */,
+				580F04591F63D82600A54C0E /* Category+CoreDataClass.m in Sources */,
 				581ECCCB1F5D91B90056B644 /* RSS_reader.xcdatamodeld in Sources */,
+				58C2F73D1F7AB86D00E90FF3 /* VAKUIView+AnimationViews.m in Sources */,
 				581ECCC21F5D91B80056B644 /* AppDelegate.m in Sources */,
+				581832431F6E8D6200CD5D6F /* VAKCustomFlowLayout.m in Sources */,
 				581ECCBF1F5D91B80056B644 /* main.m in Sources */,
+				58F03AB11F742F1800C6DF54 /* VAKNSString+ValidateEmail.m in Sources */,
+				587287881F72FD970080A5A5 /* VAKSendEmailViewController.m in Sources */,
+				58A8E1F71F703E8C00A537AA /* VAKOfferNewsViewController.m in Sources */,
+				58F03AB51F74398100C6DF54 /* VAKSKPSMTPMessageService.m in Sources */,
+				58C5A0061F7FA9DC0089A68A /* VAKSettingsViewController.m in Sources */,
+				58C5A00E1F7FB4230089A68A /* VAKMainScreenViewController.m in Sources */,
+				58B8FB751F5FF06100C51BC1 /* VAKDataManager.m in Sources */,
+				58C5D8461F75A32500DEE601 /* VAKNSString+ValidatePhoneNumber.m in Sources */,
+				581832401F6E8C7200CD5D6F /* VAKNewsCollectionViewCell.m in Sources */,
+				58F03AB81F7447D200C6DF54 /* VAKUIAlertController+Message.m in Sources */,
+				582E19211F6EEE1000BD4D8E /* VAKAboutUsViewController.m in Sources */,
+				58B8FB821F5FFE6300C51BC1 /* VAKNewsParser.m in Sources */,
+				58C5A00F1F7FB4230089A68A /* VAKSlideMenuViewController.m in Sources */,
+				58C5A0101F7FB4230089A68A /* VAKWebViewController.m in Sources */,
+				58C5A0141F7FB4400089A68A /* VAKNetManager.m in Sources */,
+				580F04571F63D82600A54C0E /* News+CoreDataClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +563,7 @@
 		};
 		581ECCD51F5D91B90056B644 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 932EE37FDE299558F8E5584E /* Pods-RSS-reader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "RSS-reader/Info.plist";
@@ -286,6 +575,7 @@
 		};
 		581ECCD61F5D91B90056B644 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCDD939DD19C508825177B8D /* Pods-RSS-reader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "RSS-reader/Info.plist";
@@ -314,6 +604,7 @@
 				581ECCD61F5D91B90056B644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
