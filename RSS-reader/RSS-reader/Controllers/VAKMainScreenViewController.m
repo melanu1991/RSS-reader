@@ -182,19 +182,18 @@ static NSString * const VAKPlaceholder = @"placeholder";
 #pragma mark - UIToolbar animation
 
 - (void)animateCancelCategory:(UIButton *)button {
-    [button setImage:[UIImage imageNamed:VAKLittleImageName[button.tag]] forState:UIControlStateNormal];
-    button.imageEdgeInsets = UIEdgeInsetsZero;
-    button.layer.cornerRadius = 0;
-    button.layer.bounds = button.layer.bounds = CGRectMake(0.f, 0.f, 25.f, 25.f);;
-    button.layer.backgroundColor = [UIColor clearColor].CGColor;
+    [button.layer.sublayers[1] removeFromSuperlayer];
 }
 
 - (void)animateSelectionCategory:(UIButton *)button {
-    [button setImage:[UIImage imageNamed:VAKBigImageName[button.tag]] forState:UIControlStateNormal];
-    button.imageEdgeInsets = UIEdgeInsetsMake(0.f, 0.f, 25.f, 0.f);
-    button.layer.bounds = CGRectMake(0.f, 0.f, 100.f, 100.f);
-    button.layer.backgroundColor = [UIColor colorWithRed:55.f / 255.f green:55.f / 255.f blue:55.f / 255.f alpha:1.f].CGColor;
-    button.layer.cornerRadius = 50.f;
+    CALayer *layer = [CALayer layer];
+    layer.bounds = CGRectMake(0.f, 0.f, 100.f, 100.f);
+    layer.cornerRadius = 50.f;
+    layer.backgroundColor = [UIColor colorWithRed:55.f / 255.f green:55.f / 255.f blue:55.f / 255.f alpha:1.f].CGColor;
+    layer.contentsScale = 1.85f;
+    layer.contentsGravity = kCAGravityCenter;
+    layer.contents = (__bridge id _Nullable)([UIImage imageNamed:VAKBigImageName[button.tag]].CGImage);
+    [button.layer addSublayer:layer];
 }
 
 #pragma mark - deallocate
