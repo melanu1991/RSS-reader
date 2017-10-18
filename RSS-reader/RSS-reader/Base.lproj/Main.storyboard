@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xE7-Mb-ALd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xE7-Mb-ALd">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeo.ttc">
+            <string>AppleSDGothicNeo-Regular</string>
+        </array>
+        <array key="ArialHB.ttc">
+            <string>ArialHebrew</string>
+        </array>
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
+        <array key="Courier.ttc">
+            <string>Courier-Bold</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+        <array key="KhmerSangamMN.ttf">
+            <string>KhmerSangamMN</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--В мире-->
         <scene sceneID="tne-QT-ifu">
@@ -84,13 +104,14 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Wat-hE-9qr"/>
                                 </connections>
                             </collectionView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C14-eq-myy">
+                            <toolbar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C14-eq-myy">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
+                                    <barButtonItem width="35" style="plain" systemItem="fixedSpace" id="G2i-Aa-4oM"/>
                                     <barButtonItem style="plain" id="hPK-WJ-Jms">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nHL-Rh-tOm">
-                                            <rect key="frame" x="20" y="9.6666666666666643" width="25" height="25"/>
+                                        <button key="customView" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nHL-Rh-tOm">
+                                            <rect key="frame" x="55" y="9.6666666666666288" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="world"/>
                                             <connections>
@@ -103,8 +124,8 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="6v1-FP-huR"/>
                                     <barButtonItem style="plain" id="QKI-fn-sV5">
-                                        <button key="customView" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="doP-8Q-L7i">
-                                            <rect key="frame" x="136" y="9.6666666666666643" width="25" height="25"/>
+                                        <button key="customView" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="doP-8Q-L7i">
+                                            <rect key="frame" x="143" y="9.6666666666666288" width="27" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="finance"/>
                                             <connections>
@@ -114,8 +135,8 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="6Y4-KL-62R"/>
                                     <barButtonItem style="plain" id="0rI-OJ-boE">
-                                        <button key="customView" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DGT-BT-35z">
-                                            <rect key="frame" x="253" y="9.6666666666666643" width="25" height="25"/>
+                                        <button key="customView" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DGT-BT-35z">
+                                            <rect key="frame" x="233" y="9.6666666666666288" width="27" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="realty"/>
                                             <connections>
@@ -125,8 +146,8 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UQc-SE-Thl"/>
                                     <barButtonItem style="plain" id="0J3-8a-Euj">
-                                        <button key="customView" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3vr-8j-h23">
-                                            <rect key="frame" x="369" y="9.6666666666666643" width="25" height="25"/>
+                                        <button key="customView" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3vr-8j-h23">
+                                            <rect key="frame" x="323" y="10.666666666666629" width="36" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="society"/>
                                             <connections>
@@ -134,6 +155,7 @@
                                             </connections>
                                         </button>
                                     </barButtonItem>
+                                    <barButtonItem width="35" style="plain" systemItem="fixedSpace" id="crz-Ut-IVd"/>
                                 </items>
                                 <color key="barTintColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
@@ -540,7 +562,7 @@
                                         <color key="tintColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlf-hw-fnN">
-                                        <rect key="frame" x="20" y="139" width="374" height="220.66666666666669"/>
+                                        <rect key="frame" x="20" y="139" width="374" height="220.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текст новости" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpn-Sd-0DO">
                                                 <rect key="frame" x="20" y="20" width="122" height="21"/>
@@ -549,7 +571,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Максимум 5000 символов." textAlignment="justified" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5vR-bv-k9N">
-                                                <rect key="frame" x="20" y="49" width="354" height="171.66666666666669"/>
+                                                <rect key="frame" x="20" y="48.999999999999986" width="354" height="171.66666666666663"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
@@ -558,7 +580,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAJ-As-7lM">
-                                                <rect key="frame" x="344.66666666666674" y="20" width="9.3333333333333144" height="17"/>
+                                                <rect key="frame" x="344.66666666666669" y="20" width="9.3333333333333144" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="9.5" id="n7B-9z-h7u"/>
                                                     <constraint firstAttribute="height" constant="17" id="rRs-8Y-ts4"/>
@@ -603,7 +625,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Контактная информация" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tX5-JG-eMX">
-                                        <rect key="frame" x="20" y="379.66666666666674" width="214" height="19.333333333333314"/>
+                                        <rect key="frame" x="20" y="379.66666666666669" width="214" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -639,7 +661,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="или" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35Z-We-vc0">
-                                        <rect key="frame" x="191.33333333333337" y="445" width="31.666666666666657" height="19.333333333333314"/>
+                                        <rect key="frame" x="191.33333333333334" y="445" width="31.666666666666657" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -773,10 +795,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ywv-07-5dG">
-                                        <rect key="frame" x="41.333333333333343" y="178" width="331.33333333333337" height="184"/>
+                                        <rect key="frame" x="41.333333333333343" y="178" width="331.33333333333326" height="184"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-v2-0S2">
-                                                <rect key="frame" x="0.0" y="0.0" width="331.33333333333337" height="41.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="41.333333333333336"/>
                                                 <color key="backgroundColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                 <state key="normal" title="Обратная связь">
@@ -787,7 +809,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2L-8D-h1M">
-                                                <rect key="frame" x="0.0" y="71.333333333333343" width="331.33333333333337" height="41.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="71.333333333333343" width="331.33333333333331" height="41.333333333333343"/>
                                                 <color key="backgroundColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                 <state key="normal" title="Оценить приложение">
@@ -798,7 +820,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3e-Z4-xCQ">
-                                                <rect key="frame" x="0.0" y="142.66666666666669" width="331.33333333333337" height="41.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="142.66666666666669" width="331.33333333333331" height="41.333333333333343"/>
                                                 <color key="backgroundColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                 <state key="normal" title="Рассказать друзьям">
@@ -817,7 +839,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Версия 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZc-ci-0BR">
-                                        <rect key="frame" x="162.66666666666666" y="563" width="89" height="36"/>
+                                        <rect key="frame" x="162" y="563" width="90.666666666666686" height="36"/>
                                         <fontDescription key="fontDescription" name="KhmerSangamMN" family="Khmer Sangam MN" pointSize="18"/>
                                         <color key="textColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1029,7 +1051,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текст" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gii-IP-TZZ">
-                                <rect key="frame" x="20" y="266" width="44.666666666666671" height="20.333333333333314"/>
+                                <rect key="frame" x="19.999999999999996" y="266" width="44.666666666666657" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1136,7 +1158,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xE7-Mb-ALd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xib-aG-2ok">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -1158,7 +1180,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jXQ-Yu-vLU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tk9-5d-hzt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1176,7 +1198,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cUJ-e5-a2W" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Yr-NZ-Eip">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1194,7 +1216,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G88-wE-BUn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="06v-Jp-8V2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
